@@ -18,6 +18,12 @@
   border-bottom: 1px solid $dark-red;
 }
 
+.event-calendar .event .event-header {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
 //
 // News blog
 //
