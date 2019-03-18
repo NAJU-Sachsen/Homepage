@@ -1,0 +1,43 @@
+// kernel.scss
+//  Contains all definitions that are to be applied across all devices
+//
+// Authors: Rico Bergmann <rico.bergmann@naju-sachsen.de>
+
+/*
+ * Custom bootstrap theming
+ */
+@import "bs_customization";
+
+/*
+ * Bootstrap
+ */
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+/*
+ * Bootstrap extensions
+ */
+@import "bs_extensions";
+
+/*
+ * Core styles
+ */
+@import "defaults";
+
+/*
+ * Core layout
+ */
+@import "layout";
+
+@media screen and (max-width: map-get($grid-breakpoints, 'md') - 1) {
+
+  @import "mobile";
+
+}
+
+@media screen and (min-width: map-get($grid-breakpoints, 'md')) {
+
+  @import "desktop";
+
+}
+
+@import "styles";

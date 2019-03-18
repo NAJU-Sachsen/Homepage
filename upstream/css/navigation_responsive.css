@@ -1,0 +1,215 @@
+/*******************************************************************************
+
+  Design der Navigation in der linken Seitenleiste und des Menus unterhalb des
+  headers.
+
+*******************************************************************************/
+
+/* ### Horizontales Menu unterhalb des headers ############################## */
+
+@media screen and (min-device-width: 781px) {
+  #menu {
+    height: 43px;
+    min-width: 1040px;
+    width: 100%;
+    background: url("bg_navi2.png") repeat-x;
+    position: relative;
+    z-index: 5;
+    display: block;
+  }
+
+  ul#service-menu {
+    height: 43px;
+    width: 1200px;
+    margin: 0 auto;
+    padding-left: 120px;
+  }
+
+  ul#service-menu li {
+    display: inline;
+    float: left;
+    margin: 0 31px 0 0;
+    padding: 13px 0;
+  }
+
+  ul#service-menu li a {
+    color: #FDEBEC;
+    font-size: 14px;
+    text-decoration: none;
+  }
+
+  ul#service-menu li a:hover {
+    text-decoration: underline;
+  }
+
+  /* ### Navigationsblock links ############################################### */
+
+  #nav {
+  	display: block;
+  	float: left;
+  	width: 205px;
+  	margin: 5px 0px 5px 2px;
+  }
+
+
+  * html body #nav { height: 193px; } /* IE 6 / 5.5 Hack */
+
+  #nav ul.rex-navi1 { padding:10px 20px;  }
+
+
+  /* ### nav1 - first level navigation ######################################## */
+
+  ul.nav1 {
+    width: 179px;
+    margin: 0 13px;
+    padding-top: 10px;
+  }
+
+  ul.nav1 li {
+  	display: block;
+  	padding: 0;
+  	min-height: 32px;
+  	border-top: 1px dotted #ccc;
+  }
+
+  ul.nav1 li.first {
+    border-top: none;
+  }
+
+  ul.nav1 a {
+  	display: block;
+  	color: #fff;
+  	text-align: left;
+  	font-size: 14px;
+  	line-height: 150%;
+  	padding: 5px 5px 5px 18px;
+  }
+
+  ul.nav1 a:hover {
+    text-decoration: underline;
+  }
+
+  ul.nav1 li.active a {
+  	color: #000;
+  	font-weight: bold;
+  }
+
+  /* ### nav2 - second level navigation ####################################### */
+
+  #nav2 ul {
+  	margin: 0 0 10px;
+  }
+
+  #nav2 ul li {
+  	padding: 0;
+  	margin: 0;
+  	border: none;
+  	height: auto;
+  	min-height: 0;
+  }
+
+  #nav2 ul li.first {
+    border: none;
+  }
+
+  #nav2 ul li a {
+  	display:block;
+  	padding: 3px 5px 3px 30px;
+  	text-align: left;
+  	color: #fff;
+  	font-size: 12px;
+  	font-weight: normal;
+  }
+
+
+  #nav2 ul li a:hover {
+
+  }
+
+  #nav2 ul li.active a{
+    color: #000;
+    font-weight: bold;
+  }
+
+  #nav2 ul li.current a {
+  }
+
+  /* ### nav2 - second level navigation ####################################### */
+
+  #nav3 ul.nav3 {
+  	margin: 0 0 10px;
+  }
+
+  #nav3 ul.nav3 li {
+  	padding: 0;
+  	margin: 0;
+  	border: none;
+  	height: auto;
+  	min-height: 0;
+  }
+
+  #nav3 ul.nav3 li.first {
+    border: none;
+  }
+
+  #nav3 ul.nav3 li a {
+  	display:block;
+  	padding: 3px 5px 3px 40px;
+  	text-align: left;
+  	color: #fff;
+  	font-size: 11px;
+  	font-weight: normal;
+  }
+
+
+  #nav3 ul.nav3 li a:hover {
+
+  }
+
+  #nav3 ul.nav3 li.active a{
+    color: #000;
+    font-weight: bold;
+  }
+
+  #nav3 ul.nav3 li.current a {
+  }
+}
+
+@media screen and (max-device-width: 780px) {
+  div#logo-header {
+    background-image: url('naju-sachsen-logo.png');
+    background-size: contain;
+    margin: 1px auto;
+    height: 15vh;
+    width: 25vw;
+  }
+
+  div#menu {
+    float: left;
+    margin-bottom: 1em;
+    width: 100%;
+  }
+
+  ul#service-menu {
+    float: left;
+    height: auto;
+    width: 100%;
+    padding: 0.5em;
+    display: block;
+    background-color: #D10005;
+    border-radius: 10px;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+
+  ul#service-menu li {
+    float: left;
+    width: auto;
+    margin-right: 2em;
+  }
+
+  ul#service-menu li a {
+    color: #DDD;
+    font-size: 3.5vw;
+    text-decoration: none;
+  }
+}

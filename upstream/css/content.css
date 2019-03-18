@@ -1,0 +1,366 @@
+/*******************************************************************************
+
+
+
+*******************************************************************************/
+
+
+#site-content {
+
+}
+
+
+
+
+/* ### headlines ############################################################ */
+
+#main-block h1 {
+	color: #E31021;
+	background: transparent;
+	font-size: 1.9em;
+	font-weight: normal;
+	line-height: 100%;
+}
+
+#main-block h2 {
+	color: #999999;
+	background: transparent;
+  font-size: 1.5em;
+	font-weight: normal;
+	line-height: 100%;
+	padding: 5px 0 10px 0;
+}
+
+#main-block h3 {
+	color:#666666;
+	background: transparent;
+  font-size: 1.2em;
+	font-weight: bold;
+	line-height: 100%;
+}
+
+/*#main-block h4 {
+	color:#c4c4c4;
+	background: inherit;
+	font-size:1.1em;
+	font-weight:bold;
+	line-height:1.2em;
+}
+
+#main-block h5 {
+	color:#c4c4c4;
+	background: inherit;
+	font-size:1.0em;
+	font-weight:bold;
+	line-height:1.0em;
+}
+
+#main-block h6 {
+	background: inherit;
+	color:#c4c4c4;
+	font-size:0.9em;
+	font-weight:bold;
+	line-height:1.0em;
+}      */
+
+
+/* ### Images ############################################################ */
+
+#main-block img {
+	display:inline;
+	margin:4px 4px;
+}
+
+#main-block img.floatLeft {
+	float:left;
+	margin:4px 10px 4px 0;
+}
+
+#main-block img.floatRight {
+	float:right;
+	margin:4px 0 4px 10px;
+}
+
+/* ### Termine ############################################################ */
+
+#termin {
+  margin-bottom: 10px;
+}
+
+#termin img {
+  display: inline;
+  margin: 0;
+}
+
+#terminBildRechts img {
+  margin: 0 0px 5px 10px;
+  display: inline;
+}
+
+#terminBildRechts .klein img {
+  margin: 0 0px 0px 5px;
+}
+
+#terminBildLinks img {
+  margin: 0 10px 5px 0px;
+
+}
+
+#terminBildLinks .klein img {
+  margin: 0 0px 0px 5px;
+  display: inline;
+}
+
+/* ### Hyperlinks ######################################################### */
+
+#main-block a,
+#main-block a:link,
+#main-block a:visited {
+	color: #333333;
+	background: transparent;
+  text-decoration: underline;
+}
+
+#main-block a:hover {
+	text-decoration: none;
+}
+
+
+/* ### Paragraphs ########################################################## */
+
+#main-block p {
+	margin: 0.8em 0 0.4em;
+	font-size: 1.2em;
+	line-height: 150%;
+}
+
+
+/* ### Tables ############################################################## */
+
+#main-block table {
+	font-size:1.2em;
+	line-height:1.6em;
+}
+
+#main-block td {
+	padding:0 0 0 0;
+}
+
+
+/* ### Blockquotes ########################################################## */
+
+#main-block blockquote {
+	margin:0 0 0 20px;
+}
+
+
+/* ### Lists ################################################################ */
+
+#main-block ul,
+#main-block ol {
+	margin-bottom:1.2em;
+	font-size:1.2em;
+	line-height:1.6em;
+}
+
+#main-block ol li {
+	margin: 0 0 0 30px;
+	list-style-type: decimal-leading-zero;
+}
+#main-block ul li {
+	margin:0 0 0 20px;
+	list-style-type: disc;
+}
+
+
+/* ### Module ################################################################ */
+
+#main-content-block div.floatLeft img {
+	float:left;
+	margin:4px 40px 4px 0;
+}
+
+#main-content-block div.floatRight img {
+	float:right;
+	margin:4px 0 4px 40px;
+}
+/*
+#main-content-block a.more {
+	clear:left;
+	position: relative;
+	left: 120px;
+}
+*/
+
+/* ### Team ### */
+
+#main-content-block div.txt-img {
+	clear: both;
+	padding: 12px 0;
+}
+
+
+/* ### Team ### */
+
+#main-content-block div.team {
+	clear: both;
+	padding: 12px 0;
+	margin-bottom: 0px ;
+}
+
+#main-content-block div.team div{
+	width:100px;
+}
+
+#main-content-block div.team p {
+	font-size: 1.3em;
+	letter-spacing: 0.05em;
+	margin-top: 0px;
+}
+
+#main-content-block div.team div.floatLeft img {
+	margin:4px 0px 4px 0;
+}
+
+/* ### Bildgalerie ### */
+
+#main-content-block div.galerie {
+	clear: both;
+}
+#main-content-block div.galerie div.image {
+	float: left;
+	width: 270px;
+}
+
+#main-content-block div.galerie div.image img{
+	padding: 5px;
+	border:1px solid #aaa;
+}
+
+
+/* ### Formular ################################################################ */
+
+label.text{
+	width: 80px;
+	height: 25px;
+	display:block;
+	float:left;
+	clear: left;
+	padding-top:5px;
+}
+
+label.textarea{
+	width: 80px;
+	height: 25px;
+	display:block;
+	clear: left;
+	padding-top:5px;
+}
+
+input.text {
+	float:left;
+	width: 370px;
+	height:20px;
+	background-color: #eee;
+	color:#000;
+	border-left: 6px solid #90b0bf;;
+	border-bottom: 1px solid #FFF;
+	border-right: 6px solid #90b0bf;;
+	border-top: 1px solid #FFF;
+}
+
+textarea.textarea {
+	width: 450px;
+	height:100px;
+	background-color: #eee;
+	color:#000;
+	border-left: 6px solid #90b0bf;;
+	border-bottom: 1px solid #FFF;
+	border-right: 6px solid #90b0bf;;
+	border-top: 1px solid #FFF;
+}
+
+.submit{
+	background-color: #90b0bf;
+	color:#fff;
+	margin-top: 10px;
+	border: none;
+}
+
+/* Info-Karten fuer Veranstaltungen */
+.event-info-card {
+  background-color: #bbbbbb;
+  border-radius: 15px;
+  padding: 15px;
+  display: block;
+  margin-left: 20px;
+  margin-bottom: 30px;
+  max-width: 840px;
+}
+
+.event-info-card .date-time {
+  font-weight: bolder;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+}
+
+.event-info-card .date-time .date {
+  display: block;
+}
+
+.event-info-card .date-time .time {
+  display: block;
+}
+
+.event-info-card .general-info .title {
+  display: block;
+  margin-top: 0;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 1.5em !important;
+  font-weight: normal !important;
+  color: #147c30 !important;
+}
+
+.event-info-card .general-info .info {
+  margin-bottom: 5px;
+  font-size: 1.2em;
+  display: block;
+}
+
+.event-info-card .general-info .registration.required {
+  font-weight: bold;
+}
+
+.event-info-card .description::before {
+  content: '“ ';
+  font-weight: bold;
+  font-style: oblique;
+  font-size: 2em;
+  font-variant: sub;
+}
+
+.event-info-card .description {
+  clear: both;
+  font-style: italic;
+  line-height: 120% !important;
+}
+
+@media screen and (min-device-width: 781px) {
+  .event-info-card .date-time {
+    width: 19%;
+    float: left;
+  }
+
+  .event-info-card .general-info {
+    width: 79%;
+    float: left;
+    margin-bottom: 15px;
+  }
+}
+
+/* Terminkalender */
+div#termin, div#terminSatz {
+  font-size: 1.2em;
+  line-height: 1.3em;
+}

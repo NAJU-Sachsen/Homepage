@@ -1,0 +1,14 @@
+/*
+ * style.css
+ *
+ */
+
+:root {
+   --naju-red: #e2091b;
+   --dark-green: #147c30;
+   --light-green: #719d25;
+   --dark-red: #672724;
+   --default-grey: #999999;
+   --default-beige: #f0f7e0;
+   --second-beige: #f1f4eb;
+ }

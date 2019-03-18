@@ -1,0 +1,60 @@
+
+:root {
+  --naju-red: #e2091b;
+  --dark-green: #147c30;
+  --light-green: #719d25;
+  --dark-red: #672724;
+  --default-grey: #999999;
+  --default-beige: #f0f7e0;
+  --second-beige: #f1f4eb;
+}
+
+/*
+ Header
+ */
+
+header#top-bar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+header#top-bar .naju-logo {
+  margin-right: 2rem;
+}
+
+/*
+ Navigation
+ */
+
+#nav-content-wrapper {
+  padding-bottom: 1rem;
+}
+
+nav#main-nav {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+nav#main-nav::before {
+  display: block;
+  content: "Navigation";
+  font-size: 2rem;
+	text-align: center;
+  color: var(--dark-red);
+}
+
+nav#main-nav .nav-primary {
+  display: none;
+}
+
+nav#main-nav:hover .nav-primary {
+  display: block;
+}
+
+/*
+ Sidebar
+ */
+
+aside#at-a-glance {
+  display: none !important;
+}
