@@ -81,10 +81,8 @@ typings/
 *.sass.map
 *.scss.map
 
+css/
+
 # Development environment
 
 *.code-workspace
-
-# Other files
-
-upstream/groups/*
