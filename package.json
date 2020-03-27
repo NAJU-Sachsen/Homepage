@@ -2,28 +2,12 @@
   "name": "homepage",
   "version": "0.0.1",
   "description": "Homepage of NAJU Sachsen",
-  "main": "index.js",
   "repository": "https://github.com/NAJU-Sachsen/Homepage.git",
-  "scripts": {
-    "build": "webpack",
-    "test": "test"
-  },
   "author": "Rico Bergmann <rico.bergmann@naju-sachsen.de>",
   "license": "GPL-3.0",
   "dependencies": {
     "bootstrap": "^4.4.1",
     "jquery": "^3.4.1",
     "popper.js": "^1.16.1"
-  },
-  "devDependencies": {
-    "autoprefixer": "^9.7.4",
-    "css-loader": "^2.1.1",
-    "node-sass": "^4.13.1",
-    "postcss-loader": "^3.0.0",
-    "precss": "^4.0.0",
-    "sass-loader": "^7.3.1",
-    "style-loader": "^0.23.1",
-    "webpack": "^4.42.0",
-    "webpack-cli": "^3.3.11"
   }
 }
