@@ -1,0 +1,9 @@
+name: Statistiken
+active: true
+attributes:
+    ctype: {  }
+    modules:
+        1: { all: '1' }
+    categories:
+        0: '16'
+        all: 0

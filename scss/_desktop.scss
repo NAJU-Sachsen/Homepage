@@ -1,0 +1,137 @@
+// _desktop.scss
+//  Contains all styles that should be applied on large devices (desktops and tablets)
+//
+// Authors: Rico Bergmann <rico.bergmann@naju-sachsen.de>
+
+$sidebars-offset: -30px;
+
+//
+//  General design
+//
+
+body {
+  background-image: url('/assets/grass-pattern.png');
+  background-repeat: repeat-x;
+  background-attachment: fixed;
+  background-position: bottom;
+}
+
+//
+// Header
+//
+
+header#top-bar .naju-logo {
+  margin-left: 70%;
+  margin-top: -10px;
+}
+
+//
+// Navigation
+//
+
+#nav-content-wrapper {
+  min-height: calc(100% - #{$header-height});
+  max-height: fit-content;
+  padding-top: 1rem;
+}
+
+nav#main-nav {
+  position: fixed;
+  max-height: fit-content;
+  margin-top: $sidebars-offset;
+  margin-bottom: 100px;
+  padding-bottom: 30px;
+}
+
+nav#main-nav > ul.nav:not(.sub-nav) > .nav-item {
+  border-bottom: 1px dotted $dark-red;
+}
+
+nav#main-nav:hover {
+  background-color: rgba(240, 247, 224, .8);
+  border-color: $dark-red !important;
+}
+
+//
+// Main content
+//
+
+#content-wrapper {
+  min-height: 100%;
+  padding: 0 1rem;
+}
+
+#content {
+  min-height: 100%;
+  padding: 1rem;
+  line-height: 1.8em;
+  background-color: rgba($white, .8);
+  box-shadow: 0 4px 8px 0 rgba($black, 0.2), 0 6px 20px 0 rgba($black, 0.05);
+}
+
+#content:hover {
+  box-shadow: 0 4px 8px 0 rgba($black, 0.2), 0 6px 20px 0 rgba($black, 0.2);
+}
+
+#content img.highlight {
+  transform: scale(1.025) rotate(.02deg) translateZ(0)
+}
+
+//
+// Sidebar
+//
+
+aside#at-a-glance {
+  position: fixed;
+  max-height: fit-content;
+  margin-top: $sidebars-offset;
+  margin-bottom: 100px;
+  padding: 1rem;
+  background-color: rgba($extra-grey, 0.1);
+}
+
+aside#at-a-glance:hover {
+  background-color: rgba($extra-grey, 0.2);
+  border-color: $extra-grey !important;
+}
+
+aside#at-a-glance .glance-section {
+  margin-bottom: 2rem;
+}
+
+aside#at-a-glance .glance-section .events-list .event-announcement a.event-link,
+aside#at-a-glance .glance-section a.contact-link {
+  padding: .1rem;
+  text-decoration: none;
+  border-bottom-width: .125rem;
+}
+
+aside#at-a-glance .glance-section .events-list .event-announcement a.event-link:hover,
+aside#at-a-glance .glance-section a.contact-link:hover {
+  padding: .1rem;
+  text-decoration: none;
+  border-bottom-style: solid;
+  transition: all .15s ease-in;
+  border-color: $dark-red;
+  box-shadow: inset 0 -.0125rem 0 $dark-red;
+}
+
+aside#at-a-glance nav.page-nav a {
+  @include default-link;
+  border: none;
+  transition: none;
+}
+
+aside#at-a-glance nav.page-nav a:hover {
+  @include default-link-hover;
+  border: none;
+  font-weight: bold;
+}
+
+//
+// Footer
+//
+
+.basic-footer {
+  position: fixed;
+}

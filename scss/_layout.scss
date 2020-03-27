@@ -1,0 +1,167 @@
+// _layout.scss
+//  Contains styles that build the general structural layout of all sites, i.e. positioning of headers, navs and so on.
+//
+// Authors: Rico Bergmann <rico.bergmann@naju-sachsen.de>
+
+//
+// General site layout
+//
+
+$footer-height: 1.5rem;
+$footer-offset: .5rem;
+$footer-item-distance: 10px;
+$default-z-index: 500;
+$hover-z-index: 1000;
+$z-index-increment: 100;
+$footer-btm-margin: 10px;
+
+html, body {
+  height: 100%;
+}
+
+#complete-wrapper {
+  position: relative;
+  min-height: calc(100% - #{$footer-height});
+}
+
+#nav-content-wrapper {
+  position: relative;
+  padding-bottom: $footer-height;
+}
+
+//
+// Header
+//
+
+$header-height: 130px;
+
+#top-bar-wrapper {
+  height: $header-height;
+}
+
+header#top-bar {
+  width: 100%;
+  height: 107px;
+  z-index: 100;
+  background-image: url('/assets/bow-symmetrical.png');
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position-x: center;
+}
+
+header#top-bar .naju-logo {
+  height: 127px;
+  width: 151px;
+  background-image: url('/assets/naju-logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+header#top-bar .logo-local-group-name {
+  position: absolute;
+  display: block;
+  margin-left: 72.4%;
+  margin-top: -43px;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+//
+// Navigation
+//
+
+nav#main-nav {
+  border: 1px solid $border-color;
+  border-left: 0;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  background-color: rgba($default-beige, 0.7);
+}
+
+nav#main-nav a {
+  color: $dark-red;
+  border: none;
+  transition: none;
+}
+
+nav#main-nav a:hover {
+  border: none;
+  font-weight: bold;
+}
+
+//
+// Main content
+//
+
+#content {
+  position: relative;
+  z-index: $default-z-index + 1 * $z-index-increment;
+}
+
+#content:hover {
+  z-index: 1000;
+}
+
+
+//
+// Footer
+//
+
+.basic-footer {
+  height: $footer-height;
+  bottom: 0;
+  padding-top: $footer-offset;
+  margin-bottom: calc(#{$footer-btm-margin} + #{$link-underline-width});
+}
+
+#info-footer {
+  @extend .basic-footer; 
+  z-index: $default-z-index - 1*$z-index-increment;
+  left: 0;
+  margin-left: $footer-item-distance;
+}
+
+#info-footer p {
+  padding-left: $footer-item-distance;
+  padding-right: $footer-item-distance;
+  background-color: rgba($light-grey, 0.4);
+}
+
+#info-footer a {
+  @include default-link;
+  color: $text-color;
+  font-weight: bolder;
+  border-bottom-color: transparent;
+}
+
+#info-footer a:hover {
+  @include default-link-hover;
+}
+
+#nav-footer {
+  @extend .basic-footer;
+  z-index: $default-z-index;
+  right: 0;
+}
+
+#nav-footer:hover {
+  z-index: $hover-z-index;
+}
+
+#nav-footer nav ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  margin-bottom: 0;
+  background-color: rgba($light-grey, 0.4);
+  padding-left: $footer-item-distance;
+}
+
+#nav-footer nav ul li.nav-item {
+  margin-right: $footer-item-distance;
+}
+
+#nav-footer nav ul li.nav-item a {
+  color: $dark-green;
+}

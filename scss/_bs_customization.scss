@@ -1,0 +1,38 @@
+// _bs_customization.scss
+//  Contains our modifications of the default bootstrap styles.
+//  This includes our own theme and branding for the most part.
+//
+// Authors: Rico Bergmann <rico.bergmann@naju-sachsen.de>
+
+//
+// Font stack
+//
+
+$font-family-base:
+  'Source Sans Pro',   // NAJU CD
+  -apple-system,       // Safari (macOS + iOS)
+  BlinkMacSystemFont,  // Chrome @ macOS
+  'Segoe UI',          // Windows
+  'Roboto',            // Android
+  'Helvetica Neue', Arial, sans-serif,  // fallbacks
+  'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol' !default; // emojis
+
+//
+// Color system
+//
+
+$naju-red: #e2091b;
+$dark-green: #147c30;
+$light-green: #719d25;
+$dark-red: #672724;
+$extra-grey: #999999;
+$light-grey: #eee;
+$default-beige: #f0f7e0;
+$second-beige: #f1f4eb;
+$text-color: #000;
+
+$primary: $light-green;
+
+$theme-colors: (
+  'primary': $light-green
+);

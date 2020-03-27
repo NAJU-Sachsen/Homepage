@@ -1,0 +1,12 @@
+name: Home
+active: true
+attributes:
+    ctype:
+        1: Blickfänger
+        2: Einführungstext
+    modules:
+        1: { 0: '1', all: 0 }
+        2: { 0: '9', 1: '10', 2: '8', all: 0 }
+        3: { all: '1' }
+    categories:
+        all: '1'

@@ -1,0 +1,23 @@
+// _bs_extensions.scss
+//  Contains our custom extensions of the bootstrap styles and utilities
+//
+// Authors: Rico Bergmann <rico.bergmann@naju-sachsen.de>
+
+// generate reponsive width helpers such as .w-100-lg or .w-25-md
+@each $breakpoint, $breakpoint-size in $grid-breakpoints {
+  // for sm, md, lg... generate the helpers
+
+  @media screen and (min-width: $breakpoint-size) {
+    // only apply the given width if the breakpoint did fire
+
+    @each $width in map-keys($sizes) {
+
+      .w-#{$width}-#{$breakpoint} {
+        width: map-get($map: $sizes, $key: $width);
+      }
+
+    }
+
+  }
+
+}

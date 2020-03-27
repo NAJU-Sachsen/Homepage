@@ -1,0 +1,76 @@
+// _styles.scss
+//  Contains additional CSS classes for components specific to our website
+//
+// Authors: Rico Bergmann <rico.bergmann@naju-sachsen.de>
+
+//
+// Event calendar
+//
+
+.event-calendar {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.event-calendar .event {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-top: $list-group-border-width solid $list-group-border-color;
+  border-bottom: $list-group-border-width solid $list-group-border-color;
+}
+
+.event-calendar .event:hover {
+  border-top: 1px solid $dark-red;
+  border-bottom: 1px solid $dark-red;
+}
+
+.event-calendar .event .event-header {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.list-group.list-group-flush.event-calendar .list-group-item.event {
+  border-top: 1px solid transparent;
+}
+
+.list-group.list-group-flush.event-calendar .list-group-item.event:hover {
+  border-top: 1px solid $dark-red;
+}
+
+//
+// News blog
+//
+
+.news-blog .news-item {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.news-blog .news-item .news-item-header {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.news-blog .news-item .news-item-header .news-item-title .news-item-sub-title {
+  display: block;
+}
+
+@media screen and (max-width: map-get($grid-breakpoints, 'md') - 1) {
+  .news-blog .news-item .news-image,
+  .news-blog .news-item .news-content {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+//
+// Registration form
+//
+
+.registration-form {
+  padding: 1rem;
+  border-radius: .7rem;
+  background-color: hsl(0, 0%, 90%);
+}

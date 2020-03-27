@@ -1,0 +1,1 @@
+<input type="text" name="<?= 'REX_'; ?>INPUT_VALUE[1]" />
