@@ -1,8 +1,54 @@
 
 <?php
 $bs_cols = 12;	// the number of columns in a Bootstrap grid
-$n_cards = REX_VALUE[20];
+$n_cards = 'REX_VALUE[20]';
 $col_lg_width = $bs_cols / $n_cards;
+?>
+
+<?php
+
+if (rex::isBackend()) {
+	$image_names = array();
+	$images = array();
+
+	$image_names[] = 'REX_MEDIA[id=1 ifempty=default-card-image.jpg]';
+	$image_names[] = 'REX_MEDIA[id=2 ifempty=default-card-image.jpg]';
+
+	if ($n_cards >= 3) {
+		$image_names[] = 'REX_MEDIA[id=3 ifempty=default-card-image.jpg]';
+	}
+
+	if ($n_cards >= 4) {
+		$image_names[] = 'REX_MEDIA[id=4 ifempty=default-card-image.jpg]';
+	}
+
+	$ratios = array();
+	foreach ($image_names as $img) {
+		$img = new naju_image($img);
+		$images[] = $img;
+		if (!in_array($img->aspectRatio(), $ratios)) {
+			$ratios[] = $img->aspectRatio();
+		}
+	}
+
+	if (sizeof($ratios) > 1) {
+		$ratio_details = '<ul class="list-group">';
+		foreach ($images as $img) {
+			$name = $img->name();
+			$ratio = naju_image::aspectRatioName($img);
+			$ratio_details .= "<li class=\"list-group-item list-group-item-warning\" style=\"color:white;\">$name: $ratio</li>";
+		}
+		$ratio_details .= '</ul>';
+
+		echo "
+			<p class=\"alert alert-warning\">
+				Die Bilder haben verschiedene Seitenverhältnisse. Die Karten werden damit unterschiedliche Größen
+				aufweisen. <strong>Es wird dringend empfohlen, die Bilder entsprechend anzupassen.</strong><br>
+			</p><p class=\"alert alert-warning\">Folgende Seitenverhältnisse wurden gefunden:</p>$ratio_details";
+	}
+
+}
+
 ?>
 
 <section id="home-cards" class="container-fluid mb-4">

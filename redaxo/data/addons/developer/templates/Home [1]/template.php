@@ -7,6 +7,9 @@
     <title><?= htmlspecialchars($this->getValue('name')); ?> | NAJU Sachsen</title>
     <link rel="icon" href="/assets/favicon.ico">
     <link rel="stylesheet" href="/css/kernel.css">
+
+    REX_TEMPLATE[key=template-head-meta]
+
 </head>
 <body class="container-fluid">
 <div id="complete-wrapper">
