@@ -81,7 +81,7 @@ typings/
 *.sass.map
 *.scss.map
 
-css/
+/css/
 
 # Development environment
 
