@@ -1,0 +1,18 @@
+[submodule "redaxo/src/addons/naju_rex_extensions"]
+	path = redaxo/src/addons/naju_rex_extensions
+	url = https://github.com/NAJU-Sachsen/rex-extensions
+[submodule "redaxo/src/addons/naju_group_accounts"]
+	path = redaxo/src/addons/naju_group_accounts
+	url = https://github.com/NAJU-Sachsen/rex-group-accounts
+[submodule "redaxo/src/addons/naju_newsmanager"]
+	path = redaxo/src/addons/naju_newsmanager
+	url = https://github.com/NAJU-Sachsen/rex-newsmanager
+[submodule "redaxo/src/addons/naju_stats"]
+	path = redaxo/src/addons/naju_stats
+	url = https://github.com/NAJU-Sachsen/rex-stats
+[submodule "redaxo/src/addons/naju_event_calendar"]
+	path = redaxo/src/addons/naju_event_calendar
+	url = https://github.com/NAJU-Sachsen/rex-event-calendar
+[submodule "redaxo/src/addons/naju_contact_info"]
+	path = redaxo/src/addons/naju_contact_info
+	url = https://github.com/NAJU-Sachsen/rex-contact-info
