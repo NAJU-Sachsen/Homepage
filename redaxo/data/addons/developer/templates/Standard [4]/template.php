@@ -60,9 +60,9 @@
 
   </div>
 
-  <?= 'REX_TEMPLATE[key=template-footer-copyright]' ?>
+  REX_TEMPLATE[key=template-footer-copyright]
 
-  <?= 'REX_TEMPLATE[key=template-footer-navigation]' ?>
+  REX_TEMPLATE[key=template-footer-navigation]
 
 </div>
 
