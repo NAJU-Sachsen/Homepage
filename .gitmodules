@@ -16,3 +16,6 @@
 [submodule "redaxo/src/addons/naju_contact_info"]
 	path = redaxo/src/addons/naju_contact_info
 	url = https://github.com/NAJU-Sachsen/rex-contact-info
+[submodule "redaxo/src/addons/naju_seo"]
+	path = redaxo/src/addons/naju_seo
+	url = https://github.com/NAJU-Sachsen/rex-seo
