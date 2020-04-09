@@ -37,10 +37,16 @@ $params = substr($params, 0, -1);
 
 $seo = new rex_yrewrite_seo();
 
-if ($seo->getDescription()) {
+$description = $seo->getDescription();
+
+if ($description) {
     echo $seo->getDescriptionTag();
+} else {
+    $description = naju_kvs::getOrInflate('naju.seo.description',
+        'select meta_value from naju_seo where meta_key = :key', ['key' => 'description']);
 }
 
+echo '<!-- General -->';
 echo $seo->getRobotsTag();
 echo $seo->getHreflangTags();
 echo $seo->getCanonicalUrlTag();
@@ -49,19 +55,22 @@ echo $seo->getCanonicalUrlTag();
 
 <!-- Open graph info (Facebook) -->
 <meta property="og:url" content="<?= rex_yrewrite::getFullUrlByArticleId($article->getId()) . $params; ?>">
-<meta property="og:type" content="article">
+<meta property="og:site_name" content="NAJU Sachsen">
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="website">
 <meta property="og:title" content="<?= $title; ?>">
-<?php if ($seo->getDescription()) : ?>
-<meta property="og:description" content="<?= htmlspecialchars($seo->getDescription()); ?>">
+<?php if ($description) : ?>
+<meta property="og:description" content="<?= htmlspecialchars($description); ?>">
 <?php endif; ?>
 <meta property="og:image" content="<?= $image->absoluteUrl(); ?>">
+<meta property="og:image:secure_url" content="<?= $image->absoluteUrl(); ?>">
 <meta property="og:image:width" content="<?= $image->width(); ?>">
 <meta property="og:image:height" content="<?= $image->height(); ?>">
 
 <!-- Twitter -->
 <meta name="twitter:title" content="<?= $title; ?>">
-<?php if ($seo->getDescription()) : ?>
-<meta name="twitter:description" content="">
+<?php if ($description) : ?>
+<meta name="twitter:description" content="<?= htmlspecialchars($description); ?>">
 <?php endif; ?>
 <?php if ($hasCustomImage) : ?>
 <meta name="twitter:image" content="<?= $image->absoluteUrl(); ?>">
