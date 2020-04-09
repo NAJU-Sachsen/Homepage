@@ -1,0 +1,27 @@
+package: yform
+version: '3.3.1'
+author: 'Jan Kristinus, Gregor Harlan'
+supportpage: 'https://github.com/yakamara/redaxo_yform/issues'
+
+page:
+    title: 'translate:yform'
+    pjax: false
+    icon: rex-icon rex-icon-module
+    subpages:
+        overview: { title: 'translate:overview', perm: admin }
+
+stylesheets:
+    - yform.css
+    - popup.css
+
+requires:
+    packages:
+        phpmailer: '^2.0.0'
+    redaxo: '^5.6.0'
+    php:
+        version: '^7.0'
+        
+system_plugins:
+    - docs
+    - manager
+    - email
