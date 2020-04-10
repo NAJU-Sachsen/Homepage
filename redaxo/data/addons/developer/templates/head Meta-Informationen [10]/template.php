@@ -44,6 +44,7 @@ if ($description) {
 } else {
     $description = naju_kvs::getOrInflate('naju.seo.description',
         'select meta_value from naju_seo where meta_key = :key', ['key' => 'description']);
+    echo '<meta name="description" content="' . htmlspecialchars($description) . '">';
 }
 
 echo '<!-- General -->';
