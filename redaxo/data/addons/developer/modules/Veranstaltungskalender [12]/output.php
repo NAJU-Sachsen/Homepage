@@ -52,7 +52,7 @@ if ($local_group == -1) {
         where
             event_start >= '$start_date' and
             event_end <= '$end_date'
-    EOSQL;
+EOSQL;
     $events = rex_sql::factory()->setQuery($event_query)->getArray();
 } else {
     $event_query = <<<EOSQL
@@ -76,7 +76,7 @@ if ($local_group == -1) {
             group_id = :group and
             event_start >= :start and
             event_end <= :end
-    EOSQL;
+EOSQL;
     $events = rex_sql::factory()->setQuery($event_query,
         ['group' => $local_group, 'start' => $start_date, 'end' => $end_date])->getArray();
 }

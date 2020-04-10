@@ -8,7 +8,7 @@ Die nächsten Kindercamps:
 define('DATE_FMT', 'd.m.');
 
 $limit = 3;
-$local_group = REX_VALUE[1];
+$local_group = 'REX_VALUE[1]';
 
 $today = date(naju_event_calendar::$DB_DATE_FMT);
 
@@ -28,7 +28,7 @@ if ($local_group == -1) {
         where
             event_end >= $today
         limit $limit
-    EOSQL;
+EOSQL;
     $events = rex_sql::factory()->setQuery($event_query)->getArray();
 } else {
     $event_query = <<<EOSQL
@@ -46,7 +46,7 @@ if ($local_group == -1) {
             group_id = :group and
             event_end >= :date
         limit $limit
-    EOSQL;
+EOSQL;
     $events = rex_sql::factory()->setQuery($event_query, ['group' => $local_group, 'date' => $today])->getArray();
 }
 ?>
