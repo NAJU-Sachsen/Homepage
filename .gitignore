@@ -106,6 +106,20 @@ typings/
 /redaxo/data/log/*
 *.log
 
+/README.de.md
+/assets/addons/
+/assets/core/
+index.php
+!/media/default-*
+/redaxo/bin/
+/redaxo/cache/
+/redaxo/data/.htaccess
+/redaxo/data/.redaxo
+/redaxo/src/addons/*
+!/redaxo/src/addons/naju_*
+/redaxo/src/core/
+
+
 # Project specific files and folders
 
 # all styles are based on SASS therefore CSS files are mere
