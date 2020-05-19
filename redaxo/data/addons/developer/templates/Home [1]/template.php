@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= htmlspecialchars($this->getValue('name')); ?> | NAJU Sachsen</title>
     <link rel="icon" href="/assets/favicon.ico">
-    <link rel="stylesheet" href="/css/kernel.css">
+    <link rel="stylesheet" href="/css/kernel.css" type="text/css">
 
     REX_TEMPLATE[key=template-head-meta]
 
