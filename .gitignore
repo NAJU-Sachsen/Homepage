@@ -106,6 +106,8 @@ typings/
 /redaxo/data/log/*
 *.log
 
+# redaxo specific files which should not be tracked
+# this is a bit ugly but works fine for now
 /README.de.md
 /assets/addons/
 /assets/core/
@@ -125,3 +127,8 @@ index.php
 # all styles are based on SASS therefore CSS files are mere
 # build artifacts
 /css/
+
+/redaxo/data/addons/developer/modules/modules.zip
+/redaxo/data/addons/developer/templates/templates.zip
+/redaxo/src/addons/naju_*.zip
+
