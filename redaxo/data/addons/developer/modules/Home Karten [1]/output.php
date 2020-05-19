@@ -55,7 +55,7 @@ if (rex::isBackend()) {
 	<div class="row card-grid">
 		<div class="card-grid-item col-lg-<?= $col_lg_width; ?> col-md-6 col-sm-12">
 			<article class="card intro-card">
-				<div class="card-body-wrapper" style="background-image: url('/media/REX_MEDIA[id=1 ifempty=p1030744.jpg]');">
+				<div class="card-body-wrapper" style="background-image: url('/media/REX_MEDIA[id=1 ifempty=default-card-image.jpg]');">
 					<?php $card1 = rex_var::toArray('REX_VALUE[1]'); ?>
 
 					<div class="card-body">
@@ -69,7 +69,7 @@ if (rex::isBackend()) {
 
 		<div class="card-grid-item col-lg-<?= $col_lg_width; ?> col-md-6 col-sm-12">
 			<article class="card intro-card">
-				<div class="card-body-wrapper" style="background-image: url('/media/REX_MEDIA[id=2 ifempty=p1030744.jpg]');">
+				<div class="card-body-wrapper" style="background-image: url('/media/REX_MEDIA[id=2 ifempty=default-card-image.jpg]');">
 					<?php $card2 = rex_var::toArray('REX_VALUE[2]'); ?>
 
 					<div class="card-body">
@@ -84,7 +84,7 @@ if (rex::isBackend()) {
 		<?php if($n_cards >= 3) : ?>
 		<div class="card-grid-item col-lg-<?= $col_lg_width; ?> col-md-6 col-sm-12">
 			<article class="card intro-card">
-				<div class="card-body-wrapper" style="background-image: url('/media/REX_MEDIA[id=3 ifempty=p1030744.jpg]');">
+				<div class="card-body-wrapper" style="background-image: url('/media/REX_MEDIA[id=3 ifempty=default-card-image.jpg]');">
 					<?php $card3 = rex_var::toArray('REX_VALUE[3]'); ?>
 
 					<div class="card-body">
@@ -100,7 +100,7 @@ if (rex::isBackend()) {
 		<?php if($n_cards >= 4) : ?>
 		<div class="card-grid-item col-lg-<?= $col_lg_width; ?> col-md-6 col-sm-12">
 			<article class="card intro-card">
-				<div class="card-body-wrapper" style="background-image: url('/media/REX_MEDIA[id=4 ifempty=p1030744.jpg]');">
+				<div class="card-body-wrapper" style="background-image: url('/media/REX_MEDIA[id=4 ifempty=default-card-image.jpg]');">
 					<?php $card4 = rex_var::toArray('REX_VALUE[4]'); ?>
 
 					<div class="card-body">
