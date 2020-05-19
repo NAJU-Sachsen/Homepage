@@ -1,7 +1,7 @@
 
 <?php
 $bs_cols = 12;	// the number of columns in a Bootstrap grid
-$n_cards = REX_VALUE[20];
+$n_cards = 'REX_VALUE[20]';
 $col_lg_width = $bs_cols / $n_cards;
 ?>
 
