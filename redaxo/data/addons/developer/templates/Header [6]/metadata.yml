@@ -1,4 +1,5 @@
 name: Header
+key: template-header
 active: false
 attributes:
     ctype: {  }

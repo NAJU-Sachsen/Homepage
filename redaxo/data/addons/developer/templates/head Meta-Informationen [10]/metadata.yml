@@ -1,4 +1,5 @@
 name: '<head> Meta-Informationen'
+key: template-head-meta
 active: false
 attributes:
     ctype: {  }

@@ -1,4 +1,5 @@
 name: Test
+key: template-test
 active: true
 attributes:
     ctype: {  }

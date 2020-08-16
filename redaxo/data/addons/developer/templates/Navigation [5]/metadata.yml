@@ -1,4 +1,5 @@
 name: Navigation
+key: template-nav
 active: false
 attributes:
     ctype: {  }

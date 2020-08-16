@@ -1,4 +1,5 @@
 name: 'Copyright Footer'
+key: template-footer-copyright
 active: false
 attributes:
     ctype: {  }

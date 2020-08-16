@@ -1,6 +1,6 @@
-name: 'Navigation Footer'
-key: template-footer-navigation
-active: false
+name: Startseite
+key: template-home
+active: true
 attributes:
     ctype: {  }
     modules:

@@ -1,11 +1,12 @@
 name: Standard
+key: template-default
 active: true
 attributes:
     ctype:
         1: Seiteninhalt
         2: Sidebar
     modules:
-        1: { 0: '9', 1: '11', 2: '6', 3: '7', 4: '4', 5: '5', 6: '10', 7: '8', 8: '12', all: 0 }
+        1: { 0: '11', 1: '6', 2: '7', 3: '4', 4: '5', 5: '9', 6: '10', 7: '8', 8: '12', all: 0 }
         2: { 0: '14', 1: '6', 2: '4', 3: '5', all: 0 }
         3: { all: '1' }
     categories:
