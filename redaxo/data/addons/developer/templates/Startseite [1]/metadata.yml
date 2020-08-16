@@ -2,8 +2,12 @@ name: Startseite
 key: template-home
 active: true
 attributes:
-    ctype: {  }
+    ctype:
+        1: Intro
+        2: Fließtext
     modules:
-        1: { all: '1' }
+        1: { 0: '11', 1: '1', 2: '5', 3: '9', 4: '8', all: 0 }
+        2: { 0: '2', 1: '11', 2: '7', 3: '5', 4: '9', 5: '8', 6: '15', 7: '12', all: 0 }
+        3: { all: '1' }
     categories:
         all: '1'
