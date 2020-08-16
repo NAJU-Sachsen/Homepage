@@ -3,10 +3,6 @@
 
 <?php
 
-function naju_encode_email($matches){
-    return '<a href="mailto:'. $matches[0] .'">' . $matches[0] . '</a>';
-}
-
 $local_group = rex_var::parse('REX_VALUE[id=3 ifempty=-1]');
 $local_group_filter = rex_var::parse('REX_VALUE[id=1 ifempty=false]') === 'true';
 $month_filter = rex_var::parse('REX_VALUE[id=2 ifempty=false]') === 'true';

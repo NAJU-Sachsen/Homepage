@@ -1,11 +1,11 @@
 
 <?php
-$event_query = <<<EOSQL
+$group_query = <<<EOSQL
     select group_id, group_name
     from naju_local_group
 EOSQL;
 
-$local_groups = rex_sql::factory()->setQuery($event_query)->getArray();
+$local_groups = rex_sql::factory()->setQuery($group_query)->getArray();
 ?>
 
 <div class="form-group">
