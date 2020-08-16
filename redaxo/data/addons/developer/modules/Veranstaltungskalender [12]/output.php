@@ -3,8 +3,9 @@
 
 <?php
 
-$local_group = rex_var::parse('REX_VALUE[id=3 ifempty=-1]');
+$local_group = rex_var::parse('REX_VALUE[id=4 ifempty=-1]');
 $local_group_filter = rex_var::parse('REX_VALUE[id=1 ifempty=false]') === 'true';
+$include_all_events = rex_var::parse('REX_VALUE[id=3 ifempty=false]') === 'true';
 $month_filter = rex_var::parse('REX_VALUE[id=2 ifempty=false]') === 'true';
 $any_filter = $local_group_filter || $month_filter;
 
@@ -25,6 +26,8 @@ if ('events' === rex_get('filter')) {
             $end_date = date('Y') . '-' . $req_month . '-31';
         }
     }
+} else if ($include_all_events) {
+    $end_date = '9999-12-31';
 }
 
 if ($local_group == -1) {
@@ -197,7 +200,7 @@ EOSQL;
                             }
 
                             if ($reduced_price) {
-                                echo htmlspecialchars($reduced_price);
+                                echo htmlspecialchars($reduced_price) . ' ermäßigt';
                             }
 
                           ?>
@@ -208,14 +211,7 @@ EOSQL;
                     <?php if ($event['event_registration']) : ?>
                     <tr class="row">
                         <th class="col-lg-2">Anmeldung?</th>
-                        <td class="col-lg-10">
-                            <?php
-                            $email_pattern = '/[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}/';
-                            $registration = htmlspecialchars($event['event_registration']);
-                            $registration = preg_replace($email_pattern, '<a href="mailto:$0">$0</a>', $registration);
-                            echo $registration;
-                            ?>
-                        </td>
+                        <td class="col-lg-10"><?= naju_article::make_emails_anchors(htmlspecialchars($event['event_registration'])); ?></td>
                     </tr>
                     <?php endif; ?>
 
