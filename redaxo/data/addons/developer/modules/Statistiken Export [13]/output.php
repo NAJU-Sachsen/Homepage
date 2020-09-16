@@ -25,17 +25,16 @@ if (!rex::isBackend()) {
         $stats_csv = "timestamp,page,referer\r\n";
         $from = rex_get('from', 'string', null);
         $to = rex_get('to', 'string', null);
-        
+
         $log_entries = naju_stats::fetchStats($from, $to);
-        
+
         foreach ($log_entries as $entry) {
             $stats_csv .= "{$entry['timestamp']},{$entry['page']},{$entry['referer']}\r\n";
         }
-        
+
         rex_response::setHeader('Content-Type', 'text/csv');
         rex_response::sendContent($stats_csv);
     }
 } else {
     echo 'Hier wird die Besucherstatistik angezeigt';
 }
-

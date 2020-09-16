@@ -1,4 +1,6 @@
 
+<!-- mod_home_cards -->
+
 <?php
 $bs_cols = 12;	// the number of columns in a Bootstrap grid
 $n_cards = 'REX_VALUE[20]';

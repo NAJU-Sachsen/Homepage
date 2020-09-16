@@ -1,3 +1,5 @@
+<!-- mod_in_page_nav -->
+
 <?php if (rex::isFrontend()) : ?>
 <h3 class="mt-4">Übersicht</h3>
 <nav id="page-nav-REX_SLICE_ID" class="page-nav">
