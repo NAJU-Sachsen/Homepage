@@ -51,6 +51,7 @@ if ($local_group == -1) {
         where
             event_start >= '$start_date' and
             event_end <= '$end_date'
+				order by event_start, event_end
 EOSQL;
     $events = rex_sql::factory()->setQuery($event_query)->getArray();
 } else {
@@ -75,6 +76,7 @@ EOSQL;
             group_id = :group and
             event_start >= :start and
             event_end <= :end
+				order by event_start, event_end
 EOSQL;
     $events = rex_sql::factory()->setQuery($event_query,
         ['group' => $local_group, 'start' => $start_date, 'end' => $end_date])->getArray();
@@ -113,7 +115,7 @@ EOSQL;
                 <option value="-1" <?= $req_month == -1 ? ' selected' : '' ?>>alle</option>
                 <?php
                 foreach ($months as $midx => $month) {
-                    echo '<option value="' . ($midx+1) . '"' . ($req_month == $midx ? ' selected' : '') . '>' . $month . '</option>';
+                    echo '<option value="' . ($midx+1) . '"' . ($req_month == $midx+1 ? ' selected' : '') . '>' . $month . '</option>';
                 }
                 ?>
             </select>
@@ -124,7 +126,7 @@ EOSQL;
         </form>
     </div>
     <?php endif; ?>
-    
+
     <!-- event list -->
     <div class="row">
         <div class="list-group list-group-flush event-calendar">
@@ -132,7 +134,7 @@ EOSQL;
             <article class="list-group-item event">
                 <header class="d-flex w-100 justify-content-between event-header">
                     <h3 class="mb-1">
-                        <?= htmlspecialchars($event['event_name']); ?> 
+                        <?= htmlspecialchars($event['event_name']); ?>
                         <small class="text-muted">
                             <?php
                             $start_date = $event['event_start'];
@@ -207,7 +209,7 @@ EOSQL;
                         </td>
                     </tr>
                     <?php endif; ?>
-                    
+
                     <?php if ($event['event_registration']) : ?>
                     <tr class="row">
                         <th class="col-lg-2">Anmeldung?</th>
@@ -224,7 +226,7 @@ EOSQL;
                 <?php endif; ?>
             </article>
             <?php endforeach; ?>
-        </div> 
+        </div>
     </div>
 
 </section>
