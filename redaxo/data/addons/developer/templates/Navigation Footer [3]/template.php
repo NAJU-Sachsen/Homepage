@@ -1,3 +1,5 @@
+<!-- temp_nav_footer -->
+
 <footer id="nav-footer">
   <nav>
     <ul>

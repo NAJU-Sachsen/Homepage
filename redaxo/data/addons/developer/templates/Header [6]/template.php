@@ -1,3 +1,5 @@
+<!-- temp_header -->
+
 <header id="top-bar">
     <a href="/">
         <?php $logo = htmlspecialchars(naju_article::getLogoForCurrentLocalGroup()); ?>

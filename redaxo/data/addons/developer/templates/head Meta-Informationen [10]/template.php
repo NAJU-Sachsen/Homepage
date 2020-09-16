@@ -1,3 +1,5 @@
+<!-- temp_head_meta -->
+
 <!-- SEO -->
 <?php
 
@@ -21,14 +23,14 @@ $params = '?'; // all GET parameters in one string
 // or the '?' in case there were no parameters at all
 
 foreach ($_GET as $param => $val) {
-    
+
     // if there are private parameters present, we do not save any of the parameters
     // instead reset the string to default to mimic a 'no parameters' case
     if ($param == 'private' && ($val == 'true' || $val == 1 )) {
         $params = '?';
         break;
     }
-    
+
     $params .= htmlspecialchars(urlencode($param)) . '=' . htmlspecialchars(urlencode($val)) . '&';
 }
 $params = substr($params, 0, -1);
