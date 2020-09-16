@@ -129,6 +129,7 @@ EOSQL;
 
     <!-- event list -->
     <div class="row">
+				<?php if ($events) : ?>
         <div class="list-group list-group-flush event-calendar">
             <?php foreach ($events as $event) : ?>
             <article class="list-group-item event">
@@ -227,6 +228,9 @@ EOSQL;
             </article>
             <?php endforeach; ?>
         </div>
-    </div>
+				<?php else : ?>
+					<div class="mx-auto"><p class="alert alert-secondary">Es wurden keine Veranstaltungen gefunden</p></div>
+				<?php endif; ?>
+		</div>
 
 </section>

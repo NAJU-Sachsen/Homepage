@@ -53,6 +53,7 @@ EOSQL;
 }
 ?>
 
+<?php if ($events) : ?>
 <dl class="events-list">
     <?php foreach ($events as $event) : ?>
     <dt>
@@ -78,3 +79,6 @@ EOSQL;
     </dd>
     <?php endforeach; ?>
 </dl>
+<?php else: ?>
+	<p class="ml-1 font-italic">Demnächst stehen keine Veranstaltungen an</p>
+<?php endif; ?>
