@@ -1,7 +1,7 @@
 
 <div class="form-group">
 	<label for="cards-count">Anzahl der aktiven Karten</label>
-	<input type="number" name="REX_INPUT_VALUE[20]" id="cards-count" min="2" max="4" value="3" class="form-control" />
+	<input type="number" name="REX_INPUT_VALUE[20]" id="cards-count" min="2" max="4" value="REX_VALUE[id=20 ifempty=3]" class="form-control" />
 </div>
 
 <div class="container-fluid">
