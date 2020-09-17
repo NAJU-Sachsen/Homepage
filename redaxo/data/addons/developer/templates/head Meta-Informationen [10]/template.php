@@ -31,7 +31,7 @@ foreach ($_GET as $param => $val) {
         break;
     }
 
-    $params .= htmlspecialchars(urlencode($param)) . '=' . htmlspecialchars(urlencode($val)) . '&';
+    $params .= rex_escape(rex_escape($param, 'url')) . '=' . rex_escape(rex_escape($val, 'url')) . '&';
 }
 $params = substr($params, 0, -1);
 
@@ -46,7 +46,7 @@ if ($description) {
 } else {
     $description = naju_kvs::getOrInflate('naju.seo.description',
         'select meta_value from naju_seo where meta_key = :key', ['key' => 'description']);
-    echo '<meta name="description" content="' . htmlspecialchars($description) . '">';
+    echo '<meta name="description" content="' . rex_escape($description) . '">';
 }
 
 echo '<!-- General -->';
@@ -63,7 +63,7 @@ echo $seo->getCanonicalUrlTag();
 <meta property="og:type" content="website">
 <meta property="og:title" content="<?= $title; ?>">
 <?php if ($description) : ?>
-<meta property="og:description" content="<?= htmlspecialchars($description); ?>">
+<meta property="og:description" content="<?= rex_escape($description); ?>">
 <?php endif; ?>
 <meta property="og:image" content="<?= $image->absoluteUrl(); ?>">
 <meta property="og:image:secure_url" content="<?= $image->absoluteUrl(); ?>">
@@ -73,7 +73,7 @@ echo $seo->getCanonicalUrlTag();
 <!-- Twitter -->
 <meta name="twitter:title" content="<?= $title; ?>">
 <?php if ($description) : ?>
-<meta name="twitter:description" content="<?= htmlspecialchars($description); ?>">
+<meta name="twitter:description" content="<?= rex_escape($description); ?>">
 <?php endif; ?>
 <?php if ($hasCustomImage) : ?>
 <meta name="twitter:image" content="<?= $image->absoluteUrl(); ?>">

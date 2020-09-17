@@ -10,7 +10,7 @@ $active_ids = naju_navigation::collect_active_category_ids();
 			<li class="nav-item">
 				<?php $is_active = in_array($cat->getId(), $active_ids) ? 'active' : ''; ?>
 				<a href="<?= $cat->getUrl(); ?>" class="nav-link <?= $is_active; ?>">
-					<?= htmlspecialchars($cat->getValue('catname')) ?>
+					<?= rex_escape($cat->getValue('catname')) ?>
 				</a>
 				<?= naju_navigation::inflate_subnav($cat, $active_ids); ?>
 			</li>

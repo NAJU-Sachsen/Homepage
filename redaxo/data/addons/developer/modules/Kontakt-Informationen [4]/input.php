@@ -9,11 +9,10 @@ $rex_var_heading = "REX_VALUE[id=2 ifempty='']";
     <label for="select-local-group">Ortsgruppe auswählen</label>
     <select class="form-control" name="REX_INPUT_VALUE[1]">
         <?php foreach ($local_groups as $group) : ?>
-        <option value="<?= htmlspecialchars($group['group_id']); ?>" <?= $rex_var_group == $group['group_id'] ? 'selected' : '' ?>>
-          <?= htmlspecialchars($group['group_name']); ?>
+        <option value="<?= rex_escape($group['group_id']); ?>" <?= $rex_var_group == $group['group_id'] ? 'selected' : '' ?>>
+          <?= rex_escape($group['group_name']); ?>
         </option>
         <?php endforeach; ?>
-
     </select>
 </div>
 <div class="form-group">

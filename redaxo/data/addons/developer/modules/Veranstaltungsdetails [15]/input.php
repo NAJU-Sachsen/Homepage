@@ -16,7 +16,7 @@ $current_event_year = null;
 	<label for="select-event">Veranstaltung auswählen</label>
 	<select class="form-control" name="REX_INPUT_VALUE[1]">
 			<?php foreach ($events as $event) :
-				$event_text = htmlspecialchars($event['event_name']) . ' (' . htmlspecialchars($event['group_name']) . ')';
+				$event_text = rex_escape($event['event_name']) . ' (' . rex_escape($event['group_name']) . ')';
 				$event_year = date_parse($event['event_start'])['year'];
 
 				if ($event_year > $current_event_year) {
@@ -27,12 +27,14 @@ $current_event_year = null;
 						echo '</optgroup>';
 					}
 
-					echo '<optgroup label="' . htmlspecialchars($event_year) . '">';
+					echo '<optgroup label="' . rex_escape($event_year) . '">';
 					$current_event_year = $event_year;
 				}
 				?>
 
-				<option value="<?= htmlspecialchars($event['event_id']); ?>" <?= "REX_VALUE[id=1 ifempty='']" == $event['event_id'] ? 'selected' : ''; ?>><?= $event_text; ?></option>
+				<option value="<?= rex_escape($event['event_id']); ?>" <?= "REX_VALUE[id=1 ifempty='']" == $event['event_id'] ? 'selected' : ''; ?>>
+					<?= $event_text; /* $event_text has already been escaped */ ?>
+				</option>
 			<?php endforeach; ?>
 			</optgroup>
 	</select>

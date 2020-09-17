@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title><?= htmlspecialchars($this->getValue('name')); ?> | NAJU Sachsen</title>
+  <title><?= rex_escape($this->getValue('name')); ?> | NAJU Sachsen</title>
   <link rel="icon" href="/assets/favicon.ico">
   <link rel="stylesheet" href="/css/kernel.css">
 
@@ -27,7 +27,7 @@
       <!-- Main content -->
       <main id="content">
         <header>
-          <h2 class="page-title"><?= htmlspecialchars($this->getValue('name')); ?></h2>
+          <h2 class="page-title"><?= rex_escape($this->getValue('name')); ?></h2>
         </header>
         REX_ARTICLE[ctype=1]
       </main>
@@ -48,7 +48,7 @@
           if ($slice->getCtype() != SIDEBAR_CTYPE) {
             continue;
           }
-          
+
           // wrap the slice in a section and print its contents
           echo '<section class="glance-section">';
           echo $slice->getSlice();
@@ -69,7 +69,7 @@
 <script src="/js/jquery-3.5.1.js"></script>
 <script src="/js/popper.js"></script>
 <script src="/js/bootstrap.js"></script>
-    
+
 </body>
 </html>
 

@@ -14,7 +14,7 @@ $local_groups = rex_sql::factory()->setQuery($group_query)->getArray();
         <option value="-1">alle</option>
 
         <?php foreach ($local_groups as $group) : ?>
-        <option value="<?= htmlspecialchars($group['group_id']); ?>" <?= "REX_VALUE[id=1 ifempty='']" == $group['group_id'] ? 'selected' : '' ?>><?= htmlspecialchars($group['group_name']); ?></option>
+        <option value="<?= rex_escape($group['group_id']); ?>" <?= "REX_VALUE[id=1 ifempty='']" == $group['group_id'] ? 'selected' : '' ?>><?= rex_escape($group['group_name']); ?></option>
         <?php endforeach; ?>
 
     </select>

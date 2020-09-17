@@ -24,7 +24,7 @@ EOSQL;
 			<?php if ($event['event_location']) : ?>
 			<tr class="row">
 				<th class="col-lg-2">Wo?</th>
-				<td class="col-lg-10"><?= htmlspecialchars($event['event_location']); ?></td>
+				<td class="col-lg-10"><?= rex_escape($event['event_location']); ?></td>
 			</tr>
 			<?php endif; ?>
 			<?php if ($event['event_group']) : ?>
@@ -32,14 +32,14 @@ EOSQL;
 				<th class="col-lg-2">Wer?</th>
 				<td class="col-lg-10">
 					<!-- TODO link to local group -->
-					<?= htmlspecialchars($event['group_name']); ?>
+					<?= rex_escape($event['group_name']); ?>
 				</td>
 			</tr>
 			<?php endif; ?>
 			<?php if ($event['event_target_group']) : ?>
 			<tr class="row">
 				<th class="col-lg-2">Für wen?</th>
-				<td class="col-lg-10"><?= htmlspecialchars($event['event_target_group']); ?></td>
+				<td class="col-lg-10"><?= rex_escape($event['event_target_group']); ?></td>
 			</tr>
 			<?php endif; ?>
 			<?php if ($event['event_price'] || $event['event_price_reduced']) : ?>
@@ -51,7 +51,7 @@ EOSQL;
 						$reduced_price = $event['event_price_reduced'];
 
 						if ($normal_price) {
-							echo htmlspecialchars($normal_price);
+							echo rex_escape($normal_price);
 						}
 
 						if ($normal_price && $reduced_price) {
@@ -59,7 +59,7 @@ EOSQL;
 						}
 
 						if ($reduced_price) {
-							echo htmlspecialchars($reduced_price) . ' ermäßigt';
+							echo rex_escape($reduced_price) . ' ermäßigt';
 						}
 					?>
 				</td>

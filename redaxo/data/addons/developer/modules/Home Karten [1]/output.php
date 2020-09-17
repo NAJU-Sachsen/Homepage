@@ -61,10 +61,10 @@ if (rex::isBackend()) {
 					<?php $card1 = rex_var::toArray('REX_VALUE[1]'); ?>
 
 					<div class="card-body">
-						<h2 class="display-8"><?= $card1['title']; ?></h2>
+						<h2 class="display-8"><?= rex_escape($card1['title']); ?></h2>
 						<hr class="my-4">
-						<p><?= $card1['content']; ?></p>
-						<a class="btn btn-primary btn-lg" href="REX_LINK[id=1 output=url]" role="button"><?= $card1['link-text'] ?? ''; ?></a>
+						<p><?= rex_escape($card1['content']); ?></p>
+						<a class="btn btn-primary btn-lg" href="REX_LINK[id=1 output=url]" role="button"><?= rex_escape($card1['link-text']) ?? ''; ?></a>
 					</div>
 			</article>
 		</div>
@@ -75,10 +75,10 @@ if (rex::isBackend()) {
 					<?php $card2 = rex_var::toArray('REX_VALUE[2]'); ?>
 
 					<div class="card-body">
-						<h2 class="display-8"><?= $card2['title']; ?></h2>
+						<h2 class="display-8"><?= rex_escape($card2['title']); ?></h2>
 						<hr class="my-4">
-						<p><?= $card2['content']; ?></p>
-						<a class="btn btn-primary btn-lg" href="REX_LINK[id=2 output=url]" role="button"><?= $card2['link-text'] ?? ''; ?></a>
+						<p><?= rex_escape($card2['content']); ?></p>
+						<a class="btn btn-primary btn-lg" href="REX_LINK[id=2 output=url]" role="button"><?= rex_escape($card2['link-text']) ?? ''; ?></a>
 					</div>
 			</article>
 		</div>
@@ -90,10 +90,10 @@ if (rex::isBackend()) {
 					<?php $card3 = rex_var::toArray('REX_VALUE[3]'); ?>
 
 					<div class="card-body">
-						<h2 class="display-8"><?= $card3['title']; ?></h2>
+						<h2 class="display-8"><?= rex_escape($card3['title']); ?></h2>
 						<hr class="my-4">
-						<p><?= $card3['content']; ?></p>
-						<a class="btn btn-primary btn-lg" href="REX_LINK[id=3 output=url]" role="button"><?= $card3['link-text'] ?? ''; ?></a>
+						<p><?= rex_escape($card3['content']); ?></p>
+						<a class="btn btn-primary btn-lg" href="REX_LINK[id=3 output=url]" role="button"><?= rex_escape($card3['link-text']) ?? ''; ?></a>
 					</div>
 			</article>
 		</div>
@@ -106,10 +106,10 @@ if (rex::isBackend()) {
 					<?php $card4 = rex_var::toArray('REX_VALUE[4]'); ?>
 
 					<div class="card-body">
-						<h2 class="display-8"><?= $card4['title']; ?></h2>
+						<h2 class="display-8"><?= rex_escape($card4['title']); ?></h2>
 						<hr class="my-4">
-						<p><?= $card4['content']; ?></p>
-						<a class="btn btn-primary btn-lg" href="REX_LINK[id=4 output=url]" role="button"><?= $card4['link-text'] ?? ''; ?></a>
+						<p><?= rex_escape($card4['content']); ?></p>
+						<a class="btn btn-primary btn-lg" href="REX_LINK[id=4 output=url]" role="button"><?= rex_escape($card4['link-text']) ?? ''; ?></a>
 					</div>
 			</article>
 		</div>

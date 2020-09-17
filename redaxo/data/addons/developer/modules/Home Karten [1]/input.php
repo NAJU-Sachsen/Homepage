@@ -20,11 +20,11 @@
 				<div class="panel-body">
 					<div class="form-group">
 						<label for="panel-1-title">Titel</label>
-						<input type="text" name="REX_INPUT_VALUE[1][title]" id="panel-1-title" class="form-control" value="<?= $card1['title'] ?? ''; ?>" />
+						<input type="text" name="REX_INPUT_VALUE[1][title]" id="panel-1-title" class="form-control" value="<?= rex_escape($card1['title']) ?? ''; ?>" />
 					</div>
 					<div class="form-group">
 						<label for="panel-1-content">Inhalt</label>
-						<textarea name="REX_INPUT_VALUE[1][content]" rows="3" id="panel-1-content" class="form-control"><?= $card1['content'] ?? ''; ?></textarea>
+						<textarea name="REX_INPUT_VALUE[1][content]" rows="3" id="panel-1-content" class="form-control"><?= rex_escape($card1['content']) ?? ''; ?></textarea>
 					</div>
 					<div class="form-group">
 						<label>Bild</label>
@@ -32,7 +32,7 @@
 					</div>
 					<div class="form-group">
 						<label for="panel-1-link-text">Link Text</label>
-						<input type="text" name="REX_INPUT_VALUE[1][link-text]" id="panel-1-link-text" class="form-control" value="<?= $card1['link-text'] ?? ''; ?>"/>
+						<input type="text" name="REX_INPUT_VALUE[1][link-text]" id="panel-1-link-text" class="form-control" value="<?= rex_escape($card1['link-text']) ?? ''; ?>"/>
 					</div>
 					<div class="form-group">
 						<label>Link Ziel</label>
@@ -52,11 +52,11 @@
 				<div class="panel-body">
 					<div class="form-group">
 						<label for="panel-2-title">Titel</label>
-						<input type="text" name="REX_INPUT_VALUE[2][title]" id="panel-2-title" class="form-control" value="<?= $card2['title'] ?? ''; ?>" />
+						<input type="text" name="REX_INPUT_VALUE[2][title]" id="panel-2-title" class="form-control" value="<?= rex_escape($card2['title']) ?? ''; ?>" />
 					</div>
 					<div class="form-group">
 						<label for="panel-2-content">Inhalt</label>
-						<textarea name="REX_INPUT_VALUE[2][content]" rows="3" id="panel-2-content" class="form-control"><?= $card2['content'] ?? ''; ?></textarea>
+						<textarea name="REX_INPUT_VALUE[2][content]" rows="3" id="panel-2-content" class="form-control"><?= rex_escape($card2['content']) ?? ''; ?></textarea>
 					</div>
 					<div class="form-group">
 						<label>Bild</label>
@@ -64,7 +64,7 @@
 					</div>
 					<div class="form-group">
 						<label for="panel-2-link-text">Link Text</label>
-						<input type="text" name="REX_INPUT_VALUE[2][link-text]" id="panel-2-link-text" class="form-control" value="<?= $card2['link-text'] ?? ''; ?>"/>
+						<input type="text" name="REX_INPUT_VALUE[2][link-text]" id="panel-2-link-text" class="form-control" value="<?= rex_escape($card2['link-text']) ?? ''; ?>"/>
 					</div>
 					<div class="form-group">
 						<label>Link Ziel</label>
@@ -87,11 +87,11 @@
 				<div class="panel-body">
 					<div class="form-group">
 						<label for="panel-3-title">Titel</label>
-						<input type="text" name="REX_INPUT_VALUE[3][title]" id="panel-3-title" class="form-control" value="<?= $card3['title'] ?? ''; ?>" />
+						<input type="text" name="REX_INPUT_VALUE[3][title]" id="panel-3-title" class="form-control" value="<?= rex_escape($card3['title']) ?? ''; ?>" />
 					</div>
 					<div class="form-group">
 						<label for="panel-3-content">Inhalt</label>
-						<textarea name="REX_INPUT_VALUE[3][content]" rows="3" id="panel-3-content" class="form-control"><?= $card3['content'] ?? ''; ?></textarea>
+						<textarea name="REX_INPUT_VALUE[3][content]" rows="3" id="panel-3-content" class="form-control"><?= rex_escape($card3['content']) ?? ''; ?></textarea>
 					</div>
 					<div class="form-group">
 						<label>Bild</label>
@@ -99,7 +99,7 @@
 					</div>
 					<div class="form-group">
 						<label for="panel-3-link-text">Link Text</label>
-						<input type="text" name="REX_INPUT_VALUE[3][link-text]" id="panel-3-link-text" class="form-control" value="<?= $card3['link-text'] ?? ''; ?>"/>
+						<input type="text" name="REX_INPUT_VALUE[3][link-text]" id="panel-3-link-text" class="form-control" value="<?= rex_escape($card3['link-text']) ?? ''; ?>"/>
 					</div>
 					<div class="form-group">
 						<label>Link Ziel</label>
@@ -119,11 +119,11 @@
 				<div class="panel-body">
 					<div class="form-group">
 						<label for="panel-4-title">Titel</label>
-						<input type="text" name="REX_INPUT_VALUE[4][title]" id="panel-4-title" class="form-control" value="<?= $card4['title'] ?? ''; ?>" />
+						<input type="text" name="REX_INPUT_VALUE[4][title]" id="panel-4-title" class="form-control" value="<?= rex_escape($card4['title']) ?? ''; ?>" />
 					</div>
 					<div class="form-group">
 						<label for="panel-4-content">Inhalt</label>
-						<textarea name="REX_INPUT_VALUE[4][content]" rows="3" id="panel-4-content" class="form-control"><?= $card4['content'] ?? ''; ?></textarea>
+						<textarea name="REX_INPUT_VALUE[4][content]" rows="3" id="panel-4-content" class="form-control"><?= rex_escape($card4['content']) ?? ''; ?></textarea>
 					</div>
 					<div class="form-group">
 						<label>Bild</label>
@@ -131,7 +131,7 @@
 					</div>
 					<div class="form-group">
 						<label for="panel-4-link-text">Link Text</label>
-						<input type="text" name="REX_INPUT_VALUE[4][link-text]" id="panel-4-link-text" class="form-control" value="<?= $card4['link-text'] ?? ''; ?>"/>
+						<input type="text" name="REX_INPUT_VALUE[4][link-text]" id="panel-4-link-text" class="form-control" value="<?= rex_escape($card4['link-text']) ?? ''; ?>"/>
 					</div>
 					<div class="form-group">
 						<label>Link Ziel</label>

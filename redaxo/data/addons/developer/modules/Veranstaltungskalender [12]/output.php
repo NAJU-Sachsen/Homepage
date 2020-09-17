@@ -49,11 +49,12 @@ if ($local_group == -1) {
             join naju_local_group
             on event_group = group_id
         where
-            event_start >= '$start_date' and
-            event_end <= '$end_date'
+            event_start >= :start and
+            event_end <= :end
 				order by event_start, event_end
 EOSQL;
-    $events = rex_sql::factory()->setQuery($event_query)->getArray();
+    $events = rex_sql::factory()->setQuery($event_query,
+				['start' => $start_date, 'end' => $end_date])->getArray();
 } else {
     $event_query = <<<EOSQL
         select
@@ -100,8 +101,8 @@ EOSQL;
                     $local_groups = rex_sql::factory()->setQuery('select group_id, group_name from naju_local_group')->getArray();
                     foreach ($local_groups as $group) {
                         $selected = $local_group == $group['group_id'] ? ' selected' : '';
-                        echo '<option value="' . htmlspecialchars(urlencode($group['group_id'])) . '"' . $selected . '>' .
-                                htmlspecialchars($group['group_name']) .
+                        echo '<option value="' . rex_escape(rex_escape($group['group_id'], 'url')) . '"' . $selected . '>' .
+                                rex_escape($group['group_name']) .
                             '</option>';
                     }
                 ?>
@@ -115,6 +116,7 @@ EOSQL;
                 <option value="-1" <?= $req_month == -1 ? ' selected' : '' ?>>alle</option>
                 <?php
                 foreach ($months as $midx => $month) {
+										/* $months is a static variable, no need to escape it */
                     echo '<option value="' . ($midx+1) . '"' . ($req_month == $midx+1 ? ' selected' : '') . '>' . $month . '</option>';
                 }
                 ?>
@@ -135,37 +137,38 @@ EOSQL;
             <article class="list-group-item event">
                 <header class="d-flex w-100 justify-content-between event-header">
                     <h3 class="mb-1">
-                        <?= htmlspecialchars($event['event_name']); ?>
+                        <?= rex_escape($event['event_name']); ?>
                         <small class="text-muted">
                             <?php
                             $start_date = $event['event_start'];
                             $end_date = $event['event_end'];
 
                             if (!$end_date) {
-                                echo DateTime::createFromFormat(naju_event_calendar::$DB_DATE_FMT, $start_date)->format('d.m');
+                                echo rex_escape(DateTime::createFromFormat(naju_event_calendar::$DB_DATE_FMT, $start_date)->format('d.m'));
                             } else {
                                 $start_date = DateTime::createFromFormat(naju_event_calendar::$DB_DATE_FMT, $start_date);
                                 $end_date = DateTime::createFromFormat(naju_event_calendar::$DB_DATE_FMT, $end_date);
 
                                 if ($start_date->format('Y') == $end_date->format('Y')) {
                                     if ($start_date->format('m') == $end_date->format('m')) {
-                                        echo $start_date->format('d.') . '&dash;' . $end_date->format('d.m.');
+                                        echo rex_escape($start_date->format('d.')) . '&dash;' . rex_escape($end_date->format('d.m.'));
                                     } else {
-                                        echo $start_date->format('d.m.') . '&dash;' . $end_date->format('d.m.');
+                                        echo rex_escape($start_date->format('d.m.')) . '&dash;' . rex_escape($end_date->format('d.m.'));
                                     }
                                 } else {
-                                    echo $start_date->format('d.m.y') . '&dash;' . $end_date->format('d.m.y');
+                                    echo rex_escape($start_date->format('d.m.y')) . '&dash;' . rex_escape($end_date->format('d.m.y'));
                                 }
 
                             }
                             ?>
                         </small>
                     </h3>
-                    <small class="text-muted"><?= htmlspecialchars($event['group_name']); ?></small>
+										<!-- TODO: insert group link -->
+                    <small class="text-muted"><?= rex_escape($event['group_name']); ?></small>
                 </header>
 
                 <p class="mb-1">
-                    <?= htmlspecialchars($event['event_description']); ?>
+                    <?= rex_escape($event['event_description']); ?>
                 </p>
 
                 <?php if (naju_event_calendar::hasExtraInfos($event)) : ?>
@@ -175,14 +178,14 @@ EOSQL;
                     <?php if ($event['event_location']) : ?>
                     <tr class="row">
                       <th class="col-lg-2">Wo?</th>
-                      <td class="col-lg-10"><?= htmlspecialchars($event['event_location']); ?></td>
+                      <td class="col-lg-10"><?= rex_escape($event['event_location']); ?></td>
                     </tr>
                     <?php endif; ?>
 
                     <?php if ($event['event_target_group']) : ?>
                     <tr class="row">
                       <th class="col-lg-2">Für wen?</th>
-                      <td class="col-lg-10"><?= htmlspecialchars($event['event_target_group']) ?></td>
+                      <td class="col-lg-10"><?= rex_escape($event['event_target_group']) ?></td>
                     </tr>
                     <?php endif; ?>
 
@@ -195,7 +198,7 @@ EOSQL;
                             $reduced_price = $event['event_price_reduced'];
 
                             if ($normal_price) {
-                                echo htmlspecialchars($normal_price);
+                                echo rex_escape($normal_price);
                             }
 
                             if ($normal_price && $reduced_price) {
@@ -203,7 +206,7 @@ EOSQL;
                             }
 
                             if ($reduced_price) {
-                                echo htmlspecialchars($reduced_price) . ' ermäßigt';
+                                echo rex_escape($reduced_price) . ' ermäßigt';
                             }
 
                           ?>

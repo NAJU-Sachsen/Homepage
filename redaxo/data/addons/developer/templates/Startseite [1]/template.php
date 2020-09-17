@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= htmlspecialchars($this->getValue('name')); ?> | NAJU Sachsen</title>
+    <title><?= rex_escape($this->getValue('name')); ?> | NAJU Sachsen</title>
     <link rel="icon" href="/assets/favicon.ico">
     <link rel="stylesheet" href="/css/kernel.css" type="text/css">
 
@@ -22,10 +22,10 @@
 
     <div id="content-wrapper" class="col-lg-12 col-md-12 col-sm-12">
       <!-- Main content -->
-      
+
       <main>
 
-        REX_ARTICLE[ctype=1]        
+        REX_ARTICLE[ctype=1]
 
         <div class="container-fluid">
           <div class="row">

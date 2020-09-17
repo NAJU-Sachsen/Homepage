@@ -61,19 +61,19 @@ EOSQL;
         $start_date = DateTime::createFromFormat(naju_event_calendar::$DB_DATE_FMT, $event['event_start']);
         $event_end = $event['event_end'];
 
-        echo htmlspecialchars($start_date->format(DATE_FMT));
+        echo rex_escape($start_date->format(DATE_FMT));
         if ($event_end) {
             $event_end = DateTime::createFromFormat(naju_event_calendar::$DB_DATE_FMT, $event_end);
-            echo ' &dash; ' . $event_end->format(DATE_FMT);
+            echo ' &dash; ' . rex_escape($event_end->format(DATE_FMT));
         }
         ?>
     </dt>
     <dd class="event-announcement">
         <?php
         if ($event['event_link']) {
-            echo '<a href="' . rex_getUrl($event['event_link']) . '" class="event-link">' . htmlspecialchars($event['event_name']) . '</a> (' . htmlspecialchars($event['group_name']) . ')';
+            echo '<a href="' . rex_getUrl($event['event_link']) . '" class="event-link">' . rex_escape($event['event_name']) . '</a> (' . rex_escape($event['group_name']) . ')';
         } else {
-            echo htmlspecialchars($event['event_name']) . ' (' . htmlspecialchars($event['group_name']) . ')';
+            echo rex_escape($event['event_name']) . ' (' . rex_escape($event['group_name']) . ')';
         }
         ?>
     </dd>
