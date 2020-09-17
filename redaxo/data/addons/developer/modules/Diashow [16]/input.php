@@ -5,7 +5,7 @@
 	<label>Maximale Höhe (px):</label>
 	<div class="input-group">
 		<input type="number" name="REX_INPUT_VALUE[2]" value="REX_VALUE[id=2 ifempty=0]" min="0" class="form-control">
-		<div class="input-group-append">
+		<div class="input-group-addon">
 			<span class="input-group-text">0 zum deaktivieren</span>
 		</div>
 	</div>
