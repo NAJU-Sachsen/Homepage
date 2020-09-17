@@ -29,7 +29,7 @@ $contact_info = rex_sql::factory()->setQuery(
     <?php
         if ($contact_info['phone']) {
             $phone = $contact_info['phone'];
-            echo '<a href="mailto:' . rex_escape(rex_escape($phone, 'url')) . '" class="contact-link">' . rex_escape($phone) . '</a><br>';
+            echo '<a href="tel:' . rex_escape(rex_escape($phone, 'url')) . '" class="contact-link">' . rex_escape($phone) . '</a><br>';
         }
     ?>
 </address>
