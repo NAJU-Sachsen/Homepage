@@ -38,9 +38,9 @@ $col_lg_width = $bs_cols / $n_cards;
 
 				<img src="/media/REX_MEDIA[3]" class="card-img-top">
 				<div class="card-body">
-					<h3 class="card-title"><?= rex_escape($card3['title']; ?></h3>
-					<p class="card-text"><?= rex_escape($card3['content']; ?></p>
-					<a class="btn btn-primary" href="REX_LINK[id=3 output=url]" role="button"><?= rex_escape($card3['link-text'] ?? ''; ?></a>
+					<h3 class="card-title"><?= rex_escape($card3['title']); ?></h3>
+					<p class="card-text"><?= rex_escape($card3['content']); ?></p>
+					<a class="btn btn-primary" href="REX_LINK[id=3 output=url]" role="button"><?= rex_escape($card3['link-text']) ?? ''; ?></a>
 				</div>
 			</article>
 			<?php endif; ?>
