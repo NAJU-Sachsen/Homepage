@@ -58,13 +58,13 @@ if (rex::isBackend()) {
 		<div class="card-grid-item col-lg-<?= $col_lg_width; ?> col-md-6 col-sm-12">
 			<article class="card intro-card">
 				<div class="card-body-wrapper" style="background-image: url('/media/REX_MEDIA[id=1 ifempty=default-card-image.jpg]');">
-					<?php $card1 = rex_var::toArray('REX_VALUE[1]'); ?>
+					<?php $card1 = naju_rex_var::toArray('REX_VALUE[1]'); ?>
 
 					<div class="card-body">
-						<h2 class="display-8"><?= $card1['title']; ?></h2>
+						<h2 class="display-8"><?= rex_escape($card1['title']); ?></h2>
 						<hr class="my-4">
-						<p><?= $card1['content']; ?></p>
-						<a class="btn btn-primary btn-lg" href="REX_LINK[id=1 output=url]" role="button"><?= $card1['link-text'] ?? ''; ?></a>
+						<p><?= rex_escape($card1['content']); ?></p>
+						<a class="btn btn-primary btn-lg" href="REX_LINK[id=1 output=url]" role="button"><?= rex_escape($card1['link-text']) ?? ''; ?></a>
 					</div>
 			</article>
 		</div>
@@ -72,13 +72,13 @@ if (rex::isBackend()) {
 		<div class="card-grid-item col-lg-<?= $col_lg_width; ?> col-md-6 col-sm-12">
 			<article class="card intro-card">
 				<div class="card-body-wrapper" style="background-image: url('/media/REX_MEDIA[id=2 ifempty=default-card-image.jpg]');">
-					<?php $card2 = rex_var::toArray('REX_VALUE[2]'); ?>
+					<?php $card2 = naju_rex_var::toArray('REX_VALUE[2]'); ?>
 
 					<div class="card-body">
-						<h2 class="display-8"><?= $card2['title']; ?></h2>
+						<h2 class="display-8"><?= rex_escape($card2['title']); ?></h2>
 						<hr class="my-4">
-						<p><?= $card2['content']; ?></p>
-						<a class="btn btn-primary btn-lg" href="REX_LINK[id=2 output=url]" role="button"><?= $card2['link-text'] ?? ''; ?></a>
+						<p><?= rex_escape($card2['content']); ?></p>
+						<a class="btn btn-primary btn-lg" href="REX_LINK[id=2 output=url]" role="button"><?= rex_escape($card2['link-text']) ?? ''; ?></a>
 					</div>
 			</article>
 		</div>
@@ -87,13 +87,13 @@ if (rex::isBackend()) {
 		<div class="card-grid-item col-lg-<?= $col_lg_width; ?> col-md-6 col-sm-12">
 			<article class="card intro-card">
 				<div class="card-body-wrapper" style="background-image: url('/media/REX_MEDIA[id=3 ifempty=default-card-image.jpg]');">
-					<?php $card3 = rex_var::toArray('REX_VALUE[3]'); ?>
+					<?php $card3 = naju_rex_var::toArray('REX_VALUE[3]'); ?>
 
 					<div class="card-body">
-						<h2 class="display-8"><?= $card3['title']; ?></h2>
+						<h2 class="display-8"><?= rex_escape($card3['title']); ?></h2>
 						<hr class="my-4">
-						<p><?= $card3['content']; ?></p>
-						<a class="btn btn-primary btn-lg" href="REX_LINK[id=3 output=url]" role="button"><?= $card3['link-text'] ?? ''; ?></a>
+						<p><?= rex_escape($card3['content']); ?></p>
+						<a class="btn btn-primary btn-lg" href="REX_LINK[id=3 output=url]" role="button"><?= rex_escape($card3['link-text']) ?? ''; ?></a>
 					</div>
 			</article>
 		</div>
@@ -103,13 +103,13 @@ if (rex::isBackend()) {
 		<div class="card-grid-item col-lg-<?= $col_lg_width; ?> col-md-6 col-sm-12">
 			<article class="card intro-card">
 				<div class="card-body-wrapper" style="background-image: url('/media/REX_MEDIA[id=4 ifempty=default-card-image.jpg]');">
-					<?php $card4 = rex_var::toArray('REX_VALUE[4]'); ?>
+					<?php $card4 = naju_rex_var::toArray('REX_VALUE[4]'); ?>
 
 					<div class="card-body">
-						<h2 class="display-8"><?= $card4['title']; ?></h2>
+						<h2 class="display-8"><?= rex_escape($card4['title']); ?></h2>
 						<hr class="my-4">
-						<p><?= $card4['content']; ?></p>
-						<a class="btn btn-primary btn-lg" href="REX_LINK[id=4 output=url]" role="button"><?= $card4['link-text'] ?? ''; ?></a>
+						<p><?= rex_escape($card4['content']); ?></p>
+						<a class="btn btn-primary btn-lg" href="REX_LINK[id=4 output=url]" role="button"><?= rex_escape($card4['link-text']) ?? ''; ?></a>
 					</div>
 			</article>
 		</div>
