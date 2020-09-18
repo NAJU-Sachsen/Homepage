@@ -101,7 +101,7 @@ EOSQL;
                     $local_groups = rex_sql::factory()->setQuery('select group_id, group_name from naju_local_group')->getArray();
                     foreach ($local_groups as $group) {
                         $selected = $local_group == $group['group_id'] ? ' selected' : '';
-                        echo '<option value="' . rex_escape(rex_escape($group['group_id'], 'url')) . '"' . $selected . '>' .
+                        echo '<option value="' . rex_escape($group['group_id']) . '"' . $selected . '>' .
                                 rex_escape($group['group_name']) .
                             '</option>';
                     }
@@ -217,7 +217,7 @@ EOSQL;
                     <?php if ($event['event_registration']) : ?>
                     <tr class="row">
                         <th class="col-lg-2">Anmeldung?</th>
-                        <td class="col-lg-10"><?= naju_article::make_emails_anchors(htmlspecialchars($event['event_registration'])); ?></td>
+                        <td class="col-lg-10"><?= naju_article::make_emails_anchors(rex_escape($event['event_registration'])); ?></td>
                     </tr>
                     <?php endif; ?>
 
