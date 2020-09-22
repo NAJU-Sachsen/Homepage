@@ -12,24 +12,26 @@ $contact_info = rex_sql::factory()->setQuery(
 
 ?>
 
-<?php if ($show_headline) : ?>
-<h3>Kontakt</h3>
-<?php endif; ?>
+<div class="mt-3">
+	<?php if ($show_headline) : ?>
+	<h3>Kontakt</h3>
+	<?php endif; ?>
 
-<address>
-    <?php if ($contact_info['office_name']) echo rex_escape($contact_info['office_name']) . ':<br>'; ?>
-    <?php if ($contact_info['street']) echo rex_escape($contact_info['street']) . '<br>'; ?>
-    <?php if ($contact_info['city']) echo rex_escape($contact_info['city']) . '<br>'; ?>
-    <?php
-        if ($contact_info['email']) {
-            $email = $contact_info['email'];
-            echo '<a href="mailto:' . rex_escape(rex_escape($email, 'url')) . '" class="contact-link">' . rex_escape($email) . '</a><br>';
-        }
-    ?>
-    <?php
-        if ($contact_info['phone']) {
-            $phone = $contact_info['phone'];
-            echo '<a href="tel:' . rex_escape(rex_escape($phone, 'url')) . '" class="contact-link">' . rex_escape($phone) . '</a><br>';
-        }
-    ?>
-</address>
+	<address>
+	    <?php if ($contact_info['office_name']) echo rex_escape($contact_info['office_name']) . ':<br>'; ?>
+	    <?php if ($contact_info['street']) echo rex_escape($contact_info['street']) . '<br>'; ?>
+	    <?php if ($contact_info['city']) echo rex_escape($contact_info['city']) . '<br>'; ?>
+	    <?php
+	        if ($contact_info['email']) {
+	            $email = $contact_info['email'];
+	            echo '<a href="mailto:' . rex_escape(rex_escape($email, 'url')) . '" class="contact-link">' . rex_escape($email) . '</a><br>';
+	        }
+	    ?>
+	    <?php
+	        if ($contact_info['phone']) {
+	            $phone = $contact_info['phone'];
+	            echo '<a href="tel:' . rex_escape(rex_escape($phone, 'url')) . '" class="contact-link">' . rex_escape($phone) . '</a><br>';
+	        }
+	    ?>
+	</address>
+</div>
