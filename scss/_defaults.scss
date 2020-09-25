@@ -88,6 +88,13 @@ a:hover:not(.btn) {
   border-bottom: 1px solid $extra-grey;
 }
 
+blockquote {
+  color: $quote-color;
+  margin-left: 1px;
+  padding-left: 0.75em;
+  border-left: 2px solid $dark-red;
+}
+
 //
 // Social media icons
 //
