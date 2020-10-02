@@ -5,9 +5,10 @@ attributes:
     ctype:
         1: Blickfänger
         2: Einführungstext
+        3: Seitentitle
     modules:
         1: { 0: '1', all: 0 }
         2: { 0: '16', 1: '11', 2: '9', 3: '10', 4: '8', 5: '12', all: 0 }
-        3: { all: '1' }
+        3: { 0: '18', all: 0 }
     categories:
         all: '1'
