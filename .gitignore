@@ -128,7 +128,7 @@ index.php
 # build artifacts
 /css/
 
-/redaxo/data/addons/developer/modules/modules.zip
-/redaxo/data/addons/developer/templates/templates.zip
+/redaxo/data/addons/developer/modules/*.zip
+/redaxo/data/addons/developer/templates/*.zip
 /redaxo/src/addons/naju_*.zip
 
