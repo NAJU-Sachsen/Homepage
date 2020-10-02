@@ -26,11 +26,11 @@ if ($local_group == -1) {
             join naju_local_group
             on event_group = group_id
         where
-            event_end >= $today
-				order by event_start, event_end
+            event_end >= :date
+		order by event_start, event_end
         limit $limit
 EOSQL;
-    $events = rex_sql::factory()->setQuery($event_query)->getArray();
+    $events = rex_sql::factory()->setQuery($event_query, ['date' => $today])->getArray();
 } else {
     $event_query = <<<EOSQL
         select
@@ -46,7 +46,7 @@ EOSQL;
         where
             group_id = :group and
             event_end >= :date
-				order by event_start, event_end
+		order by event_start, event_end
         limit $limit
 EOSQL;
     $events = rex_sql::factory()->setQuery($event_query, ['group' => $local_group, 'date' => $today])->getArray();
