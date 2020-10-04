@@ -23,7 +23,7 @@
     <div id="content-wrapper" class="col-lg-12 col-md-12 col-sm-12">
       <!-- Main content -->
 
-      <main>
+      <main class="clearfix">
 
         REX_ARTICLE[ctype=1]
 

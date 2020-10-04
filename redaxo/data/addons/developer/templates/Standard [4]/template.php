@@ -25,7 +25,7 @@
 
     <div id="content-wrapper" class="col-lg-8 offset-lg-2">
       <!-- Main content -->
-      <main id="content">
+      <main id="content" class="clearfix">
         <header>
           <h2 class="page-title"><?= rex_escape($this->getValue('name')); ?></h2>
         </header>
