@@ -10,7 +10,12 @@ $fancy_effects = 'REX_VALUE[id=4 ifempty="false"]' === 'true';
 $img_class = 'img-fluid mt-4 mb-4 ';
 
 if ($fancy_effects) {
-    $img_class .= ' img-fancy ';
+    $chosen_class = 'REX_VALUE[id=5 ifempty="random"]';
+    if ($chosen_class == 'random') {
+        $fancy_effect_classes = ['img-fancy-default', 'img-fancy-green', 'img-fancy-green-alternate'];
+        $chosen_class = $fancy_effect_classes[array_rand($fancy_effect_classes)];
+    }
+    $img_class .= ' img-fancy ' . $chosen_class . ' ';
 }
 
 switch($img_integrate) {

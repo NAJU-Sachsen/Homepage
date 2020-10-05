@@ -7,9 +7,25 @@
 // Image styling
 //
 
-.img-fancy {
+@mixin img-fancy-base($color) {
   transform: rotate(-1deg);
-  border: 5px solid $dark-red;
+  border: 5px solid $color;
+}
+
+.img-fancy {
+  @include img-fancy-base($dark-red);
+}
+
+.img-fancy.img-fancy-default {
+  @extend .img-fancy;
+}
+
+.img-fancy.img-fancy-green {
+  @include img-fancy-base($light-green);
+}
+
+.img-fancy.img-fancy-green-alternate {
+  @include img-fancy-base($dark-green);
 }
 
 //

@@ -1,5 +1,5 @@
 
-<div class="form-inline">
+<div class="form-inline" style="margin-bottom: 20px;">
     <div class="form-group">
         <label for="image-width">Breite</label>
         <div class="input-group">
@@ -35,5 +35,15 @@
         <option value="no-integrate" <?= $img_integrate == 'no-integrate' ? 'selected' : '' ?>>nicht integrieren</option>
         <option value="integrate-left" <?= $img_integrate == 'integrate-left' ? 'selected' : '' ?>>links abbilden</option>
         <option value="integrate-right" <?= $img_integrate == 'integrate-right' ? 'selected' : '' ?>>rechts abbilden</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="fancy-color">Effektfarbe für die tollen Bildeffekte</label>
+    <select name="REX_INPUT_VALUE[5]" class="form-control" id="fancy-color">
+        <option value="random">zufällig</option>
+        <option value="img-fancy-default">Standard (Dunkelrot)</option>
+        <option value="img-fancy-green">Maigrün (Hellgrün)</option>
+        <option value="img-fancy-green-alternate">Laubgrün (Dunkelgrün)</option>
     </select>
 </div>
