@@ -108,6 +108,8 @@ typings/
 
 # redaxo specific files which should not be tracked
 # this is a bit ugly but works fine for now
+.htaccess
+.redaxo
 /README.de.md
 /assets/addons/
 /assets/core/
