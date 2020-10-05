@@ -64,7 +64,7 @@ if (rex::isBackend()) {
 						<h2 class="display-8"><?= rex_escape($card1['title']); ?></h2>
 						<hr class="my-4">
 						<p><?= rex_escape($card1['content']); ?></p>
-						<a class="btn btn-primary btn-lg" href="REX_LINK[id=1 output=url]" role="button"><?= rex_escape($card1['link-text']) ?? ''; ?></a>
+						<a class="btn btn-primary btn-lg intro-card-btn" href="REX_LINK[id=1 output=url]" role="button"><?= rex_escape($card1['link-text']) ?? ''; ?></a>
 					</div>
 			</article>
 		</div>
@@ -78,7 +78,7 @@ if (rex::isBackend()) {
 						<h2 class="display-8"><?= rex_escape($card2['title']); ?></h2>
 						<hr class="my-4">
 						<p><?= rex_escape($card2['content']); ?></p>
-						<a class="btn btn-primary btn-lg" href="REX_LINK[id=2 output=url]" role="button"><?= rex_escape($card2['link-text']) ?? ''; ?></a>
+						<a class="btn btn-primary btn-lg intro-card-btn" href="REX_LINK[id=2 output=url]" role="button"><?= rex_escape($card2['link-text']) ?? ''; ?></a>
 					</div>
 			</article>
 		</div>
@@ -93,7 +93,7 @@ if (rex::isBackend()) {
 						<h2 class="display-8"><?= rex_escape($card3['title']); ?></h2>
 						<hr class="my-4">
 						<p><?= rex_escape($card3['content']); ?></p>
-						<a class="btn btn-primary btn-lg" href="REX_LINK[id=3 output=url]" role="button"><?= rex_escape($card3['link-text']) ?? ''; ?></a>
+						<a class="btn btn-primary btn-lg intro-card-btn" href="REX_LINK[id=3 output=url]" role="button"><?= rex_escape($card3['link-text']) ?? ''; ?></a>
 					</div>
 			</article>
 		</div>
@@ -109,7 +109,7 @@ if (rex::isBackend()) {
 						<h2 class="display-8"><?= rex_escape($card4['title']); ?></h2>
 						<hr class="my-4">
 						<p><?= rex_escape($card4['content']); ?></p>
-						<a class="btn btn-primary btn-lg" href="REX_LINK[id=4 output=url]" role="button"><?= rex_escape($card4['link-text']) ?? ''; ?></a>
+						<a class="btn btn-primary btn-lg intro-card-btn" href="REX_LINK[id=4 output=url]" role="button"><?= rex_escape($card4['link-text']) ?? ''; ?></a>
 					</div>
 			</article>
 		</div>

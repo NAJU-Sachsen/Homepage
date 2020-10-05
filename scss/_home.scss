@@ -5,10 +5,16 @@
 
 .card.intro-card {
 	margin-bottom: 10px;
+	transition: transform .2s;
+}
+
+.card.intro-card:hover {
+	transform: scale(1.05);
 }
 
 .card.intro-card .card-body-wrapper {
 	background-size: cover;
+	background-position: center;
 	display: flex;
 	align-items: flex-end;
 	box-shadow: none;
@@ -17,4 +23,18 @@
 .card.intro-card .card-body-wrapper .card-body {
 	background: linear-gradient(to bottom, rgba(255, 255, 255, 0.01), white);
 	padding-top: 6rem;
+}
+
+.intro-card-btn {
+	margin-left: 1rem;
+	margin-bottom: .5rem;
+}
+
+
+@media screen and (min-width: map-get($grid-breakpoints, 'lg')) {
+
+		.card.intro-card .card-body-wrapper {
+			min-height: 400px;
+		}
+
 }
