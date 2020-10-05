@@ -18,16 +18,16 @@
 }
 
 :root {
-  --naju-red: $naju-red;
-  --naju-dark-green: $dark-green;
-  --naju-light-green: $light-green;
-  --naju-dark-red: $dark-red;
-  --naju-extra-grey: $extra-grey;
-  --naju-light-grey: $light-grey;
-  --naju-default-beige: $default-beige;
-  --naju-second-beige: $second-beige;
-  --naju-text-color: $text-color;
-  --naju-quote-color: $quote-color;
+  --naju-red: #{$naju-red};
+  --naju-dark-green: #{$dark-green};
+  --naju-light-green: #{$light-green};
+  --naju-dark-red: #{$dark-red};
+  --naju-extra-grey: #{$extra-grey};
+  --naju-light-grey: #{$light-grey};
+  --naju-default-beige: #{$default-beige};
+  --naju-second-beige: #{$second-beige};
+  --naju-text-color: #{$text-color};
+  --naju-quote-color: #{$quote-color};
 }
 
 //
