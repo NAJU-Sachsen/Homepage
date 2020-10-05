@@ -2,6 +2,7 @@
 <!-- mod_img -->
 
 <?php
+$img = new naju_image('REX_MEDIA[id=1]');
 $img_width = 'REX_VALUE[id=1 ifempty=-1]';
 $img_height = 'REX_VALUE[id=2 ifempty=-1]';
 $img_integrate = 'REX_VALUE[id=3 ifempty=no-integrate]';
@@ -44,4 +45,4 @@ if ($img_height > 0) {
 ?>
 
 
-<img src="/media/REX_MEDIA[1]" class="<?= rex_escape($img_class); ?>" <?= $img_dimens; ?>>
+<img src="/media/<?= $img->name(); ?>" alt="<?= rex_escape($img->altText()); ?>" class="<?= rex_escape($img_class); ?>" <?= $img_dimens; ?>>
