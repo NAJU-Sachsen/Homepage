@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html>
+<html lang="de">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,14 +30,14 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-lg-8 offset-lg-2">
-              <section id="content">
+              <div id="content">
                 <article>
                   <header>
-                    <h1 class="page-title">NAJU Sachsen</h1>
+                    <h2 class="h1 page-title">REX_ARTICLE[ctype=3]</h2>
                   </header>
                   REX_ARTICLE[ctype=2]
                 </article>
-              </section>
+              </div>
             </div>
           </div>
         </div>
