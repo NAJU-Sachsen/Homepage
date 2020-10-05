@@ -4,6 +4,15 @@
 // Authors: Rico Bergmann <rico.bergmann@naju-sachsen.de>
 
 //
+// Image styling
+//
+
+.img-fancy {
+  transform: rotate(-1deg);
+  border: 5px solid $dark-red;
+}
+
+//
 // Event calendar
 //
 

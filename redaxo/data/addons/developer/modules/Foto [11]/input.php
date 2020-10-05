@@ -14,6 +14,13 @@
             <span class="input-group-addon">px</span>
         </div>
     </div>
+    <div class="form-group" style="margin-left: 20px;">
+        <label>
+            <input type="hidden" name="REX_INPUT_VALUE[4]" value="false">
+            <input type="checkbox" name="REX_INPUT_VALUE[4]" value="true" <?= "REX_VALUE[id=4 ifempty='']" == 'true' ? 'checked' : '' ?>>
+            tolle Bildeffekte aktivieren?
+        </label>
+    </div>
 </div>
 
 <div class="form-group">

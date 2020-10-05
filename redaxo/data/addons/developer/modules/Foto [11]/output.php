@@ -5,8 +5,13 @@
 $img_width = 'REX_VALUE[id=1 ifempty=-1]';
 $img_height = 'REX_VALUE[id=2 ifempty=-1]';
 $img_integrate = 'REX_VALUE[id=3 ifempty=no-integrate]';
+$fancy_effects = 'REX_VALUE[id=4 ifempty="false"]' === 'true';
 
-$img_class = 'img-fluid p-4 ';
+$img_class = 'img-fluid mt-4 mb-4 ';
+
+if ($fancy_effects) {
+    $img_class .= ' img-fancy ';
+}
 
 switch($img_integrate) {
     case 'integrate-left':
