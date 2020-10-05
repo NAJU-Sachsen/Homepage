@@ -12,6 +12,19 @@ $local_group = 'REX_VALUE[1]';
 
 $today = date(naju_event_calendar::$DB_DATE_FMT);
 
+$additional_filters = '';
+$filter_target_group = 'REX_VALUE[id=2]';
+if ($filter_target_group) {
+    $event_target_group = rex_sql::factory()->escape($filter_target_group);
+    $additional_filters .= " and find_in_set($event_target_group, event_target_group_type) ";
+}
+
+$filter_event_type = 'REX_VALUE[id=3]';
+if ($filter_event_type) {
+    $event_type = rex_sql::factory()->escape($filter_event_type);
+    $additional_filters .= " and event_type = $event_type ";
+}
+
 // local group == -1 means no group selected => show all instead
 if ($local_group == -1) {
     $event_query = <<<EOSQL
@@ -27,7 +40,8 @@ if ($local_group == -1) {
             on event_group = group_id
         where
             event_end >= :date
-		order by event_start, event_end
+            $additional_filters
+        order by event_start, event_end
         limit $limit
 EOSQL;
     $events = rex_sql::factory()->setQuery($event_query, ['date' => $today])->getArray();
@@ -46,7 +60,8 @@ EOSQL;
         where
             group_id = :group and
             event_end >= :date
-		order by event_start, event_end
+            $additional_filters
+        order by event_start, event_end
         limit $limit
 EOSQL;
     $events = rex_sql::factory()->setQuery($event_query, ['group' => $local_group, 'date' => $today])->getArray();
