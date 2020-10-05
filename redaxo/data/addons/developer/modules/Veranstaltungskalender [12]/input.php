@@ -52,19 +52,19 @@ $local_groups = rex_sql::factory()->setQuery($group_query)->getArray();
 <div class="form-group">
     <label for="select-event-target-group">Nur Veranstaltungen mit folgender Zielgruppe anzeigen:</label>
     <select class="form-control" name="REX_INPUT_VALUE[5]" id="select-event-target-group">
-        <option value="">deaktiviert</option>
-        <option value="children">Kinder</option>
-        <option value="teens">Jugendliche</option>
-        <option value="families">Familien</option>
-        <option value="young_adults">junge Erwachsene</option>
+        <option value="" <?= 'REX_VALUE[5]' == '' ? 'selected' : ''; ?>>deaktiviert</option>
+        <option value="children" <?= 'REX_VALUE[5]' == 'children' ? 'selected' : ''; ?>>Kinder</option>
+        <option value="teens" <?= 'REX_VALUE[5]' == 'teens' ? 'selected' : ''; ?>>Jugendliche</option>
+        <option value="families" <?= 'REX_VALUE[5]' == 'families' ? 'selected' : ''; ?>>Familien</option>
+        <option value="young_adults" <?= 'REX_VALUE[5]' == 'young_adults' ? 'selected' : ''; ?>>junge Erwachsene</option>
     </select>
 </div>
 <div class="form-group">
     <label for="select-event-type">Nur folgende Veranstaltungsarten einbinden:</label>
     <select class="form-control" name="REX_INPUT_VALUE[6]" id="select-event-type">
-        <option value="">deaktiviert</option>
-        <option value="camp">Camp</option>
-        <option value="workshop">Workshop</option>
-        <option value="work_assignment">Arbeitseinsatz</option>
+        <option value="" <?= 'REX_VALUE[6]' == '' ? 'selected' : ''; ?>>deaktiviert</option>
+        <option value="camp" <?= 'REX_VALUE[6]' == 'camp' ? 'selected' : ''; ?>>Camp</option>
+        <option value="workshop" <?= 'REX_VALUE[6]' == 'workshop' ? 'selected' : ''; ?>>Workshop</option>
+        <option value="work_assignment" <?= 'REX_VALUE[6]' == 'work_assignment' ? 'selected' : ''; ?>>Arbeitseinsatz</option>
     </select>
 </div>
