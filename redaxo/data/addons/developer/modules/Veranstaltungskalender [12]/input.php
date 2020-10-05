@@ -38,7 +38,7 @@ $local_groups = rex_sql::factory()->setQuery($group_query)->getArray();
 </div>
 <div class="form-group">
     <label for="select-local-group">Ortsgruppe auswählen</label>
-    <select class="form-control" name="REX_INPUT_VALUE[4]">
+    <select class="form-control" name="REX_INPUT_VALUE[4]" id="select-local-group">
         <option value="-1">alle</option>
 
         <?php foreach ($local_groups as $group) : ?>
@@ -47,5 +47,24 @@ $local_groups = rex_sql::factory()->setQuery($group_query)->getArray();
 				</option>
         <?php endforeach; ?>
 
+    </select>
+</div>
+<div class="form-group">
+    <label for="select-event-target-group">Nur Veranstaltungen mit folgender Zielgruppe anzeigen:</label>
+    <select class="form-control" name="REX_INPUT_VALUE[5]" id="select-event-target-group">
+        <option value="">deaktiviert</option>
+        <option value="children">Kinder</option>
+        <option value="teens">Jugendliche</option>
+        <option value="families">Familien</option>
+        <option value="young_adults">junge Erwachsene</option>
+    </select>
+</div>
+<div class="form-group">
+    <label for="select-event-type">Nur folgende Veranstaltungsarten einbinden:</label>
+    <select class="form-control" name="REX_INPUT_VALUE[6]" id="select-event-type">
+        <option value="">deaktiviert</option>
+        <option value="camp">Camp</option>
+        <option value="workshop">Workshop</option>
+        <option value="work_assignment">Arbeitseinsatz</option>
     </select>
 </div>

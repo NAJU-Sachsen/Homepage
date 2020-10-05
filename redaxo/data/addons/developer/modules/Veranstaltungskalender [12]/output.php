@@ -3,11 +3,11 @@
 
 <?php
 
-$local_group = rex_var::parse('REX_VALUE[id=4 ifempty=-1]');
-$local_group_filter = rex_var::parse('REX_VALUE[id=1 ifempty=false]') === 'true';
-$include_all_events = rex_var::parse('REX_VALUE[id=3 ifempty=false]') === 'true';
-$month_filter = rex_var::parse('REX_VALUE[id=2 ifempty=false]') === 'true';
-$any_filter = $local_group_filter || $month_filter;
+$local_group = 'REX_VALUE[id=4 ifempty=-1]';
+$local_group_filter = 'REX_VALUE[id=1 ifempty="false"]' === 'true';
+$include_all_events = 'REX_VALUE[id=3 ifempty="false"]' === 'true';
+$month_filter = 'REX_VALUE[id=2 ifempty="false"]' === 'true';
+$any_user_filter = $local_group_filter || $month_filter;
 
 $start_date = date('Y') . '-01-01';
 $end_date = date('Y') . '-12-31';
@@ -28,6 +28,27 @@ if ('events' === rex_get('filter')) {
     }
 } else if ($include_all_events) {
     $end_date = '9999-12-31';
+}
+
+$additional_filters = '';
+$filter_target_group = rex_get('target_group');
+if (!$filter_target_group) {
+    $filter_target_group = 'REX_VALUE[id=5]';
+}
+
+if ($filter_target_group) {
+    $event_target_group = rex_sql::factory()->escape($filter_target_group);
+    $additional_filters .= " and find_in_set($event_target_group, event_target_group_type) ";
+}
+
+$filter_event_type = rex_get('event_type');
+if (!$filter_event_type) {
+    $filter_event_type = 'REX_VALUE[id=6]';
+}
+
+if ($filter_event_type) {
+    $event_type = rex_sql::factory()->escape($filter_event_type);
+    $additional_filters .= " and event_type = $event_type ";
 }
 
 if ($local_group == -1) {
@@ -51,7 +72,8 @@ if ($local_group == -1) {
         where
             event_start >= :start and
             event_end <= :end
-				order by event_start, event_end
+            $additional_filters
+		order by event_start, event_end
 EOSQL;
     $events = rex_sql::factory()->setQuery($event_query,
 				['start' => $start_date, 'end' => $end_date])->getArray();
@@ -77,7 +99,8 @@ EOSQL;
             group_id = :group and
             event_start >= :start and
             event_end <= :end
-				order by event_start, event_end
+            $additional_filters
+		order by event_start, event_end
 EOSQL;
     $events = rex_sql::factory()->setQuery($event_query,
         ['group' => $local_group, 'start' => $start_date, 'end' => $end_date])->getArray();
@@ -87,7 +110,7 @@ EOSQL;
 
 <section class="container-fluid">
 
-    <?php if ($any_filter) : ?>
+    <?php if ($any_user_filter) : ?>
     <div class="row justify-content-center">
         <form action="<?= rex_getUrl(); ?>" method="get" class="form-inline p-3 mb-5 bg-light rounded">
             <input type="hidden" name="filter" value="events">
