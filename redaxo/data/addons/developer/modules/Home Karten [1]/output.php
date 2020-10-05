@@ -53,13 +53,15 @@ if (rex::isBackend()) {
 
 ?>
 
-<section id="home-cards" class="container-fluid mb-4">
+<div id="home-cards" class="container-fluid mb-4">
 	<div class="row card-grid">
 		<div class="card-grid-item col-lg-<?= $col_lg_width; ?> col-md-6 col-sm-12">
 			<article class="card intro-card">
-				<div class="card-body-wrapper" style="background-image: url('/media/REX_MEDIA[id=1 ifempty=default-card-image.jpg]');">
-					<?php $card1 = naju_rex_var::toArray('REX_VALUE[1]'); ?>
-
+				<?php
+				$card1 = naju_rex_var::toArray('REX_VALUE[1]');
+				$img1 = new naju_image('REX_MEDIA[id=1 ifempty=default-card-image.jpg]');
+				?>
+				<div class="card-body-wrapper" style="background-image: url('/media/<?= $img1->name(); ?>');" aria-label="<?= rex_escape($img1->altText()); ?>">
 					<div class="card-body">
 						<h2 class="display-8"><?= rex_escape($card1['title']); ?></h2>
 						<hr class="my-4">
@@ -71,9 +73,11 @@ if (rex::isBackend()) {
 
 		<div class="card-grid-item col-lg-<?= $col_lg_width; ?> col-md-6 col-sm-12">
 			<article class="card intro-card">
-				<div class="card-body-wrapper" style="background-image: url('/media/REX_MEDIA[id=2 ifempty=default-card-image.jpg]');">
-					<?php $card2 = naju_rex_var::toArray('REX_VALUE[2]'); ?>
-
+				<?php
+				$card2 = naju_rex_var::toArray('REX_VALUE[2]');
+				$img2 = new naju_image('REX_MEDIA[id=2 ifempty=default-card-image.jpg]');
+				?>
+				<div class="card-body-wrapper" style="background-image: url('/media/<?= $img2->name(); ?>');" aria-label="<?= rex_escape($img2->altText()); ?>">
 					<div class="card-body">
 						<h2 class="display-8"><?= rex_escape($card2['title']); ?></h2>
 						<hr class="my-4">
@@ -86,9 +90,11 @@ if (rex::isBackend()) {
 		<?php if($n_cards >= 3) : ?>
 		<div class="card-grid-item col-lg-<?= $col_lg_width; ?> col-md-6 col-sm-12">
 			<article class="card intro-card">
-				<div class="card-body-wrapper" style="background-image: url('/media/REX_MEDIA[id=3 ifempty=default-card-image.jpg]');">
-					<?php $card3 = naju_rex_var::toArray('REX_VALUE[3]'); ?>
-
+				<?php
+				$card3 = naju_rex_var::toArray('REX_VALUE[3]');
+				$img3 = new naju_image('REX_MEDIA[id=3 ifempty=default-card-image.jpg]');
+				?>
+				<div class="card-body-wrapper" style="background-image: url('/media/<?= $img3->name(); ?>');" aria-label="<?= rex_escape($img3->altText()); ?>">
 					<div class="card-body">
 						<h2 class="display-8"><?= rex_escape($card3['title']); ?></h2>
 						<hr class="my-4">
@@ -102,9 +108,11 @@ if (rex::isBackend()) {
 		<?php if($n_cards >= 4) : ?>
 		<div class="card-grid-item col-lg-<?= $col_lg_width; ?> col-md-6 col-sm-12">
 			<article class="card intro-card">
-				<div class="card-body-wrapper" style="background-image: url('/media/REX_MEDIA[id=4 ifempty=default-card-image.jpg]');">
-					<?php $card4 = naju_rex_var::toArray('REX_VALUE[4]'); ?>
-
+				<?php
+				$card4 = naju_rex_var::toArray('REX_VALUE[4]');
+				$img4 = new naju_image('REX_MEDIA[id=4 ifempty=default-card-image.jpg]');
+				?>
+				<div class="card-body-wrapper" style="background-image: url('/media/<?= $img4->name(); ?>');" aria-label="<?= rex_escape($img4->altText()); ?>">
 					<div class="card-body">
 						<h2 class="display-8"><?= rex_escape($card4['title']); ?></h2>
 						<hr class="my-4">
@@ -115,4 +123,4 @@ if (rex::isBackend()) {
 		</div>
 		<?php endif; ?>
 	</div>
-</section>
+</div>
