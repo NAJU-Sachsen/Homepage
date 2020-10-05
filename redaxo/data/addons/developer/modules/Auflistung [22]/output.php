@@ -36,7 +36,7 @@ $list_link_template = "<a href='$link_url_token'>$link_label_token</a>";
 
 $card_container = '<div class="container-fluid"><div class="row">%s</div></div>';
 $card_template = <<<EOHTML
-    <div class="col-lg-4 col-md-12">
+    <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
         <div class="card">
             $img_token
             <div class="card-body">
@@ -97,8 +97,10 @@ foreach ($items as $item) {
     // if the current item contains a 'further reading' link, generate the correspoding anchor
     // otherwise just drop the link from the rendered item
     if ($link) {
+        $link_text = rex_escape($item['link_text']);
+        $link_text = $link_text ? $link_text : 'Weiterlesen';
         $formatted_link = str_replace($link_url_token, rex_getUrl($link), $link_template);
-        $formatted_link = str_replace($link_label_token, rex_escape($item['link_text']), $formatted_link);
+        $formatted_link = str_replace($link_label_token, $link_text , $formatted_link);
 
         $formatted_item = str_replace($link_token, $formatted_link, $formatted_item);
     } else {
