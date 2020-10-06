@@ -8,7 +8,7 @@ $img_height = 'REX_VALUE[id=2 ifempty=-1]';
 $img_integrate = 'REX_VALUE[id=3 ifempty=no-integrate]';
 $fancy_effects = 'REX_VALUE[id=4 ifempty="false"]' === 'true';
 
-$img_class = 'img-fluid mt-4 mb-4 ';
+$img_class = 'mt-4 mb-4 ';
 
 if ($fancy_effects) {
     $chosen_class = 'REX_VALUE[id=5 ifempty="random"]';
@@ -35,11 +35,12 @@ switch($img_integrate) {
 
 $img_dimens = '';
 if ($img_width > 0) {
+    $img_class .= 'img-fluid ';
     $img_dimens .= ' width="' . rex_escape($img_width) . '" ';
 }
 
 if ($img_height > 0) {
-    $img_dimens .= ' height="' . rex_escape($img_heigth) . '" ';
+    $img_dimens .= ' height="' . rex_escape($img_height) . '" ';
 }
 
 ?>
