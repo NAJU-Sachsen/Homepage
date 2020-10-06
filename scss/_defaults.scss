@@ -94,11 +94,20 @@ a:hover:not(.btn) {
 //
 
 .page-title {
-  margin-right: 2rem;
+  text-align: left;
   margin-bottom: 1rem;
-  margin-left: 1rem;
   padding: 0.5rem;
   border-bottom: 1px solid $extra-grey;
+}
+
+
+@media screen and (min-width: map-get($grid-breakpoints, 'md')) {
+
+    .page-title {
+      margin-right: 2rem;
+      margin-left: 1rem;
+    }
+
 }
 
 blockquote {
