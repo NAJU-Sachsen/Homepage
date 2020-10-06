@@ -14,54 +14,58 @@
 </nav>
 
 <script>
-	const headerNodes = document.querySelectorAll('#content hREX_VALUE[1]');
-	if (!headerNodes) {
-		exit;
-	}
 
-	const headers = [];
+	document.addEventListener('DOMContentLoaded', () => {
+		const headerNodes = document.querySelectorAll('#content hREX_VALUE[1]:not(.page-title)');
+		if (!headerNodes) {
+			exit;
+		}
 
-	// for all headers which do not have an ID we need to create one manually
-	for (let header of headerNodes) {
-		if (!header.id) {
+		const headers = [];
 
-			// the ID will be based on the header's content
-			let generatedId = header.innerText;
+		// for all headers which do not have an ID we need to create one manually
+		for (let header of headerNodes) {
+			if (!header.id) {
 
-			// but in a simplified version with all lower case
-			generatedId = generatedId.toLowerCase();
+				// the ID will be based on the header's content
+				let generatedId = header.innerText;
 
-			// without whitespace
-			generatedId = generatedId.replace(/ /g, '-');
+				// but in a simplified version with all lower case
+				generatedId = generatedId.toLowerCase();
 
-			// and only basic characters
-			generatedId = generatedId.replace(/[^a-z0-9_-]/g, '');
+				// without whitespace
+				generatedId = generatedId.replace(/ /g, '-');
 
-			// we also need to make sure we did not create an ID that is already used by accident
-			while (document.getElementById(generatedId)) {
-				generatedId += '1';
+				// and only basic characters
+				generatedId = generatedId.replace(/[^a-z0-9_-]/g, '');
+
+				// we also need to make sure we did not create an ID that is already used by accident
+				while (document.getElementById(generatedId)) {
+					generatedId += '1';
+				}
+
+				header.id = generatedId;
 			}
-
-			header.id = generatedId;
+			headers.push(header);
 		}
-		headers.push(header);
-	}
 
-	// We will try to generate the heading based on the templating mechanism.
-	// If that fails we will use old-school string interpolation instead
+		// We will try to generate the heading based on the templating mechanism.
+		// If that fails we will use old-school string interpolation instead
 
-	if ('content' in document.createElement('template')) {
-		const template = document.getElementById('page-nav-template-REX_SLICE_ID');
-		const nav = document.querySelector('#page-nav-REX_SLICE_ID ul');
+		if ('content' in document.createElement('template')) {
+			const template = document.getElementById('page-nav-template-REX_SLICE_ID');
+			const nav = document.querySelector('#page-nav-REX_SLICE_ID ul');
 
-		for (let heading of headers) {
-			const menuEntry = template.content.cloneNode(true);
-			const anchor = menuEntry.querySelector('a');
-			anchor.href = '#' + heading.id;
-			anchor.innerText = heading.innerText;
-			nav.appendChild(menuEntry);
+			for (let heading of headers) {
+				const menuEntry = template.content.cloneNode(true);
+				const anchor = menuEntry.querySelector('a');
+				anchor.href = '#' + heading.id;
+				anchor.innerText = heading.innerText;
+				nav.appendChild(menuEntry);
+			}
 		}
-	}
+
+	});
 
 </script>
 <?php else: ?>
