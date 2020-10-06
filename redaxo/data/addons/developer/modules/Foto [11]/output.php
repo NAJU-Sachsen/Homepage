@@ -21,10 +21,10 @@ if ($fancy_effects) {
 
 switch($img_integrate) {
     case 'integrate-left':
-        $img_class .= ' float-left mr-2 col-md-12 col-sm-12 ';
+        $img_class .= ' float-left mr-2 ';
         break;
     case 'integrate-right':
-        $img_class .= ' float-right ml-2 col-md-12 col-sm-12 ';
+        $img_class .= ' float-right ml-2 ';
         break;
     case 'no-integrate':
         // fall through
@@ -35,12 +35,13 @@ switch($img_integrate) {
 
 $img_dimens = '';
 if ($img_width > 0) {
-    $img_class .= 'img-fluid ';
     $img_dimens .= ' width="' . rex_escape($img_width) . '" ';
 }
 
 if ($img_height > 0) {
     $img_dimens .= ' height="' . rex_escape($img_height) . '" ';
+} else {
+    $img_class .= 'img-fluid ';
 }
 
 ?>
