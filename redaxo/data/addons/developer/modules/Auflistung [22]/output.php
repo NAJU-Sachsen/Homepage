@@ -3,14 +3,30 @@
 
 <?php
 
+$fancy_effect_classes = ['img-fancy-default', 'img-fancy-green', 'img-fancy-green-alternate'];
+
 $full_width = 'col-lg-12';
-$reduced_width = 'col-lg-8';
+$wide_list_img_cols = 'REX_VALUE[id=4 ifempty=false]' == 'true';
+$reduced_width = $wide_list_img_cols ? 'col-lg-8' : 'col-lg-9';
+$list_img_col_width = $wide_list_img_cols ? 'col-lg-4' : 'col-lg-3';
+
+$display_style = 'REX_VALUE[id=1 ifempty=grid]';
+$img_params = naju_rex_var::toArray('REX_VALUE[id=3]');
+$img_width = $img_params['width'];
+$img_height = $img_params['height'];
+
+// check whether some value was set in the image effects checkbox and if so, use the fancy class
+$img_effects = $img_params['enable_effects'] ?? '';
+$img_effects = $img_effects ? ' img-fancy ' : '';
+$img_effect_style = $img_params['effect'] ?? 'random';
 
 // the tokens will contain a random prefix to minimize the chance of replacing actual
 // content that just happens to look like a token
 $img_token = '%%IMG%%' . rand() . '%%';
 $img_src_token = '%%IMG_SRC%%' . rand() . '%%';
 $img_alt_token = '%%IMG_ALT%%' . rand() . '%%';
+$img_style_token = '%%IMG_STYLE%%' . rand() . '%%';
+$img_class_token = '%%IMG_CLASS%%' . rand() . '%%';
 $title_token = '%%TITLE%%' . rand() . '%%';
 $content_token = '%%CONTENT%%' . rand() . '%%';
 $content_width_token = '%%CONTENT_WIDTH%%' . rand() . '%%';
@@ -23,7 +39,7 @@ $list_template = <<<EOHTML
     <div class="container-fluid">
         <li class="media mb-3 row">
             $img_token
-            <div class="media-body $content_width_token col-md-12 col-sm-12">
+            <div class="media-body $content_width_token col-md-12 col-sm-12 mt-2">
                 <h4 class="media-heading">$title_token</h4>
                 $content_token
                 $link_token
@@ -31,7 +47,9 @@ $list_template = <<<EOHTML
         </li>
     </div>
 EOHTML;
-$list_image_template = "<img src='/media/$img_src_token' alt='$img_alt_token' class='col-lg-4 col-md-12 col-sm-12 mb-2'>";
+$list_image_template = "<div class='$list_img_col_width col-md-12 col-sm-12'>
+                            <img src='/media/$img_src_token' alt='$img_alt_token' class='d-block mx-auto $img_class_token' style='$img_style_token'>
+                        </div>";
 $list_link_template = "<a href='$link_url_token'>$link_label_token</a>";
 
 $card_container = '<div class="container-fluid"><div class="row">%s</div></div>';
@@ -47,14 +65,21 @@ $card_template = <<<EOHTML
         </div>
     </div>
 EOHTML;
-$card_image_template = "<img src='/media/$img_src_token' alt='$img_alt_token' class='card-img-top'>";
+$card_image_template = "<img src='/media/$img_src_token' alt='$img_alt_token' class='card-img-top mx-auto $img_class_token' style='$img_style_token'>";
 $card_link_template = "<a href='$link_url_token' class='btn btn-primary'>$link_label_token</a>";
 
 $container = '';
 $item_template = '';
 $image_template = '';
 $link_template = '';
-$display_style = 'REX_VALUE[id=1 ifempty=grid]';
+
+$img_styles = '';
+if ($img_width) {
+    $img_styles .= ' width: ' . rex_escape($img_width) . 'px; ';
+}
+if ($img_height) {
+    $img_styles .= ' height: ' . rex_escape($img_height) . 'px; ';
+}
 
 if ($display_style === 'media-list') {
     $container = $list_container;
@@ -86,6 +111,18 @@ foreach ($items as $item) {
         $img = new naju_image($img_path);
         $formatted_image = str_replace($img_src_token, $img->name(), $image_template);
         $formatted_image = str_replace($img_alt_token, rex_escape($img->altText()), $formatted_image);
+
+        $item_img_effects = '';
+        if ($img_effects) {
+            $item_img_effects = $img_effects;
+            if ($img_effect_style == 'random') {
+                $item_img_effects .= ' ' . rex_escape($fancy_effect_classes[array_rand($fancy_effect_classes)]) . ' ';
+            } else {
+                $item_img_effects .= ' ' . rex_escape($img_effect_style) . ' ';
+            }
+        }
+        $formatted_image = str_replace($img_class_token, $item_img_effects, $formatted_image);
+        $formatted_image = str_replace($img_style_token, $img_styles, $formatted_image);
 
         $formatted_item = str_replace($img_token, $formatted_image, $formatted_item);
         $formatted_item = str_replace($content_width_token, $reduced_width, $formatted_item);
