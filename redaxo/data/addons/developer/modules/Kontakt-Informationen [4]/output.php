@@ -5,9 +5,10 @@
 
 $local_group = 'REX_VALUE[1]';
 $show_headline = 'REX_VALUE[2]' == 'true';
+$show_business_headline = 'REX_VALUE[3]' == 'true';
 
 $contact_info = rex_sql::factory()->setQuery(
-        'select office_name, street, city, email, phone from naju_contact_info where group_id = :id', ['id' => $local_group]
+        'select office_name, business_hours, street, city, email, phone from naju_contact_info where group_id = :id', ['id' => $local_group]
 				)->getArray()[0];
 
 ?>
@@ -18,7 +19,11 @@ $contact_info = rex_sql::factory()->setQuery(
 	<?php endif; ?>
 
 	<address>
-	    <?php if ($contact_info['office_name']) echo rex_escape($contact_info['office_name']) . ':<br>'; ?>
+		<?php if ($contact_info['office_name']) echo rex_escape($contact_info['office_name']) . ':<br>'; ?>
+		<?php if ($show_business_headline)
+			echo '<span class="font-italic">Öffnungszeiten</span>
+				  <p class="address business-hours">' . rex_escape($contact_info['business_hours']) . '</p>'
+		?>
 	    <?php if ($contact_info['street']) echo rex_escape($contact_info['street']) . '<br>'; ?>
 	    <?php if ($contact_info['city']) echo rex_escape($contact_info['city']) . '<br>'; ?>
 	    <?php
