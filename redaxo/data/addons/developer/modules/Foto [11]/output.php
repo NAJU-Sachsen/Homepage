@@ -21,10 +21,10 @@ if ($fancy_effects) {
 
 switch($img_integrate) {
     case 'integrate-left':
-        $img_class .= ' float-left mr-2 ';
+        $img_class .= ' float-left mr-4 ';
         break;
     case 'integrate-right':
-        $img_class .= ' float-right ml-2 ';
+        $img_class .= ' float-right ml-4 ';
         break;
     case 'no-integrate':
         // fall through
