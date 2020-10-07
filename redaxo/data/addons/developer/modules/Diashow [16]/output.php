@@ -16,7 +16,8 @@ $show_id = 'diashow-' . $slice_id;
 		<?php foreach ($images as $idx => $img) : ?>
 			<div class="carousel-item <?= $idx == 0 ? 'active' : ''; ?>">
 				<?php if ($max_height) : ?>
-					<div style="height: 500px; background-image: url('/media/<?= $img; ?>'); background-size: contain; background-repeat: no-repeat; background-position: center;"></div>
+					<div style="height: 500px; background-image: url('/media/<?= $img; ?>'); background-size: contain; background-repeat: no-repeat; background-position: center;"
+              aria-label="<?= rex_escape((new naju_image($img))->altText()); ?>"></div>
 				<?php else: ?>
 					<img src="/media/<?= $img; ?>" class="d-block w-100">
 				<?php endif;?>
