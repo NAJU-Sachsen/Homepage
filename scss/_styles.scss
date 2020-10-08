@@ -99,3 +99,14 @@
   border-radius: .7rem;
   background-color: hsl(0, 0%, 90%);
 }
+
+//
+// Listings
+//
+
+.listing .listing-end {
+  padding-bottom: 10px;
+  margin-left: 30px;
+  margin-right: 30px;
+  border-bottom: 1px solid $extra-grey;
+}

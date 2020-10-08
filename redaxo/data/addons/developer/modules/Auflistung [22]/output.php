@@ -36,16 +36,19 @@ $link_label_token = '%%LINK_LABEL%%' . rand() . '%%';
 
 $list_container = '<ul class="list-unstyled">%s</ul>';
 $list_template = <<<EOHTML
-    <div class="container-fluid">
-        <li class="media mb-3 row">
-            $img_token
-            <div class="media-body $content_width_token col-md-12 col-sm-12 mt-2">
-                <h4 class="media-heading">$title_token</h4>
-                $content_token
-                $link_token
+    <li class="media mb-3 row listing">
+        <div class="container-fluid">
+            <div class="row">
+                $img_token
+                <div class="media-body $content_width_token col-md-12 col-sm-12 mt-2 listing-content">
+                    <h4 class="media-heading">$title_token</h4>
+                    $content_token
+                    $link_token
+                    <div class="listing listing-end"></div>
+                </div>
             </div>
-        </li>
-    </div>
+        </div>
+    </li>
 EOHTML;
 $list_image_template = "<div class='$list_img_col_width col-md-12 col-sm-12'>
                             <img src='/media/$img_src_token' alt='$img_alt_token' class='d-block mx-auto $img_class_token' style='$img_style_token'>
