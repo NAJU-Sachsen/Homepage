@@ -22,7 +22,7 @@ $contact_info = rex_sql::factory()->setQuery(
 		<?php if ($contact_info['office_name']) echo rex_escape($contact_info['office_name']) . ':<br>'; ?>
 		<?php if ($show_business_headline)
 			echo '<span class="font-italic">Öffnungszeiten</span>
-				  <p class="address business-hours">' . rex_escape($contact_info['business_hours']) . '</p>'
+				  <p class="address business-hours">' . nl2br(rex_escape($contact_info['business_hours'])) . '</p>'
 		?>
 	    <?php if ($contact_info['street']) echo rex_escape($contact_info['street']) . '<br>'; ?>
 	    <?php if ($contact_info['city']) echo rex_escape($contact_info['city']) . '<br>'; ?>
