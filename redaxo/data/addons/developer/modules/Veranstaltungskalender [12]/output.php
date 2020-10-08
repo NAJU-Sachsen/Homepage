@@ -106,9 +106,12 @@ EOSQL;
         ['group' => $local_group, 'start' => $start_date, 'end' => $end_date])->getArray();
 }
 
+$slice_id = 'REX_SLICE_ID';
+$event_counter = 0;
+
 ?>
 
-<section class="container-fluid">
+<div class="container-fluid">
 
     <?php if ($any_user_filter) : ?>
     <div class="row justify-content-center">
@@ -154,12 +157,15 @@ EOSQL;
 
     <!-- event list -->
     <div class="row">
-				<?php if ($events) : ?>
+		<?php if ($events) : ?>
         <div class="list-group list-group-flush event-calendar">
-            <?php foreach ($events as $event) : ?>
+            <?php
+            foreach ($events as $event) :
+                $event_counter++;
+            ?>
             <article class="list-group-item event">
                 <header class="d-flex w-100 justify-content-between event-header">
-                    <h3 class="mb-1">
+                    <h3 class="mb-1 text-left">
                         <?= rex_escape($event['event_name']); ?>
                         <small class="text-muted">
                             <?php
@@ -189,10 +195,20 @@ EOSQL;
 										<!-- TODO: insert group link -->
                     <small class="text-muted"><?= rex_escape($event['group_name']); ?></small>
                 </header>
-
-                <p class="mb-1">
-                    <?= rex_escape($event['event_description']); ?>
-                </p>
+                
+                <?php if ($event['event_description']) : ?>
+                <?php $event_description_id = 'event-description-' . $slice_id . '-' . $event_counter; ?>
+                <div class="event-description-wrapper">
+                    <p class="event-description collapse mb-1" id="<?= $event_description_id ?>" aria-expanded="false">
+                        <?= rex_escape($event['event_description']); ?>
+                    </p>
+                    <img>
+                    <a href="#<?= $event_description_id; ?>" class="float-right further-reading mr-3 mb-3"
+                        data-toggle="collapse" role="button" aria-expanded="false" aria-controls="<?= $event_description_id; ?>">
+                        Weiterlesen
+                    </a>
+                </div>
+                <?php endif; ?>
 
                 <?php if (naju_event_calendar::hasExtraInfos($event)) : ?>
                 <div class="container mt-3">
@@ -254,9 +270,9 @@ EOSQL;
             </article>
             <?php endforeach; ?>
         </div>
-				<?php else : ?>
-					<div class="mx-auto"><p class="alert alert-secondary">Es wurden keine Veranstaltungen gefunden</p></div>
-				<?php endif; ?>
-		</div>
+        <?php else : ?>
+            <div class="mx-auto"><p class="alert alert-secondary">Es wurden keine Veranstaltungen gefunden</p></div>
+        <?php endif; ?>
+    </div>
 
-</section>
+</div>

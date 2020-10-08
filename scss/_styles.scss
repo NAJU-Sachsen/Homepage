@@ -54,6 +54,11 @@
   flex-wrap: wrap;
 }
 
+.event-calendar .event:hover {
+  border-top: 1px solid $dark-red;
+  border-bottom: 1px solid $dark-red;
+}
+
 .event-calendar .event {
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -61,15 +66,43 @@
   border-bottom: $list-group-border-width solid $list-group-border-color;
 }
 
-.event-calendar .event:hover {
-  border-top: 1px solid $dark-red;
-  border-bottom: 1px solid $dark-red;
-}
-
 .event-calendar .event .event-header {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 1rem;
+}
+
+.event-calendar .event .event-description.collapse:not(.show) {
+  display: block;
+}
+
+@media screen and (max-width: map-get($grid-breakpoints, 'md') - 1) {
+
+  $n-lines: 2;
+  $event-description-collapsed-height: $default-line-height-factor * $font-size-base * $n-lines - 0.4 * $default-line-height-factor;
+  .event-calendar .event .event-description {
+    position: relative;
+    top: 0;
+  }
+
+  .event-calendar .event .event-description.collapse:not(.show) {
+    height: $event-description-collapsed-height !important;
+    overflow: hidden;
+    background-image: linear-gradient(180deg, white 50%, $light-grey);
+  }
+
+  .event-calendar .event .event-description.collapsing {
+    height: $event-description-collapsed-height !important;
+  }
+
+}
+
+@media screen and (min-width: map-get($grid-breakpoints, 'md')) {
+
+  .event-calendar .event .event-description-wrapper .further-reading {
+    display: none;
+  }
+
 }
 
 .list-group.list-group-flush.event-calendar .list-group-item.event {
