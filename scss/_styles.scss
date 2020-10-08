@@ -28,6 +28,22 @@
   @include img-fancy-base($dark-green);
 }
 
+.diashow {
+  padding: 10px;
+  border-radius: 10px;
+  transition: all .4s ease; 
+}
+
+.diashow:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel a.carousel-control-prev,
+.carousel a.carousel-control-next {
+  border: none !important;
+  transition: none !important;
+}
+
 //
 // Event calendar
 //

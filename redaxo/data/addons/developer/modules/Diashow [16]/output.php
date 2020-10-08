@@ -6,7 +6,7 @@ $max_height = 'REX_VALUE[2]';
 $show_id = 'diashow-' . $slice_id;
 ?>
 
-<div id="<?= $show_id; ?>" class="carousel slide" data-ride="carousel">
+<div id="<?= $show_id; ?>" class="diashow carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <?php foreach ($images as $idx => $img) : ?>
 			<li data-target="#<?= $show_id; ?>" data-slide-to="<?= $idx; ?>" class="<?= $idx == 0 ? 'active' : ''; ?>"></li>
