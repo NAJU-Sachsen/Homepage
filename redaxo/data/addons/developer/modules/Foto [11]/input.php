@@ -47,3 +47,8 @@
         <option value="img-fancy-green-alternate">Laubgrün (Dunkelgrün)</option>
     </select>
 </div>
+
+<div class="form-group">
+        <label>Eine Verlinkung einfügen?</label>
+        REX_LINK[id=1 widget=1]
+</div>

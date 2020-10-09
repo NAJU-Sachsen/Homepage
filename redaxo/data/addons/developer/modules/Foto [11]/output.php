@@ -44,7 +44,14 @@ if ($img_height > 0) {
     $img_class .= 'img-fluid ';
 }
 
+$img_link = 'REX_LINK[id=1]';
+
+if ($img_link) {
+    echo '<a href="' . rex_getUrl($img_link) . '">';
+}
+
 ?>
 
-
 <img src="/media/<?= $img->name(); ?>" alt="<?= rex_escape($img->altText()); ?>" class="<?= rex_escape($img_class); ?>" <?= $img_dimens; ?>>
+
+<?php if ($img_link) echo '</a>'; ?>
