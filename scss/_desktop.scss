@@ -37,7 +37,8 @@ header#top-bar .naju-logo {
 
 nav#main-nav {
   position: fixed;
-  max-height: fit-content;
+  max-height: calc(100% - #{$header-height} - #{$footer-height} - #{$layout-padding});
+  overflow: auto;
   margin-top: $sidebars-offset;
   margin-bottom: 100px;
   padding-bottom: 30px;
@@ -83,7 +84,8 @@ nav#main-nav:hover {
 
 aside#at-a-glance {
   position: fixed;
-  max-height: fit-content;
+  max-height: calc(100% - #{$header-height} - #{$footer-height} - #{$layout-padding});
+  overflow: auto;
   margin-top: $sidebars-offset;
   margin-bottom: 100px;
   padding: 1rem;
