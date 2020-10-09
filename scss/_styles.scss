@@ -153,6 +153,12 @@
 // Listings
 //
 
+@mixin card-link-align() {
+  margin-bottom: .5rem;
+  border-top: none;
+  background-color: unset;
+}
+
 .listing .listing-end {
   padding-bottom: 10px;
   margin-left: 30px;
@@ -160,12 +166,14 @@
   border-bottom: 1px solid $extra-grey;
 }
 
+.listing-card .card-footer {
+  @include card-link-align();
+}
+
 //
 // Overview cards
 //
 
 .overview-cards .card-footer {
-  margin-bottom: .5rem;
-  border-top: none;
-  background-color: unset;
+  @include card-link-align();
 }

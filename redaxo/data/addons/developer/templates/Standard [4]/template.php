@@ -69,6 +69,7 @@
 <script src="/js/jquery-3.5.1.js"></script>
 <script src="/js/popper.js"></script>
 <script src="/js/bootstrap.js"></script>
+<script src="/js/site.js"></script>
 
 </body>
 </html>
