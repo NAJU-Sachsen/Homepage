@@ -75,8 +75,6 @@ header#top-bar .logo-local-group-name {
 //
 
 nav#main-nav {
-  max-height: calc(100% - #{$header-height} - #{$footer-height} - #{$layout-padding});
-  overflow: auto;
   border: 1px solid $border-color;
   border-left: 0;
   border-top-right-radius: 0.25rem;
