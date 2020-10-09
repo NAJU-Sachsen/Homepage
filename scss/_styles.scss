@@ -159,3 +159,13 @@
   margin-right: 30px;
   border-bottom: 1px solid $extra-grey;
 }
+
+//
+// Overview cards
+//
+
+.overview-cards .card-footer {
+  margin-bottom: .5rem;
+  border-top: none;
+  background-color: unset;
+}
