@@ -4,6 +4,7 @@
 <?php
 
 $fancy_effect_classes = ['img-fancy-default', 'img-fancy-green', 'img-fancy-green-alternate'];
+$slice_id = 'REX_SLICE_ID';
 
 $full_width = 'col-lg-12';
 $wide_list_img_cols = 'REX_VALUE[id=4 ifempty=false]' == 'true';
@@ -22,6 +23,7 @@ $img_effect_style = $img_params['effect'] ?? 'random';
 
 // the tokens will contain a random prefix to minimize the chance of replacing actual
 // content that just happens to look like a token
+$card_id_token = '%%CARD_ID%%' . rand() . '%%';
 $img_token = '%%IMG%%' . rand() . '%%';
 $img_src_token = '%%IMG_SRC%%' . rand() . '%%';
 $img_alt_token = '%%IMG_ALT%%' . rand() . '%%';
@@ -34,11 +36,13 @@ $link_token = '%%LINK%%' . rand() . '%%';
 $link_url_token = '%%LINK_URL%%' . rand() . '%%';
 $link_label_token = '%%LINK_LABEL%%' . rand() . '%%';
 
+$card_id_template = 'card-%s-%s';
+
 $list_container = '<ul class="list-unstyled">%s</ul>';
 $list_template = <<<EOHTML
     <li class="media mb-3 row listing">
         <div class="container-fluid">
-            <div class="row">
+            <div class="row" id="$card_id_token">
                 $img_token
                 <div class="media-body $content_width_token col-md-12 col-sm-12 mt-2 listing-content">
                     <h4 class="media-heading">$title_token</h4>
@@ -55,21 +59,21 @@ $list_image_template = "<div class='$list_img_col_width col-md-12 col-sm-12'>
                         </div>";
 $list_link_template = "<a href='$link_url_token'>$link_label_token</a>";
 
-$card_container = '<div class="container-fluid"><div class="row">%s</div></div>';
+$card_container = '<div class="container-fluid"><div class="row listing-cards-container">%s</div></div>';
 $card_template = <<<EOHTML
     <div class="col-lg-4 col-md-12 col-sm-12 mb-2">
-        <div class="card">
+        <div class="card listing-card d-block" id="$card_id_token">
             $img_token
             <div class="card-body">
                 <h4 class="card-title">$title_token</h4>
                 <p class="card-text">$content_token</p>
-                $link_token
             </div>
+            $link_token
         </div>
     </div>
 EOHTML;
 $card_image_template = "<img src='/media/$img_src_token' alt='$img_alt_token' class='card-img-top mx-auto $img_class_token' style='$img_style_token'>";
-$card_link_template = "<a href='$link_url_token' class='btn btn-primary'>$link_label_token</a>";
+$card_link_template = "<div class='card-footer'><a href='$link_url_token' class='btn btn-primary'>$link_label_token</a></div>";
 
 $container = '';
 $item_template = '';
@@ -96,16 +100,20 @@ if ($display_style === 'media-list') {
     $link_template = $card_link_template;
 } 
 
+$item_counter = 0;
 $items = naju_rex_var::toArray('REX_VALUE[id=2]');
 $contents = '';
 
 foreach ($items as $item) {
+    $item_counter++;
+
     $title = rex_escape($item['title']);
     $img_path = $item['REX_MEDIA_1'];
     $content = $item['content'];    // content is rich HTML
     $link = $item['REX_LINK_1'];
 
     $formatted_item = str_replace($title_token, $title, $item_template);
+    $formatted_item = str_replace($card_id_token, sprintf($card_id_template, $slice_id, $item_counter), $formatted_item);
     $formatted_item = str_replace($content_token, $content, $formatted_item);
 
     // if the current item contains an image, generate the corresponding tag for it
