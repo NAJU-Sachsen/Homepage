@@ -202,7 +202,6 @@ $event_counter = 0;
                     <p class="event-description collapse mb-1" id="<?= $event_description_id ?>" aria-expanded="false">
                         <?= rex_escape($event['event_description']); ?>
                     </p>
-                    <img>
                     <a href="#<?= $event_description_id; ?>" class="float-right further-reading mr-3 mb-3"
                         data-toggle="collapse" role="button" aria-expanded="false" aria-controls="<?= $event_description_id; ?>">
                         Weiterlesen
