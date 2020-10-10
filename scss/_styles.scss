@@ -80,10 +80,6 @@
 
   $n-lines: 2;
   $event-description-collapsed-height: $default-line-height-factor * $font-size-base * $n-lines - 0.4 * $default-line-height-factor;
-  .event-calendar .event .event-description {
-    position: relative;
-    top: 0;
-  }
 
   .event-calendar .event .event-description.collapse:not(.show) {
     height: $event-description-collapsed-height !important;
@@ -93,6 +89,14 @@
 
   .event-calendar .event .event-description.collapsing {
     height: $event-description-collapsed-height !important;
+  }
+
+  .event-calendar .event .event-description-wrapper .further-reading {
+    overflow-anchor: none;
+  }
+
+  .event-calendar .event .event-description.collapse.show + .further-reading {
+    display: none;
   }
 
 }
