@@ -47,7 +47,7 @@ if ($img_height > 0) {
 $img_link = 'REX_LINK[id=1]';
 
 if ($img_link) {
-    echo '<a href="' . rex_getUrl($img_link) . '">';
+    echo '<a href="' . rex_getUrl($img_link) . '" class="img-link">';
 }
 
 ?>
