@@ -192,7 +192,7 @@ $event_counter = 0;
                             ?>
                         </small>
                     </h3>
-										<!-- TODO: insert group link -->
+					<!-- TODO: insert group link -->
                     <small class="text-muted"><?= rex_escape($event['group_name']); ?></small>
                 </header>
                 

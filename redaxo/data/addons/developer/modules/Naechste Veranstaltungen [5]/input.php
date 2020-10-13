@@ -39,5 +39,6 @@ $local_groups = rex_sql::factory()->setQuery($group_query)->getArray();
         <option value="camp" <?= 'REX_VALUE[3]' == 'camp' ? 'selected' : ''; ?>>Camp</option>
         <option value="workshop" <?= 'REX_VALUE[3]' == 'workshop' ? 'selected' : ''; ?>>Workshop</option>
         <option value="work_assignment" <?= 'REX_VALUE[3]' == 'work_assignment' ? 'selected' : ''; ?>>Arbeitseinsatz</option>
+        <option value="group_meeting" <?= 'REX_VALUE[3]' == 'group_meeting' ? 'selected' : ''; ?>>Aktiventreffen</option>
     </select>
 </div>
