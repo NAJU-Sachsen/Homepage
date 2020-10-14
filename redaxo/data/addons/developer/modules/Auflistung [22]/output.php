@@ -9,6 +9,7 @@ $slice_id = 'REX_SLICE_ID';
 $full_width = 'col-lg-12';
 $wide_list_img_cols = 'REX_VALUE[id=4 ifempty=false]' == 'true';
 $reduced_width = $wide_list_img_cols ? 'col-lg-8' : 'col-lg-9';
+$offset_width = $wide_list_img_cols ? 'col-log-8 offset-lg-4' : 'col-lg-9 offset-lg-3';
 $list_img_col_width = $wide_list_img_cols ? 'col-lg-4' : 'col-lg-3';
 
 $display_style = 'REX_VALUE[id=1 ifempty=grid]';
@@ -104,6 +105,14 @@ $item_counter = 0;
 $items = naju_rex_var::toArray('REX_VALUE[id=2]');
 $contents = '';
 
+$list_contains_images = false;
+foreach ($items as $item) {
+    if ($item['REX_MEDIA_1']) {
+        $list_contains_images = true;
+        break;
+    }
+}
+
 foreach ($items as $item) {
     $item_counter++;
 
@@ -118,25 +127,30 @@ foreach ($items as $item) {
 
     // if the current item contains an image, generate the corresponding tag for it
     // otherwise just drop the tag altogether
-    if ($img_path) {
-        $img = new naju_image($img_path);
-        $formatted_image = str_replace($img_src_token, $img->name(), $image_template);
-        $formatted_image = str_replace($img_alt_token, rex_escape($img->altText()), $formatted_image);
+    if ($list_contains_images) {
+        if ($img_path) {
+            $img = new naju_image($img_path);
+            $formatted_image = str_replace($img_src_token, $img->name(), $image_template);
+            $formatted_image = str_replace($img_alt_token, rex_escape($img->altText()), $formatted_image);
 
-        $item_img_effects = '';
-        if ($img_effects) {
-            $item_img_effects = $img_effects;
-            if ($img_effect_style == 'random') {
-                $item_img_effects .= ' ' . rex_escape($fancy_effect_classes[array_rand($fancy_effect_classes)]) . ' ';
-            } else {
-                $item_img_effects .= ' ' . rex_escape($img_effect_style) . ' ';
+            $item_img_effects = '';
+            if ($img_effects) {
+                $item_img_effects = $img_effects;
+                if ($img_effect_style == 'random') {
+                    $item_img_effects .= ' ' . rex_escape($fancy_effect_classes[array_rand($fancy_effect_classes)]) . ' ';
+                } else {
+                    $item_img_effects .= ' ' . rex_escape($img_effect_style) . ' ';
+                }
             }
-        }
-        $formatted_image = str_replace($img_class_token, $item_img_effects, $formatted_image);
-        $formatted_image = str_replace($img_style_token, $img_styles, $formatted_image);
+            $formatted_image = str_replace($img_class_token, $item_img_effects, $formatted_image);
+            $formatted_image = str_replace($img_style_token, $img_styles, $formatted_image);
 
-        $formatted_item = str_replace($img_token, $formatted_image, $formatted_item);
-        $formatted_item = str_replace($content_width_token, $reduced_width, $formatted_item);
+            $formatted_item = str_replace($img_token, $formatted_image, $formatted_item);
+            $formatted_item = str_replace($content_width_token, $reduced_width, $formatted_item);
+        } else {
+            $formatted_item = str_replace($img_token, '', $formatted_item);
+            $formatted_item = str_replace($content_width_token, $offset_width, $formatted_item);
+        }
     } else {
         $formatted_item = str_replace($img_token, '', $formatted_item);
         $formatted_item = str_replace($content_width_token, $full_width, $formatted_item);
