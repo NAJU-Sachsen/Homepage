@@ -32,13 +32,14 @@ if ($local_group == -1) {
             event_start,
             event_end,
             event_location,
+            event_type,
             event_link
         from
             naju_event
             join naju_local_group
             on event_group = group_id
         where
-            event_end >= :date
+            (event_end >= :date or event_start >= :date)
             $additional_filters
         order by event_start, event_end
         limit $limit
@@ -52,6 +53,7 @@ EOSQL;
             event_start,
             event_end,
             event_location,
+            event_type,
             event_link
         from
             naju_event
@@ -59,7 +61,7 @@ EOSQL;
             on event_group = group_id
         where
             group_id = :group and
-            event_end >= :date
+            (event_end >= :date or event_start >= :date)
             $additional_filters
         order by event_start, event_end
         limit $limit
@@ -84,6 +86,12 @@ $plain_list = 'REX_VALUE[id=5 ifempty=false]' == 'false'; // REX_VAL 5 is 'forma
         if ($event_end) {
             $event_end = DateTime::createFromFormat(naju_event_calendar::$DB_DATE_FMT, $event_end);
             echo ' &dash; ' . rex_escape($event_end->format(DATE_FMT));
+        }
+
+        if ($event['event_type'] == 'work_assignment') {
+            echo ' Arbeitseinsatz:';
+        } elseif ($event['event_type'] == 'group_meeting') {
+            echo ' Aktiventreffen:';
         }
         ?>
     </dt>

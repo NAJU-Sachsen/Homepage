@@ -64,6 +64,7 @@ if ($local_group == -1) {
             event_price,
             event_price_reduced,
             event_registration,
+            event_type,
             event_link
         from
             naju_event
@@ -71,7 +72,7 @@ if ($local_group == -1) {
             on event_group = group_id
         where
             event_start >= :start and
-            event_end <= :end
+            (event_end <= :end or event_end is null)
             $additional_filters
 		order by event_start, event_end
 EOSQL;
@@ -90,6 +91,7 @@ EOSQL;
             event_price,
             event_price_reduced,
             event_registration,
+            event_type,
             event_link
         from
             naju_event
@@ -98,7 +100,7 @@ EOSQL;
         where
             group_id = :group and
             event_start >= :start and
-            event_end <= :end
+            (event_end <= :end or event_end is null)
             $additional_filters
 		order by event_start, event_end
 EOSQL;
@@ -166,14 +168,23 @@ $event_counter = 0;
             <article class="list-group-item event">
                 <header class="d-flex w-100 justify-content-between event-header">
                     <h3 class="mb-1 text-left">
-                        <?= rex_escape($event['event_name']); ?>
+                        <?php
+                        if ($event['event_type'] == 'work_assignment') {
+                            echo 'Arbeitseinsatz: ';
+                        } elseif ($event['event_type'] == 'group_meeting') {
+                            echo 'Aktiventreffen: ';
+                        }
+
+
+                        echo rex_escape($event['event_name']);
+                        ?>
                         <small class="text-muted">
                             <?php
                             $start_date = $event['event_start'];
                             $end_date = $event['event_end'];
 
                             if (!$end_date) {
-                                echo rex_escape(DateTime::createFromFormat(naju_event_calendar::$DB_DATE_FMT, $start_date)->format('d.m'));
+                                echo rex_escape(DateTime::createFromFormat(naju_event_calendar::$DB_DATE_FMT, $start_date)->format('d.m.'));
                             } else {
                                 $start_date = DateTime::createFromFormat(naju_event_calendar::$DB_DATE_FMT, $start_date);
                                 $end_date = DateTime::createFromFormat(naju_event_calendar::$DB_DATE_FMT, $end_date);
