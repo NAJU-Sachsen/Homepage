@@ -42,3 +42,23 @@ $local_groups = rex_sql::factory()->setQuery($group_query)->getArray();
         <option value="group_meeting" <?= 'REX_VALUE[3]' == 'group_meeting' ? 'selected' : ''; ?>>Aktiventreffen</option>
     </select>
 </div>
+<div class="form-group">
+    <label>
+        <input type="hidden" name="REX_INPUT_VALUE[6]" value="false">
+        <input type="checkbox" name="REX_INPUT_VALUE[6]"
+            value="true" <?= 'REX_VALUE[6]' == 'true' ? 'checked' : ''; ?>> Text über den Veranstaltungen:
+    </label>
+    <input type="text" id="custom-title" class="form-control" name="REX_INPUT_VALUE[4]"
+        value="REX_VALUE[id=4 ifempty='Die nächsten Camps']" autocomplete="off">
+</div>
+
+<div class="form-group">
+    <label>Anzeige:</label>
+    <div class="checkbox">
+        <label>
+            <input type="hidden" name="REX_INPUT_VALUE[5]" value="false">
+            <input type="checkbox" name="REX_INPUT_VALUE[5]" value="true" <?= 'REX_VALUE[5]' == 'true' ? 'checked' : ''; ?>>
+            als Karten formatieren
+        </label>
+    </div>
+</div>
