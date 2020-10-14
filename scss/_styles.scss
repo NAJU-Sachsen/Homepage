@@ -170,6 +170,10 @@
   border-bottom: 1px solid $extra-grey;
 }
 
+.listing:nth-last-child(1) .listing-end {
+  border-bottom: none;
+}
+
 .listing-card .card-footer {
   @include card-link-align();
 }
