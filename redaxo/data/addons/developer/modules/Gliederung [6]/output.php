@@ -36,6 +36,12 @@
 				// without whitespace
 				generatedId = generatedId.replace(/ /g, '-');
 
+				// with expanded umlauts
+				generatedId = generatedId.replace(/ä/g, 'ae');
+				generatedId = generatedId.replace(/ö/g, 'oe');
+				generatedId = generatedId.replace(/ü/g, 'ue');
+				generatedId = generatedId.replace(/ß/g, 'ss');
+
 				// and only basic characters
 				generatedId = generatedId.replace(/[^a-z0-9_-]/g, '');
 
