@@ -19,7 +19,7 @@ $integrate_select = ['no-integrate' => 'nicht integrieren',
 $mform = new MForm();
 
 $mform->addTab('Bild');
-$mform->addMediaField($img_id, ['preview' => '1', 'types' => 'jpg,jpeg,png', 'label' => 'Bild auswählen']);
+$mform->addMediaField($img_id, ['preview' => '1', 'types' => naju_image::ALLOWED_TYPES, 'label' => 'Bild auswählen']);
 $mform->addLinkField($link_id, ['label' => 'Verlinkung hinzufügen?']);
 $mform->closeTab();
 

@@ -38,7 +38,7 @@ echo $mform->show();
 $mform = new MForm();
 $mform->addFieldset('Eintrag');
 $mform->addTextField("$item_id.0.title", ['label' => 'Titel']);
-$mform->addMediaField($item_media_id, ['label' => 'Foto']);
+$mform->addMediaField($item_media_id, ['label' => 'Foto', 'types' => naju_image::ALLOWED_TYPES]);
 $mform->addTextAreaField("$item_id.0.content", ['label' => 'Inhalt', 'class' => 'redactorEditor2-links-bold-italic-lists']);
 $mform->addLinkField($item_link_id, ['label' => 'Weiterführender Link']);
 $mform->addTextField("$item_id.0.link_text", ['label' => 'Link Beschriftung']);
