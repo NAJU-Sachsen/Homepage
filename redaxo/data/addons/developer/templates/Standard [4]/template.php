@@ -23,7 +23,7 @@
 
     <?= 'REX_TEMPLATE[key=template-nav]'; ?>
 
-    <div id="content-wrapper" class="col-lg-8 offset-lg-2">
+    <div id="content-wrapper" class="col-lg-8 offset-lg-2 col-md-12">
       <!-- Main content -->
       <main id="content" class="clearfix">
         <header>

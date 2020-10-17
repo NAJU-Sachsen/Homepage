@@ -31,7 +31,7 @@
 /*
  * Mobile layout
  */
-@media screen and (max-width: map-get($grid-breakpoints, 'md') - 1) {
+@media screen and (max-width: map-get($grid-breakpoints, 'lg') - 1) {
 
   @import "mobile";
 
@@ -40,7 +40,7 @@
 /*
  * Desktop layout
  */
-@media screen and (min-width: map-get($grid-breakpoints, 'md')) {
+@media screen and (min-width: map-get($grid-breakpoints, 'lg')) {
 
   @import "desktop";
 

@@ -4,7 +4,7 @@
 $active_ids = naju_navigation::collect_active_category_ids();
 ?>
 
-<nav id="main-nav" class="col-md-2 col-sm-12">
+<nav id="main-nav" class="col-lg-2 col-md-12">
 	<ul class="nav nav-primary flex-column">
 		<?php foreach(rex_category::getRootCategories(true) as $cat) : ?>
 			<li class="nav-item">
