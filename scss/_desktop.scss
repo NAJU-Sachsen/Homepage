@@ -31,8 +31,8 @@ header#top-bar .naju-logo {
 
 #nav-content-wrapper {
   min-height: calc(100% - #{$header-height});
-  max-height: fit-content;
   padding-top: 1rem;
+  margin-bottom: $footer-height;
 }
 
 nav#main-nav {
