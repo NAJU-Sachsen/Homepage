@@ -67,5 +67,6 @@ $local_groups = rex_sql::factory()->setQuery($group_query)->getArray();
         <option value="workshop" <?= 'REX_VALUE[6]' == 'workshop' ? 'selected' : ''; ?>>Workshop</option>
         <option value="work_assignment" <?= 'REX_VALUE[6]' == 'work_assignment' ? 'selected' : ''; ?>>Arbeitseinsatz</option>
         <option value="group_meeting" <?= 'REX_VALUE[6]' == 'group_meeting' ? 'selected' : ''; ?>>Aktiventreffen</option>
+        <option value="other" <?= 'REX_VALUE[3]' == 'other' ? 'selected' : ''; ?>>Sonstige Veranstaltungen</option>
     </select>
 </div>
