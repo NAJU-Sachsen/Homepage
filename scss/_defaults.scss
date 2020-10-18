@@ -65,19 +65,19 @@ $link-underline-width: .125rem;
   box-shadow: inset 0 -.0125rem 0 $dark-red;
 }
 
-a:not(.btn):not(.img-link) {
+a:not(.btn):not(.img-link):not(.link-mute) {
   color: $dark-red;
 }
 
-a:hover:not(.btn):not(.img-link) {
+a:hover:not(.btn):not(.img-link):not(.link-mute) {
   color: $dark-red;
 }
 
-#content a:not(.btn):not(.img-link) {
+#content a:not(.btn):not(.img-link):not(.link-mute) {
   @include default-link;
 }
 
-#content a:hover:not(.btn):not(.img-link) {
+#content a:hover:not(.btn):not(.img-link):not(.link-mute) {
   @include default-link-hover;
 }
 
