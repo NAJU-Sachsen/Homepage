@@ -71,8 +71,8 @@ if ($local_group == -1) {
             join naju_local_group
             on event_group = group_id
         where
-            event_start >= :start and
-            (event_end <= :end or event_end is null)
+            ((event_start >= :start and event_end <= :end) or
+            (event_end is null and event_start >= :start and event_start <= :end))
             $additional_filters
 		order by event_start, event_end
 EOSQL;
@@ -99,8 +99,8 @@ EOSQL;
             on event_group = group_id
         where
             group_id = :group and
-            event_start >= :start and
-            (event_end <= :end or event_end is null)
+            ((event_start >= :start and event_end <= :end) or
+                (event_end is null and event_start >= :start and event_start <= :end))
             $additional_filters
 		order by event_start, event_end
 EOSQL;
@@ -184,16 +184,16 @@ $event_counter = 0;
                             $end_date = $event['event_end'];
 
                             if (!$end_date) {
-                                echo rex_escape(DateTime::createFromFormat(naju_event_calendar::$DB_DATE_FMT, $start_date)->format('d.m.'));
+                                echo rex_escape(DateTime::createFromFormat(naju_event_calendar::$DB_DATE_FMT, $start_date)->format('d.m.y'));
                             } else {
                                 $start_date = DateTime::createFromFormat(naju_event_calendar::$DB_DATE_FMT, $start_date);
                                 $end_date = DateTime::createFromFormat(naju_event_calendar::$DB_DATE_FMT, $end_date);
 
                                 if ($start_date->format('Y') == $end_date->format('Y')) {
                                     if ($start_date->format('m') == $end_date->format('m')) {
-                                        echo rex_escape($start_date->format('d.')) . '&dash;' . rex_escape($end_date->format('d.m.'));
+                                        echo rex_escape($start_date->format('d.')) . '&dash;' . rex_escape($end_date->format('d.m.y'));
                                     } else {
-                                        echo rex_escape($start_date->format('d.m.')) . '&dash;' . rex_escape($end_date->format('d.m.'));
+                                        echo rex_escape($start_date->format('d.m.')) . '&dash;' . rex_escape($end_date->format('d.m.y'));
                                     }
                                 } else {
                                     echo rex_escape($start_date->format('d.m.y')) . '&dash;' . rex_escape($end_date->format('d.m.y'));
