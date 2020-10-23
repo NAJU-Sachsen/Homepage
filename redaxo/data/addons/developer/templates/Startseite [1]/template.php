@@ -1,6 +1,11 @@
 <!doctype html>
 
-<html lang="de">
+<?php
+$ua = strtolower($_SERVER['HTTP_USER_AGENT']);
+$is_ios = str_contains($ua, 'iphone') || str_contains($ua, 'ipad');
+?>
+
+<html lang="de" <?= $is_ios ? 'ontouchmove' : ''; ?>>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
