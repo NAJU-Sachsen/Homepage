@@ -5,7 +5,7 @@ $event_query = <<<EOSQL
 	select event_id, event_name, group_name, event_start
 	from naju_event
 	join naju_local_group on event_group = group_id
-	where event_start >= :date
+	where event_start >= :date and event_active = true
 	order by event_start
 EOSQL;
 $events = rex_sql::factory()->setQuery($event_query, ['date' => $current_year])->getArray();

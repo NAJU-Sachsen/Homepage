@@ -73,6 +73,7 @@ if ($local_group == -1) {
         where
             ((event_start >= :start and event_end <= :end) or
             (event_end is null and event_start >= :start and event_start <= :end))
+            and event_active = true
             $additional_filters
 		order by event_start, event_end
 EOSQL;
@@ -101,6 +102,7 @@ EOSQL;
             group_id = :group and
             ((event_start >= :start and event_end <= :end) or
                 (event_end is null and event_start >= :start and event_start <= :end))
+            and event_active = true
             $additional_filters
 		order by event_start, event_end
 EOSQL;

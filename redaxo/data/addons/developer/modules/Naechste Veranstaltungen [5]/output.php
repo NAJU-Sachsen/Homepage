@@ -40,6 +40,7 @@ if ($local_group == -1) {
             on event_group = group_id
         where
             (event_end >= :date or event_start >= :date)
+            and event_active = true
             $additional_filters
         order by event_start, event_end
         limit $limit
@@ -62,6 +63,7 @@ EOSQL;
         where
             group_id = :group and
             (event_end >= :date or event_start >= :date)
+            and event_active = true
             $additional_filters
         order by event_start, event_end
         limit $limit
