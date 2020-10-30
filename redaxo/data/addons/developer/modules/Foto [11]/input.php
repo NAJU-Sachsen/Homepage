@@ -11,7 +11,7 @@ $effects_kind_id = 5;
 $effects_kind_select = ['random' => 'zufällig',
     'img-fancy-default' => 'Standard (Dunkelrot)',
     'img-fancy-green' => 'Maigrün (Hellgrün)',
-    'img-dark-green' => 'Laubgrün (Dunkelgrün)'];
+    'img-fancy-green-alternate' => 'Laubgrün (Dunkelgrün)'];
 $integrate_select = ['no-integrate' => 'nicht integrieren',
     'integrate-left' => 'links abbilden',
     'integrate-right' => 'rechts abbilden'];
