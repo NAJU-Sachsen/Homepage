@@ -13,11 +13,12 @@ $item_media_id = 1;
 $item_link_id = 1;
 
 $mform = new MForm();
-$mform->addTab('Allgemeine Einstellung');
 
+$mform->addTab('Allgemeine Einstellungen');
 $mform->addRadioField($display_type_id, ['media-list' => 'als Liste', 'grid' => 'als Gitter']);
 $mform->setLabel('Wie sollen die Einträge angezeigt werden?');
 $mform->closeTab();
+
 $mform->addTab('Bilddarstellung');
 $mform->addInputField('number', "$image_params_id.width");
 $mform->setLabel('Breite der Bilder');
@@ -28,11 +29,14 @@ $mform->setLabel('Tolle Bildeffekte');
 $mform->addSelectField("$image_params_id.effect", ['random' => 'zufällig', 'img-fancy-default' => 'Dunkelrot [Standard]',
     'img-fancy-green' => 'Maigrün (Hellgrün)', 'img-fancy-green-alternate' => 'Laubgrün (Dunkelgrün)']);
 $mform->setLabel('Effekt auswählen');
+$mform->addCheckboxField("$image_params_id.no_rotate_img", ['label' => 'Rotation ausschalten']);
+$mform->setLabel('Weiteres');
 
 $mform->addFieldset('Für die Listendarstellung');
 $mform->addCheckboxField($list_wide_img_cols, ['label' => 'breite Bild-Spalte verwenden']);
 $mform->closeFieldset();
 $mform->closeTab();
+
 echo $mform->show();
 
 $mform = new MForm();

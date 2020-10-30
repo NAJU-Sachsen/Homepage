@@ -13,11 +13,16 @@ $img_class = 'mt-4 mb-4 ';
 
 if ($fancy_effects) {
     $chosen_class = 'REX_VALUE[id=5 ifempty="random"]';
+    $rotate_effect = 'REX_VALUE[id=6 ifempty="false"]' === 'true';
     if ($chosen_class == 'random') {
         $fancy_effect_classes = ['img-fancy-default', 'img-fancy-green', 'img-fancy-green-alternate'];
         $chosen_class = $fancy_effect_classes[array_rand($fancy_effect_classes)];
     }
     $img_class .= ' img-fancy ' . $chosen_class . ' ';
+
+    if ($rotate_effect) {
+        $img_class .= ' img-fancy-rotate ';
+    }
 }
 
 switch($img_integrate) {

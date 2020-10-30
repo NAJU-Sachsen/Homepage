@@ -7,6 +7,7 @@ $height_id = 2;
 $integrate_id = 3;
 $activate_effects_id = 4;
 $effects_kind_id = 5;
+$effects_rotate_id = 6;
 
 $effects_kind_select = ['random' => 'zufällig',
     'img-fancy-default' => 'Standard (Dunkelrot)',
@@ -27,6 +28,8 @@ $mform->addTab('Bildeffekte');
 $mform->addHiddenField($activate_effects_id, 'false');
 $mform->addCheckboxField($activate_effects_id, ['true' => 'tolle Bildeffekte aktivieren'],  ['label' => 'Aktivieren?']);
 $mform->addSelectField($effects_kind_id, $effects_kind_select, ['label' => 'Effektfarbe:']);
+$mform->addHiddenField($effects_rotate_id, 'true');
+$mform->addCheckboxField($effects_rotate_id, ['false' => 'Rotation ausschalten'], ['label' => 'Weiteres']);
 $mform->closeTab();
 
 $mform->addTab('Optionen');

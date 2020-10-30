@@ -21,6 +21,8 @@ $img_height = $img_params['height'];
 $img_effects = $img_params['enable_effects'] ?? '';
 $img_effects = $img_effects ? ' img-fancy ' : '';
 $img_effect_style = $img_params['effect'] ?? 'random';
+$img_suppress_rotate = $img_params['no_rotate_img'] ?? '';
+$img_suppress_rotate = $img_suppress_rotate ? '' : ' img-fancy-rotate ';
 
 // the tokens will contain a random prefix to minimize the chance of replacing actual
 // content that just happens to look like a token
@@ -141,6 +143,8 @@ foreach ($items as $item) {
                 } else {
                     $item_img_effects .= ' ' . rex_escape($img_effect_style) . ' ';
                 }
+
+                $item_img_effects .= rex_escape($img_suppress_rotate);
             }
             $formatted_image = str_replace($img_class_token, $item_img_effects, $formatted_image);
             $formatted_image = str_replace($img_style_token, $img_styles, $formatted_image);

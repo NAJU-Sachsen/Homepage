@@ -8,7 +8,6 @@
 //
 
 @mixin img-fancy-base($color) {
-  transform: rotate(-1deg);
   border: 5px solid $color;
 }
 
@@ -26,6 +25,10 @@
 
 .img-fancy.img-fancy-green-alternate {
   @include img-fancy-base($dark-green);
+}
+
+.img-fancy.img-fancy-rotate {
+  transform: rotate(-1deg);
 }
 
 .diashow {
