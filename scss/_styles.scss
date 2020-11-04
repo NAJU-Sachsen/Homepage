@@ -155,6 +155,27 @@
 }
 
 //
+// Blog archive
+//
+
+.blog-archive-container .blog-year-archive .blog-archive-article-container .article-title {
+  font-size: 1.5rem;
+}
+
+.blog-archive-container .blog-year-archive .blog-archive-article-container .article-title .article-subtitle {
+  font-size: 1.5rem;
+}
+
+.blog-archive-container .blog-year-archive .blog-archive-article-container .article-controller .article-subtitle,
+.blog-archive-container .blog-year-archive .blog-archive-article-container .article-controller[aria-expanded="true"] .article-subtitle {
+  display: block;
+}
+
+.blog-archive-container .blog-year-archive .blog-archive-article-container .article-controller[aria-expanded="false"] .article-subtitle {
+  display: none;
+}
+
+//
 // Registration form
 //
 

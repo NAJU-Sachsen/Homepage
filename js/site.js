@@ -1,7 +1,7 @@
 
 /**
  * site.js
- * v0.0.1
+ * v0.1.0
  * 
  */
 
@@ -21,18 +21,16 @@ function adjustListingCardsHeight(container) {
 
 window.addEventListener('load', () => {
 	const cardContainers = document.getElementsByClassName('listing-cards-container');
-
 	for (const cardContainer of cardContainers) {
 		adjustListingCardsHeight(cardContainer);
 	}
+
+	const scrollSpyers = document.querySelectorAll('[data-spy="scroll"]');
+	for (const spyer of scrollSpyers) {
+		console.log(spyer);
+		spyer.dataset.offset = window.innerHeight - spyer.getBoundingClientRect().top;
+		console.log(spyer);
+	}
+	$('[data-spy="scroll"]').each(() => $(this).scrollspy('refresh'));
+
 });
-
-// window.onload = () => {
-// 	const cardContainers = document.getElementsByClassName('listing-cards-container');
-
-// 	console.log('containers:', cardContainers);
-
-// 	for (const cardContainer of cardContainers) {
-// 		adjustListingCardsHeight(cardContainer);
-// 	}
-// };
