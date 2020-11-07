@@ -19,7 +19,7 @@ $img_height = $img_params['height'];
 
 // check whether some value was set in the image effects checkbox and if so, use the fancy class
 $img_effects = $img_params['enable_effects'] ?? '';
-$img_effects = $img_effects ? ' img-fancy ' : '';
+$img_effects = $img_effects ? 'img-fancy' : '';
 $img_effect_style = $img_params['effect'] ?? 'random';
 $img_suppress_rotate = $img_params['no_rotate_img'] ?? '';
 $img_suppress_rotate = $img_suppress_rotate ? '' : ' img-fancy-rotate ';
@@ -28,10 +28,7 @@ $img_suppress_rotate = $img_suppress_rotate ? '' : ' img-fancy-rotate ';
 // content that just happens to look like a token
 $card_id_token = '%%CARD_ID%%' . rand() . '%%';
 $img_token = '%%IMG%%' . rand() . '%%';
-$img_src_token = '%%IMG_SRC%%' . rand() . '%%';
-$img_alt_token = '%%IMG_ALT%%' . rand() . '%%';
-$img_style_token = '%%IMG_STYLE%%' . rand() . '%%';
-$img_class_token = '%%IMG_CLASS%%' . rand() . '%%';
+$img_tag_token = '%%IMG_TAG%%' . rand() . '%%';
 $title_token = '%%TITLE%%' . rand() . '%%';
 $content_token = '%%CONTENT%%' . rand() . '%%';
 $content_width_token = '%%CONTENT_WIDTH%%' . rand() . '%%';
@@ -58,7 +55,7 @@ $list_template = <<<EOHTML
     </li>
 EOHTML;
 $list_image_template = "<div class='$list_img_col_width col-md-12 col-sm-12'>
-                            <img src='/media/$img_src_token' alt='$img_alt_token' class='d-block mx-auto $img_class_token' style='$img_style_token'>
+                            $img_tag_token
                         </div>";
 $list_link_template = "<a href='$link_url_token'>$link_label_token</a>";
 
@@ -75,7 +72,7 @@ $card_template = <<<EOHTML
         </div>
     </div>
 EOHTML;
-$card_image_template = "<img src='/media/$img_src_token' alt='$img_alt_token' class='card-img-top mx-auto $img_class_token' style='$img_style_token'>";
+$card_image_template = "$img_tag_token";
 $card_link_template = "<div class='card-footer'><a href='$link_url_token' class='btn btn-primary'>$link_label_token</a></div>";
 
 $container = '';
@@ -95,11 +92,13 @@ if ($display_style === 'media-list') {
     $container = $list_container;
     $item_template = $list_template;
     $image_template = $list_image_template;
+    $image_classes = ['d-block', 'mx-auto'];
     $link_template = $list_link_template;
 } else {
     $container = $card_container;
     $item_template = $card_template;
     $image_template = $card_image_template;
+    $image_classes = ['card-img-top', 'mx-auto'];
     $link_template = $card_link_template;
 } 
 
@@ -135,21 +134,20 @@ foreach ($items as $item) {
             $formatted_image = str_replace($img_src_token, $img->name(), $image_template);
             $formatted_image = str_replace($img_alt_token, rex_escape($img->altText()), $formatted_image);
 
-            $item_img_effects = '';
+            $item_img_effects = array();
             if ($img_effects) {
-                $item_img_effects = $img_effects;
+                $item_img_effects = [$img_effects];
                 if ($img_effect_style == 'random') {
-                    $item_img_effects .= ' ' . rex_escape($fancy_effect_classes[array_rand($fancy_effect_classes)]) . ' ';
+                    $item_img_effects[] = rex_escape($fancy_effect_classes[array_rand($fancy_effect_classes)]);
                 } else {
-                    $item_img_effects .= ' ' . rex_escape($img_effect_style) . ' ';
+                    $item_img_effects[] = rex_escape($img_effect_style);
                 }
 
-                $item_img_effects .= rex_escape($img_suppress_rotate);
+                $item_img_effects[] = rex_escape($img_suppress_rotate);
             }
-            $formatted_image = str_replace($img_class_token, $item_img_effects, $formatted_image);
-            $formatted_image = str_replace($img_style_token, $img_styles, $formatted_image);
+            $item_img_effects = array_merge($image_classes, $item_img_effects);
 
-            $formatted_item = str_replace($img_token, $formatted_image, $formatted_item);
+            $formatted_item = str_replace($img_token, $img->generatePictureTag($item_img_effects, '', ['style' => $img_styles]), $formatted_item);
             $formatted_item = str_replace($content_width_token, $reduced_width, $formatted_item);
         } else {
             $formatted_item = str_replace($img_token, '', $formatted_item);

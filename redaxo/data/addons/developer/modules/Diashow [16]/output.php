@@ -15,12 +15,19 @@ $show_id = 'diashow-' . $slice_id;
   <div class="carousel-inner">
 		<?php foreach ($images as $idx => $img) : ?>
 			<div class="carousel-item <?= $idx == 0 ? 'active' : ''; ?>">
-				<?php if ($max_height) : ?>
-					<div style="height: 500px; background-image: url('/media/<?= $img; ?>'); background-size: contain; background-repeat: no-repeat; background-position: center;"
-              aria-label="<?= $img ? rex_escape((new naju_image($img))->altText()) : ''; ?>"></div>
-				<?php else: ?>
-					<img src="/media/<?= $img; ?>" class="d-block w-100">
-				<?php endif;?>
+        <?php
+          if (!$img) {
+            continue;
+          }
+          $img = new naju_image($img);
+          if ($max_height) {
+            $style = "height: 500px; background-image: url('" . $img->optimizedUrl() . "'); background-size: contain; ";
+            $style .= " background-repeat: no-repeat; background-position: center;";
+            echo '<div class="webp-fallback" style="' . $style . '" aria-label="' . rex_escape($img->altText()) . '" data-webp-fallback="' . $img->url() . '"></div>';
+          } else {
+            echo $img->generatePictureTag(['d-block', 'w-100']);
+          }
+        ?>
 			</div>
 	<?php endforeach; ?>
   </div>

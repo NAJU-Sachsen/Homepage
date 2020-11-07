@@ -60,9 +60,9 @@ if (rex::isBackend()) {
 				<?php
 				$card1 = naju_rex_var::toArray('REX_VALUE[1]');
 				$img1 = $images[0];
+				echo $img1->generatePictureTag(['card-img-top']);
 				?>
 
-				<img src="/media/<?= $img1->name(); ?>" alt="<?= rex_escape($img1->altText()); ?>" class="card-img-top">
 				<div class="card-body">
 					<h3 class="card-title"><?= rex_escape($card1['title']); ?></h3>
 					<p class="card-text"><?= rex_escape($card1['content']); ?></p>
@@ -76,9 +76,9 @@ if (rex::isBackend()) {
 				<?php
 				$card2 = naju_rex_var::toArray('REX_VALUE[2]');
 				$img2 = $images[1];
+				echo $img2->generatePictureTag(['card-img-top']);
 				?>
 
-				<img src="/media/<?= $img2->name(); ?>" alt="<?= rex_escape($img2->altText()); ?>" class="card-img-top">
 				<div class="card-body">
 					<h3 class="card-title"><?= rex_escape($card2['title']); ?></h3>
 					<p class="card-text"><?= rex_escape($card2['content']); ?></p>
@@ -93,9 +93,9 @@ if (rex::isBackend()) {
 				<?php
 				$card3 = naju_rex_var::toArray('REX_VALUE[3]');
 				$img3 = $images[2];
+				echo $img3->generatePictureTag(['card-img-top']);
 				?>
 
-				<img src="/media/<?= $img3->name(); ?>" alt="<?= rex_escape($img3->altText()); ?>" class="card-img-top">
 				<div class="card-body">
 					<h3 class="card-title"><?= rex_escape($card3['title']); ?></h3>
 					<p class="card-text"><?= rex_escape($card3['content']); ?></p>
@@ -111,9 +111,9 @@ if (rex::isBackend()) {
 				<?php
 				$card4 = naju_rex_var::toArray('REX_VALUE[4]');
 				$img4 = $images[3];
+				echo $img4->generatePictureTag(['card-img-top']);
 				?>
 
-				<img src="/media/<?= $img4->name(); ?>" alt="<?= rex_escape($img4->altText()); ?>" class="card-img-top">
 				<div class="card-body">
 					<h3 class="card-title"><?= rex_escape($card4['title']); ?></h3>
 					<p class="card-text"><?= rex_escape($card4['content']); ?></p>

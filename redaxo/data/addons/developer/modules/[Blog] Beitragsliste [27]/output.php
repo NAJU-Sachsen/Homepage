@@ -69,7 +69,7 @@ foreach ($articles as $article) {
     if ($image) {
         $image = new naju_image($image);
         $content .= '<div class="col-sm-12 col-md-4 mb-4 news-image">';
-        $content .= '   <img src="' . $image->path() . '" alt="' . rex_escape($image->altText()) . '" class="img-fluid rounded">';
+        $content .=     $image->generatePictureTag(['img-fluid', 'rounded']);
         $content .= '</div>';
     }
 

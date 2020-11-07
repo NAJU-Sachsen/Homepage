@@ -26,7 +26,7 @@ if ($article['article_intro'] && naju_news_article::featuresRealIntro($article))
 if ($article['article_image']) {
     $img = new naju_image($article['article_image']);
     $content .= '<div class="article-img">';
-    $content .= '   <img src="/media/' . $img->name() . '" class="d-block mx-auto w-75 mb-3" alt="' . rex_escape($img->altText()) . '">';
+    $content .= $img->generatePictureTag(['d-block', 'mx-auto', 'w-75', 'mb-3']);
     $content .= '</div>';
 }
 

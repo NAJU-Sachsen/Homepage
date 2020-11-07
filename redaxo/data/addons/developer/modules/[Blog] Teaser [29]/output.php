@@ -39,7 +39,7 @@ foreach ($articles as $article) {
     $card = '<div class="col mb-4"><article class="card">';
     if ($article['article_image']) {
         $img = new naju_image($article['article_image']);
-        $card .= '<img src="/media/' . $img->name() . '" class="card-img-top" alt="' . rex_escape($img->altText()) . '">';
+        $card .= $img->generatePictureTag(['card-img-top']);
     }
     $card .= '<div class="card-body">';
     $card .= '  <h4 class="card-title">' . rex_escape($article['article_title']) . '</h4>';

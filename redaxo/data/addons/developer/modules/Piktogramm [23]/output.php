@@ -1,4 +1,11 @@
 
 <!-- mod_pictogram -->
 
-<img src="/media/REX_MEDIA[1]" alt="Piktogramm" class="img-fluid">
+<?php
+
+$img = 'REX_MEDIA[1]';
+
+if ($img) {
+    $img = new naju_image($img);
+    echo $img->generatePictureTag(['img-fluid', 'd-block', 'mx-auto'], '', ['style' => 'max-height: 200px;']);
+}

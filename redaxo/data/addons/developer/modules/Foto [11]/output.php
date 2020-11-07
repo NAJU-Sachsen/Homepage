@@ -13,7 +13,7 @@ $img_class = 'mt-4 mb-4 ';
 
 if ($fancy_effects) {
     $chosen_class = 'REX_VALUE[id=5 ifempty="random"]';
-    $rotate_effect = 'REX_VALUE[id=6 ifempty="false"]' === 'true';
+    $rotate_effect = 'REX_VALUE[id=6 ifempty="true"]' === 'true';
     if ($chosen_class == 'random') {
         $fancy_effect_classes = ['img-fancy-default', 'img-fancy-green', 'img-fancy-green-alternate'];
         $chosen_class = $fancy_effect_classes[array_rand($fancy_effect_classes)];
@@ -39,13 +39,13 @@ switch($img_integrate) {
         break;
 }
 
-$img_dimens = '';
+$img_dimens = array();
 if ($img_width > 0) {
-    $img_dimens .= ' width="' . rex_escape($img_width) . '" ';
+    $img_dimens['width'] = $img_width;
 }
 
 if ($img_height > 0) {
-    $img_dimens .= ' height="' . rex_escape($img_height) . '" ';
+    $img_dimens['height'] = $img_height;
 } else {
     $img_class .= 'img-fluid ';
 }
@@ -56,9 +56,10 @@ if ($img_link) {
     echo '<a href="' . rex_getUrl($img_link) . '" class="img-link">';
 }
 
-?>
+if ($img_src) {
+    echo $img->generatePictureTag([$img_class], '', $img_dimens);
+}
 
-<img src="/media/<?= $img_src ? $img->name() : ''; ?>" alt="<?= $img_src ? rex_escape($img->altText()) : ''; ?>"
-    class="<?= rex_escape($img_class); ?>" <?= $img_dimens; ?>>
-
-<?php if ($img_link) echo '</a>'; ?>
+if ($img_link) {
+    echo '</a>';
+}
