@@ -60,7 +60,7 @@ $is_ios = str_contains($ua, 'iphone') || str_contains($ua, 'ipad');
   REX_TEMPLATE[key=template-footer-navigation]
 
 </div>
-
+<script src="/js/compat.js"></script>
 </body>
 </html>
 
