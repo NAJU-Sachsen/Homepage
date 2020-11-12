@@ -14,7 +14,7 @@ $include_heading = 'REX_VALUE[2]' == 'true';
     <h3>Social Media</h3>
     <?php endif; ?>
     <?php if ($group['facebook']) : ?>
-    <a href="<?= $group['facebook']; ?>" target="_blank" class="link-mute mr-2">
+    <a href="<?= $group['facebook']; ?>" target="_blank" rel="noopener noreferrer" class="link-mute mr-4">
         <picture>
             <source type="image/webp" srcset="/assets/facebook-logo.webp">
             <img src="/assets/facebook-logo.png" alt="Logo of the Facebook social network" class="social-logo">
@@ -22,7 +22,7 @@ $include_heading = 'REX_VALUE[2]' == 'true';
     </a>
     <?php endif; ?>
     <?php if ($group['instagram']) : ?>
-    <a href="https://instagram.com/<?= $group['instagram']; ?>" target="_blank" class="link-mute mr-2">
+    <a href="https://instagram.com/<?= $group['instagram']; ?>" target="_blank" rel="noopener noreferrer" class="link-mute mr-4">
         <picture>
             <source type="image/webp" srcset="/assets/instagram-logo.webp">
             <img src="/assets/instagram-logo.png" alt="Logo of the Instagram social network" class="social-logo">
@@ -30,7 +30,7 @@ $include_heading = 'REX_VALUE[2]' == 'true';
     </a>
 	<?php endif; ?>
 	<?php if ($group['whatsapp']) : ?>
-    <a href="<?= $group['whatsapp']; ?>" target="_blank" class="link-mute mr-2">
+    <a href="<?= $group['whatsapp']; ?>" target="_blank" rel="noopener noreferrer" class="link-mute mr-4">
         <picture>
             <source type="image/webp" srcset="/assets/whatsapp-logo.webp">
             <img src="/assets/whatsapp-logo.png" alt="Logo of the Whatsapp messenger" class="social-logo">
@@ -38,7 +38,7 @@ $include_heading = 'REX_VALUE[2]' == 'true';
     </a>
 	<?php endif; ?>
 	<?php if ($group['telegram']) : ?>
-    <a href="<?= $group['telegram']; ?>" target="_blank" class="link-mute mr-2">
+    <a href="<?= $group['telegram']; ?>" target="_blank" rel="noopener noreferrer" class="link-mute mr-4">
         <picture>
             <source type="image/webp" srcset="/assets/telegram-logo.webp">
             <img src="/assets/telegram-logo.png" alt="Logo of the Telegram messenger" class="social-logo">
