@@ -42,7 +42,7 @@ foreach ($articles as $article) {
         $card .= $img->generatePictureTag(['card-img-top']);
     }
     $card .= '<div class="card-body">';
-    $card .= '  <h4 class="card-title">' . rex_escape($article['article_title']) . '</h4>';
+    $card .= '  <h4 class="card-title">' . naju::escape($article['article_title']) . '</h4>';
     $card .= '  <p class="card-text">' . rex_escape($article['article_intro']) . '</p>';
     $card .= '</div>'; // <div class=card-body>
     $card .= '<footer class="card-footer">';

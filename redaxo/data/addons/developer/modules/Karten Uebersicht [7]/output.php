@@ -64,8 +64,8 @@ if (rex::isBackend()) {
 				?>
 
 				<div class="card-body">
-					<h3 class="card-title"><?= rex_escape($card1['title']); ?></h3>
-					<p class="card-text"><?= rex_escape($card1['content']); ?></p>
+					<h3 class="card-title"><?= naju::escape($card1['title']); ?></h3>
+					<p class="card-text"><?= naju::escape($card1['content']); ?></p>
 				</div>
 				<footer class="card-footer">
 					<a class="btn btn-primary" href="REX_LINK[id=1 output=url]" role="button"><?= rex_escape($card1['link-text']) ?? ''; ?></a>
@@ -80,8 +80,8 @@ if (rex::isBackend()) {
 				?>
 
 				<div class="card-body">
-					<h3 class="card-title"><?= rex_escape($card2['title']); ?></h3>
-					<p class="card-text"><?= rex_escape($card2['content']); ?></p>
+					<h3 class="card-title"><?= naju::escape($card2['title']); ?></h3>
+					<p class="card-text"><?= naju::escape($card2['content']); ?></p>
 				</div>
 				<footer class="card-footer">
 					<a class="btn btn-primary" href="REX_LINK[id=2 output=url]" role="button"><?= rex_escape($card2['link-text']) ?? ''; ?></a>
@@ -97,8 +97,8 @@ if (rex::isBackend()) {
 				?>
 
 				<div class="card-body">
-					<h3 class="card-title"><?= rex_escape($card3['title']); ?></h3>
-					<p class="card-text"><?= rex_escape($card3['content']); ?></p>
+					<h3 class="card-title"><?= naju::escape($card3['title']); ?></h3>
+					<p class="card-text"><?= naju::escape($card3['content']); ?></p>
 				</div>
 				<footer class="card-footer">
 					<a class="btn btn-primary" href="REX_LINK[id=3 output=url]" role="button"><?= rex_escape($card3['link-text']) ?? ''; ?></a>
@@ -115,8 +115,8 @@ if (rex::isBackend()) {
 				?>
 
 				<div class="card-body">
-					<h3 class="card-title"><?= rex_escape($card4['title']); ?></h3>
-					<p class="card-text"><?= rex_escape($card4['content']); ?></p>
+					<h3 class="card-title"><?= naju::escape($card4['title']); ?></h3>
+					<p class="card-text"><?= naju::escape($card4['content']); ?></p>
 				</div>
 				<footer class="card-footer">
 					<a class="btn btn-primary" href="REX_LINK[id=4 output=url]" role="button"><?= rex_escape($card4['link-text']) ?? ''; ?></a>

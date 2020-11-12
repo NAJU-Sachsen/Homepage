@@ -117,7 +117,7 @@ foreach ($items as $item) {
 foreach ($items as $item) {
     $item_counter++;
 
-    $title = rex_escape($item['title']);
+    $title = naju::escape($item['title']);
     $img_path = $item['REX_MEDIA_1'];
     $content = $item['content'];    // content is rich HTML
     $link = $item['REX_LINK_1'];
