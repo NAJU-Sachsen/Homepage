@@ -78,6 +78,7 @@ $is_ios = str_contains($ua, 'iphone') || str_contains($ua, 'ipad');
 <script src="/js/bootstrap.js"></script>
 <script src="/js/site.js"></script>
 <script src="/js/compat.js"></script>
+<script src="/js/compat.js"></script>
 
 </body>
 </html>
