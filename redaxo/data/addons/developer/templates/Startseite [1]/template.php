@@ -13,7 +13,14 @@ $is_ios = str_contains($ua, 'iphone') || str_contains($ua, 'ipad');
     <link rel="preload" href="/fonts/SourceSansPro-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
     <link rel="preload" href="/fonts/Amaranth-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
     <link rel="icon" href="/assets/favicon.ico">
-    <link rel="stylesheet" href="/css/kernel.css" type="text/css">
+    <link rel="preload" href="/assets/grass-pattern.png" as="image">
+    <link rel="preload" href="/assets/bow-symmetrical.svg" as="image">
+    <link rel="preload" href="/assets/naju-sachsen-logo.webp" as="image">
+    <?php
+    echo '<style>';
+    readfile(rex_path::base('css/kernel.css'));
+    echo '</style>';
+    ?>
 
     REX_TEMPLATE[key=template-head-meta]
 
