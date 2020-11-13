@@ -2,34 +2,58 @@
 <!-- mod_blog_articles -->
 
 <?php
-$blog_id = 'REX_VALUE[id=1 ifempty=all]';
 
-if ($blog_id === 'all') {
-    $n_articles = naju_kvs::getOrInflate('naju.blogs.all.count', "SELECT COUNT(*) AS count FROM naju_blog_article WHERE article_status = 'published'");
-} else {
-    $n_articles = naju_kvs::getOrInflate("naju.blogs.$blog_id.count",
-        "SELECT COUNT(*) AS count FROM naju_blog_article WHERE article_status = 'published' AND article_blog = :blog", ['blog' => $blog_id]);
+$single_article_id = rex_request('blog_article', 'string', '');
+if ($single_article_id && ctype_digit($single_article_id)) {
+    $single_article_id = intval($single_article_id);
 }
 
+$image_col = 'REX_VALUE[id=2 ifempty=focus]' === 'column';
 $sql = rex_sql::factory();
-$offset = rex_get('offset', 'string', '0');
-$offset = ctype_digit($offset) ? intval($offset) : 0;
-$limit = 3;
 $projection = 'article_title, article_subtitle, article_link, article_link_text, article_image, article_content, article_published, article_updated';
-if ($blog_id === 'all') {
-    $query = "SELECT $projection
-              FROM naju_blog_article
-              WHERE article_status = 'published'
-              ORDER BY article_published DESC, article_title ASC
-              LIMIT $limit OFFSET $offset";
-    $sql->setQuery($query);
+
+if ($single_article_id) {
+    $query = "SELECT $projection FROM naju_blog_article WHERE article_id = :id AND (article_status = 'published' OR article_status = 'archived')";
+    $sql->setQuery($query, ['id' => $single_article_id]);
 } else {
-    $query = "SELECT $projection
-              FROM naju_blog_article
-              WHERE article_status = 'published' AND article_blog = :blog
-              ORDER BY article_published DESC, article_title ASC
-              LIMIT $limit OFFSET $offset";
-    $sql->setQuery($query, ['blog' => $blog_id]);
+    $blog_id = 'REX_VALUE[id=1 ifempty=all]';
+
+    if ($blog_id === 'all') {
+        $n_articles = naju_kvs::getOrInflate('naju.blogs.all.count', "SELECT COUNT(*) AS count FROM naju_blog_article WHERE article_status = 'published'");
+    } else {
+        $n_articles = naju_kvs::getOrInflate("naju.blogs.$blog_id.count",
+            "SELECT COUNT(*) AS count FROM naju_blog_article WHERE article_status = 'published' AND article_blog = :blog", ['blog' => $blog_id]);
+    }
+
+    $offset = rex_get('offset', 'string', '0');
+    $offset = ctype_digit($offset) ? intval($offset) : 0;
+    $limit = 3;
+ 
+    if ($blog_id === 'all') {
+        $query = "SELECT $projection
+                FROM naju_blog_article
+                WHERE article_status = 'published'
+                ORDER BY article_published DESC, article_title ASC
+                LIMIT $limit OFFSET $offset";
+        $sql->setQuery($query);
+    } else {
+        $query = "SELECT $projection
+                FROM naju_blog_article
+                WHERE article_status = 'published' AND article_blog = :blog
+                ORDER BY article_published DESC, article_title ASC
+                LIMIT $limit OFFSET $offset";
+        $sql->setQuery($query, ['blog' => $blog_id]);
+    }
+}
+
+if ($image_col) {
+    $img_attributes = ['img-fluid', 'rounded'];
+    $img_col_width = 'col-lg-4';
+    $content_col_width = 'col-lg-8';
+} else {
+    $img_attributes = ['img-fluid', 'rounded', 'd-block', 'w-75', 'mx-auto'];
+    $img_col_width = 'col-lg-12';
+    $content_col_width = 'col-lg-12';
 }
 
 $content = '';
@@ -48,7 +72,7 @@ foreach ($articles as $article) {
     $content .= rex_escape($article['article_title']);
     $subtitle = $article['article_subtitle'];
     if ($subtitle) {
-        $content .= '<small class="news-item-subtitle">' . rex_escape($subtitle) . '</small>';
+        $content .= '<small class="news-item-subtitle d-block">' . rex_escape($subtitle) . '</small>';
     }
     $content .= '</h3>';
 
@@ -68,12 +92,12 @@ foreach ($articles as $article) {
     $image = $article['article_image'];
     if ($image) {
         $image = new naju_image($image);
-        $content .= '<div class="col-sm-12 col-md-4 mb-4 news-image">';
-        $content .=     $image->generatePictureTag(['img-fluid', 'rounded']);
+        $content .= '<div class="col-sm-12 ' . $img_col_width . ' mb-4 news-image">';
+        $content .=     $image->generatePictureTag($img_attributes);
         $content .= '</div>';
     }
 
-    $content .= '<div class="col-sm-12 col-lg-8 news-content">';
+    $content .= '<div class="col-sm-12 ' . $content_col_width . ' news-content">';
     $content .= '   <p class="mb-1 news-item-content">';
     $content .= $article['article_content'];
     $content .= '   </p>';
@@ -95,7 +119,7 @@ $content .= '
         </div>'; // closes the news list row
 
 // show pagination if necessary
-if ($limit < $n_articles) {
+if (!$single_article_id && ($limit < $n_articles)) {
     $content .= '
             <div class="row">
                 <div class="col-12">';
@@ -114,8 +138,6 @@ if ($limit < $n_articles) {
     $content .= '</div>
             </div>'; // closes the pagination row
 }
-
-
 
 $content .= '</div>';   // closes the final container
 

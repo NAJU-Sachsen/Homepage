@@ -1,7 +1,10 @@
 <?php
+$id_blog_select = 1;
+$id_image_display = 2;
+
 $mform = new MForm();
 
-$mform->addSelectField(1);
+$mform->addSelectField($id_blog_select);
 $mform->setLabel('Blog auswählen:');
 $mform->addOption('Beiträge aus allen Blogs', 'all');
 
@@ -20,5 +23,9 @@ if (rex::getUser()->isAdmin()) {
               ORDER BY name';
     $mform->setSqlOptions($query);
 }
+
+$mform->addRadioField($id_image_display, ['focus' => 'Fokus', 'column' => 'Extra Spalte']);
+$mform->setLabel('Bilder anzeigen');
+$mform->setDefaultValue('focus');
 
 echo $mform->show();

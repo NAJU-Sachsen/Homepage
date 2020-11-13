@@ -46,7 +46,7 @@ foreach ($articles as $article) {
     $card .= '  <p class="card-text">' . rex_escape($article['article_intro']) . '</p>';
     $card .= '</div>'; // <div class=card-body>
     $card .= '<footer class="card-footer">';
-    $card .= '  <a class="btn btn-primary" href="' . rex_getUrl($article['blog_page'], null, ['article_id' => $article['article_id']]) . '">Weiterlesen</a>';
+    $card .= '  <a class="btn btn-primary" href="' . rex_getUrl($article['blog_page'], null, ['blog_article' => $article['article_id']]) . '">Weiterlesen</a>';
     $card .= '</footer>';
     $card .= '</article></div>';
 
