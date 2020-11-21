@@ -146,6 +146,15 @@
   display: block;
 }
 
+.news-blog .news-item img {
+  @extend .d-block;
+  @extend .mx-auto;
+  @extend .rounded;
+  width: auto;
+  max-height: 500px;
+  max-width: 75%;
+}
+
 @media screen and (max-width: map-get($grid-breakpoints, 'md') - 1) {
   .news-blog .news-item .news-image,
   .news-blog .news-item .news-content {

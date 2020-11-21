@@ -51,7 +51,7 @@ if ($image_col) {
     $img_col_width = 'col-lg-4';
     $content_col_width = 'col-lg-8';
 } else {
-    $img_attributes = ['img-fluid', 'rounded', 'd-block', 'w-75', 'mx-auto'];
+    $img_attributes = ['img-fluid', 'rounded', 'd-block', 'mx-auto'];
     $img_col_width = 'col-lg-12';
     $content_col_width = 'col-lg-12';
 }
@@ -72,7 +72,7 @@ foreach ($articles as $article) {
     $content .= rex_escape($article['article_title']);
     $subtitle = $article['article_subtitle'];
     if ($subtitle) {
-        $content .= '<small class="news-item-subtitle d-block">' . rex_escape($subtitle) . '</small>';
+        $content .= '<small class="news-item-subtitle d-block text-muted">' . rex_escape($subtitle) . '</small>';
     }
     $content .= '</h3>';
 
