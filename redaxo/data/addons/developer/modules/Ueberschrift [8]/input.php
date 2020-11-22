@@ -9,3 +9,10 @@
         <span class="input-group-addon">(optional)</span>
     </div>
 </div>
+<div class="form-group">
+    <label for="subtitle">Untertitel</label>
+    <div class="input-group">
+        <input type="text" name="REX_INPUT_VALUE[3]" id="subtitle" class="form-control" value="REX_VALUE[3]">
+        <span class="input-group-addon">(optional)</span>
+    </div>
+</div>
