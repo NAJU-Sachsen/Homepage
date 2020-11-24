@@ -18,7 +18,7 @@ if (rex::getUser()->isAdmin()) {
     $query = 'SELECT blog_title as name, blog_id as id FROM naju_blog ORDER BY blog_title';
 } else {
     $user_id = rex::getUser()->getId();
-    $query = 'SELECT blog_title as name, blog_id as id FROM naju_blog JOIN naju_group_accounts ON blog_group = group_id
+    $query = 'SELECT blog_title as name, blog_id as id FROM naju_blog JOIN naju_group_account ON blog_group = group_id
         WHERE account_id = ' . $user_id . ' ORDER BY blog_title';
 }
 $mform->addOption('alle', 'all');
@@ -45,7 +45,7 @@ if (rex::getUser()->isAdmin()) {
     $query = 'SELECT
             CONCAT("[", blog_title , "] ", article_title, " (veröffentlicht ", DATE_FORMAT(article_published, "%d.%m.%y") ,")") as name,
             article_id as id
-        FROM naju_blog_article JOIN naju_blog JOIN naju_group_accounts ON article_blog = blog_id AND blog_group = group_id
+        FROM naju_blog_article JOIN naju_blog JOIN naju_group_account ON article_blog = blog_id AND blog_group = group_id
         WHERE article_status = "published" AND account_id = ' . $user_id . '
         ORDER BY blog_title, article_published, article_updated, article_title';
 }

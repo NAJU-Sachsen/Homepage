@@ -17,7 +17,7 @@ if (rex::getUser()->isAdmin()) {
 } else {
     $user_id = rex::getUser()->getId();
     $query = 'SELECT b.blog_id AS id, CONCAT(b.blog_title, " (", g.group_name, ")") AS name
-              FROM naju_blog b JOIN naju_group_accounts a JOIN naju_local_group g
+              FROM naju_blog b JOIN naju_group_account a JOIN naju_local_group g
               ON b.blog_group = a.group_id AND g.group_id = a.group_id
               WHERE account_id = ' . $user_id .'
               ORDER BY name';
