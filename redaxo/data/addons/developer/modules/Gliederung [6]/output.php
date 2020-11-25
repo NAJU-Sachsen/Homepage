@@ -14,9 +14,10 @@
 </nav>
 
 <script>
+	const sel = '#content hREX_VALUE[1]:not(.page-title)<?= 'REX_VALUE[id=2 ifempty=false]' === 'true' ? '.content-heading' : ''; ?>';
 
 	document.addEventListener('DOMContentLoaded', () => {
-		const headerNodes = document.querySelectorAll('#content hREX_VALUE[1]:not(.page-title)');
+		const headerNodes = document.querySelectorAll(sel);
 		if (!headerNodes) {
 			exit;
 		}

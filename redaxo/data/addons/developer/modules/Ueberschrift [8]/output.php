@@ -11,11 +11,11 @@ if ($subtitle) {
     $subtitle = '<small class="d-block text-muted">' . $subtitle . '</small>';
 }
 
-$meta = '';
+$classes = ' content-heading ';
 if ($this->getValue('art_custom_title') === '|true|' && $raw_level <= 2) {
-    $meta = 'class="page-title"';
+    $classes .= ' page-title ';
 }
 
-echo "<header><$level $meta>" . $content . $subtitle . "</$level></header>";
+echo "<header><$level class='$classes'>" . $content . $subtitle . "</$level></header>";
 
 ?>
