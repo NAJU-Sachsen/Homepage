@@ -1,72 +1,50 @@
 
 <?php
 
-$group_query = <<<EOSQL
-    select group_id, group_name
-    from naju_local_group
-EOSQL;
-$local_groups = rex_sql::factory()->setQuery($group_query)->getArray();
+$mform = new MForm();
 
+$mform->addAlertInfo(<<<EOTXT
+Der Veranstaltungskalender zeigt standardmäßig alle Veranstaltungen des aktuellen Jahres an. Dieses Verhalten lässt
+sich anpassen, sodass der Kalender nur zukünftige Veranstaltungen anzeigt und alle vergangenen Veranstaltungen
+ignoriert. Außerdem kann der Kalender optional auch Veranstaltungen der nächsten Jahre in die Anzeige einbeziehen.
+Wenn die Filteroptionen genutzt werden, bekommen Besucher*innen der Webseite die Möglichkeit, nur Veranstaltungen
+in einem bestimmten Monat oder für eine bestimmte Ortsgruppe anzuzeigen.
+EOTXT
+);
+
+$id_show_group_filter = 1;
+$id_show_month_filter = 2;
+$id_include_future_years = 3;
+$id_group = 4;
+$id_target_group = 5;
+$id_event_type = 6;
+$id_exlude_past = 7;
+
+$mform->addTab('Basiseinstellungen');
+$mform->addSelectField($id_group);
+$mform->addOption('alle', '-1');
+$mform->setSqlOptions('SELECT group_id AS id, group_name AS name FROM naju_local_group ORDER BY group_name');
+$mform->setAttributes(['label' => 'Ortsgruppe auswählen']);
+$mform->addHiddenField($id_include_future_years, 'false');
+$mform->addCheckboxField($id_include_future_years, ['true' => 'Veranstaltungen der nächsten Jahre auch anzeigen'], ['label' => '']);
+$mform->addHiddenField($id_exlude_past, 'false');
+$mform->addCheckboxField($id_exlude_past, ['true' => 'vergangene Veranstaltungen ausblenden'], ['label' => '']);
+$mform->closeTab();
+
+$mform->addTab('Kalender anpassen');
+$target_groups = ['children' => 'Kinder', 'teens' => 'Jugendliche', 'families' => 'Familien', 'young_adults' => 'junge Erwachsene'];
+$mform->addSelectField($id_target_group, $target_groups, ['label' => 'Zielgruppe', 'multiple' => 'multiple', 'class' => 'selectpicker']);
+$event_types = ['camp' => 'Camp', 'workshop' => 'Workshop', 'work_assignment' => 'Arbeitseinsatz',
+    'group_meeting' => 'Aktiventreffen', 'other' => 'sonstige Veranstaltungen'];
+$mform->addSelectField($id_event_type, $event_types, ['label' => 'Veranstaltungsart', 'multiple' => 'multiple', 'class' => 'selectpicker']);
+$mform->closeTab();
+
+$mform->addTab('Filter anzeigen');
+$mform->addHiddenField($id_show_group_filter, 'false');
+$mform->addCheckboxField($id_show_group_filter, ['true' => 'Ortsgruppen-Filter anzeigen'], ['label' => '']);
+$mform->addHiddenField($id_show_month_filter, 'false');
+$mform->addCheckboxField($id_show_month_filter, ['true' => 'Monats-Filter anzeigen'], ['label' => '']);
+$mform->closeTab();
+
+echo $mform->show();
 ?>
-
-<div class="form-group">
-    <div class="checkbox">
-        <label>
-            <input type="hidden" name="REX_INPUT[1]" value="false">
-            <input type="checkbox" name="REX_INPUT_VALUE[1]" value="true" <?= "REX_VALUE[id=1 ifempty='']" == 'true' ? 'checked' : '' ?>>
-            Ortsgruppen-Filter anzeigen
-        </label>
-    </div>
-</div>
-<div class="form-group">
-    <div class="checkbox">
-        <label>
-            <input type="hidden" name="REX_INPUT[2]" value="false">
-            <input type="checkbox" name="REX_INPUT_VALUE[2]" value="true" <?= "REX_VALUE[id=2 ifempty='']" == 'true' ? 'checked' : '' ?>>
-            Monats-Filter anzeigen
-        </label>
-    </div>
-</div>
-<div class="form-group">
-    <div class="checkbox">
-        <label>
-            <input type="hidden" name="REX_INPUT[3]" value="false">
-            <input type="checkbox" name="REX_INPUT_VALUE[3]" value="true" <?= "REX_VALUE[id=3 ifempty='']" == 'true' ? 'checked' : ''?>>
-            alle zukünftigen Veranstaltungen anzeigen (nicht nur des aktuellen Jahres)
-        </label>
-    </div>
-</div>
-<div class="form-group">
-    <label for="select-local-group">Ortsgruppe auswählen</label>
-    <select class="form-control" name="REX_INPUT_VALUE[4]" id="select-local-group">
-        <option value="-1">alle</option>
-
-        <?php foreach ($local_groups as $group) : ?>
-        <option value="<?= rex_escape($group['group_id']); ?>" <?= "REX_VALUE[id=4 ifempty='']" == $group['group_id'] ? 'selected' : '' ?>>
-					<?= rex_escape($group['group_name']); ?>
-				</option>
-        <?php endforeach; ?>
-
-    </select>
-</div>
-<div class="form-group">
-    <label for="select-event-target-group">Nur Veranstaltungen mit folgender Zielgruppe anzeigen:</label>
-    <select class="form-control" name="REX_INPUT_VALUE[5]" id="select-event-target-group">
-        <option value="" <?= 'REX_VALUE[5]' == '' ? 'selected' : ''; ?>>deaktiviert</option>
-        <option value="children" <?= 'REX_VALUE[5]' == 'children' ? 'selected' : ''; ?>>Kinder</option>
-        <option value="teens" <?= 'REX_VALUE[5]' == 'teens' ? 'selected' : ''; ?>>Jugendliche</option>
-        <option value="families" <?= 'REX_VALUE[5]' == 'families' ? 'selected' : ''; ?>>Familien</option>
-        <option value="young_adults" <?= 'REX_VALUE[5]' == 'young_adults' ? 'selected' : ''; ?>>junge Erwachsene</option>
-    </select>
-</div>
-<div class="form-group">
-    <label for="select-event-type">Nur folgende Veranstaltungsarten einbinden:</label>
-    <select class="form-control" name="REX_INPUT_VALUE[6]" id="select-event-type">
-        <option value="" <?= 'REX_VALUE[6]' == '' ? 'selected' : ''; ?>>deaktiviert</option>
-        <option value="camp" <?= 'REX_VALUE[6]' == 'camp' ? 'selected' : ''; ?>>Camp</option>
-        <option value="workshop" <?= 'REX_VALUE[6]' == 'workshop' ? 'selected' : ''; ?>>Workshop</option>
-        <option value="work_assignment" <?= 'REX_VALUE[6]' == 'work_assignment' ? 'selected' : ''; ?>>Arbeitseinsatz</option>
-        <option value="group_meeting" <?= 'REX_VALUE[6]' == 'group_meeting' ? 'selected' : ''; ?>>Aktiventreffen</option>
-        <option value="other" <?= 'REX_VALUE[3]' == 'other' ? 'selected' : ''; ?>>Sonstige Veranstaltungen</option>
-    </select>
-</div>
