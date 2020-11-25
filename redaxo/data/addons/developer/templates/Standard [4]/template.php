@@ -33,7 +33,7 @@ $is_ios = str_contains($ua, 'iphone') || str_contains($ua, 'ipad');
     <div id="content-wrapper" class="col-lg-8 offset-lg-2 col-md-12">
       <!-- Main content -->
       <main id="content" class="clearfix">
-        <?php if ($this->getValue('art_custom_title') === '|false|') : ?>
+        <?php if ($this->getValue('art_custom_title') !== '|true|') : ?>
         <header>
           <h2 class="page-title"><?= rex_escape($this->getValue('name')); ?></h2>
         </header>
