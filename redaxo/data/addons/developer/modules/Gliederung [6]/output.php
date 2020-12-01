@@ -29,7 +29,16 @@
 			if (!header.id) {
 
 				// the ID will be based on the header's content
-				let generatedId = header.innerText;
+				let generatedId = null;
+				for (const headerContent of header.childNodes) {
+					if (headerContent.nodeType === Node.TEXT_NODE) {
+						generatedId = headerContent.nodeValue;
+						break;
+					}
+				}
+				if (!generatedId) {
+					generatedId = header.innerText;
+				}
 
 				// but in a simplified version with all lower case
 				generatedId = generatedId.toLowerCase();
@@ -67,7 +76,17 @@
 				const menuEntry = template.content.cloneNode(true);
 				const anchor = menuEntry.querySelector('a');
 				anchor.href = '#' + heading.id;
-				anchor.innerText = heading.innerText;
+				let headingText = null;
+				for (const headingContent of heading.childNodes) {
+					if (headingContent.nodeType === Node.TEXT_NODE) {
+						headingText = headingContent.nodeValue;
+						break;
+					}
+				}
+				if (!headingText) {
+					headingText = heading.innerText;
+				}
+				anchor.innerText = headingText;
 				nav.appendChild(menuEntry);
 			}
 		}
