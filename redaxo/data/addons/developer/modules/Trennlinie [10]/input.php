@@ -16,7 +16,7 @@
 <div class="form-group">
     <input type="hidden" name="REX_INPUT_VALUE[3]" value="false">
     <label>
-        <input type="checkbox" name="REX_INPUT_VALUE[3]" value="true">
+        <input type="checkbox" name="REX_INPUT_VALUE[3]" value="true" <?= 'REX_VALUE[id=3 default=false]' === 'true' ? 'checked' : ''; ?>>
         Trennlinie anzeigen?
     </label>
 </div>
