@@ -14,7 +14,7 @@ if ($show_newest) {
     $query = 'SELECT article_title, article_id, article_image, article_intro, blog_page
         FROM naju_blog_article JOIN naju_blog ON article_blog = blog_id
         WHERE article_status = "published" ' . $criteria . '
-        ORDER BY article_published
+        ORDER BY article_published DESC
         LIMIT ' . $newest_count;
     $articles = $sql->getArray($query);
 } else {
@@ -27,7 +27,7 @@ if ($show_newest) {
     $query = 'SELECT article_title, article_id, article_image, article_intro, blog_page
         FROM naju_blog_article JOIN naju_blog ON article_blog = blog_id
         WHERE article_id IN (' . $article_ids . ') AND article_status = "published"
-        ORDER BY article_published';
+        ORDER BY article_published DESC';
     $articles = $sql->getArray($query);
 }
 
