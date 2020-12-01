@@ -64,6 +64,10 @@ $content .= '
         <div class="row">    
             <div class="col-12 list-group list-group-flush news-blog">';
 
+if (!$articles) {
+    $content .= '<p class="alert alert-secondary">Hier erscheint bald der erste Eintrag!</p>';
+}
+
 foreach ($articles as $article) {
     $content .= '
         <article class="list-group-item news-item">
