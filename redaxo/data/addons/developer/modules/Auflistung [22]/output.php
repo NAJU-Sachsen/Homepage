@@ -82,10 +82,10 @@ $link_template = '';
 
 $img_styles = '';
 if ($img_width) {
-    $img_styles .= ' width: ' . rex_escape($img_width) . 'px; ';
+    $img_styles .= ' width: ' . rex_escape($img_width) . 'px; max-width: 100%;';
 }
 if ($img_height) {
-    $img_styles .= ' height: ' . rex_escape($img_height) . 'px; ';
+    $img_styles .= ' max-height: ' . rex_escape($img_height) . 'px; max-width: 100%;';
 }
 
 if ($display_style === 'media-list') {
