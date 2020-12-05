@@ -145,7 +145,17 @@ foreach ($items as $item) {
             }
             $item_img_effects = array_merge($image_classes, $item_img_effects);
 
-            $formatted_image = str_replace($img_tag_token, $img->generatePictureTag($item_img_effects, '', ['style' => $img_styles]), $image_template);
+            if ($img_width) {
+                $src_sizes = ['sizes' => rex_escape($img_width) . 'px'];
+            } elseif ($img_height) {
+                $size_ratio = $img_height / $img->height();
+                $width = ceil($size_ratio * $img->width());
+                $src_sizes = ['sizes' => $width . 'px'];
+            } else {
+                $src_sizes = ['sizes' => '25vw'];
+            }
+            $picture_tag = $img->generatePictureTag($item_img_effects, '', ['style' => $img_styles], $src_sizes);
+            $formatted_image = str_replace($img_tag_token, $picture_tag, $image_template);
 
             $formatted_item = str_replace($img_token, $formatted_image, $formatted_item);
             $formatted_item = str_replace($content_width_token, $reduced_width, $formatted_item);
