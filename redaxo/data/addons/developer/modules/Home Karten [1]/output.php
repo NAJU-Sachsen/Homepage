@@ -61,7 +61,7 @@ if (rex::isBackend()) {
 				$card1 = naju_rex_var::toArray('REX_VALUE[1]');
 				$img1 = new naju_image('REX_MEDIA[id=1 ifempty=default-card-image.jpg]');
 				?>
-				<div class="card-body-wrapper webp-fallback" style="background-image: url('<?= $img1->optimizedUrl(false); ?>');" aria-label="<?= rex_escape($img1->altText()); ?>" data-webp-fallback="<?= $img1->url(); ?>">
+				<div class="card-body-wrapper webp-fallback" style="background-image: url('<?= $img1->optimizedUrl(false, 800); ?>');" aria-label="<?= rex_escape($img1->altText()); ?>" data-webp-fallback="<?= $img1->url(); ?>">
 					<div class="card-body">
 						<h2 class="display-8"><?= rex_escape($card1['title']); ?></h2>
 						<hr class="my-4">
@@ -78,7 +78,7 @@ if (rex::isBackend()) {
 				$card2 = naju_rex_var::toArray('REX_VALUE[2]');
 				$img2 = new naju_image('REX_MEDIA[id=2 ifempty=default-card-image.jpg]');
 				?>
-				<div class="card-body-wrapper webp-fallback" style="background-image: url('<?= $img2->optimizedUrl(false); ?>');" aria-label="<?= rex_escape($img2->altText()); ?>" data-webp-fallback="<?= $img2->url(); ?>">
+				<div class="card-body-wrapper webp-fallback" style="background-image: url('<?= $img2->optimizedUrl(false, 800); ?>');" aria-label="<?= rex_escape($img2->altText()); ?>" data-webp-fallback="<?= $img2->url(); ?>">
 					<div class="card-body">
 						<h2 class="display-8"><?= rex_escape($card2['title']); ?></h2>
 						<hr class="my-4">
@@ -96,7 +96,7 @@ if (rex::isBackend()) {
 				$card3 = naju_rex_var::toArray('REX_VALUE[3]');
 				$img3 = new naju_image('REX_MEDIA[id=3 ifempty=default-card-image.jpg]');
 				?>
-				<div class="card-body-wrapper webp-fallback" style="background-image: url('<?= $img3->optimizedUrl(false); ?>');" aria-label="<?= rex_escape($img3->altText()); ?>" data-webp-fallback="<?= $img3->url(); ?>">
+				<div class="card-body-wrapper webp-fallback" style="background-image: url('<?= $img3->optimizedUrl(false, 800); ?>');" aria-label="<?= rex_escape($img3->altText()); ?>" data-webp-fallback="<?= $img3->url(); ?>">
 					<div class="card-body">
 						<h2 class="display-8"><?= rex_escape($card3['title']); ?></h2>
 						<hr class="my-4">
@@ -115,7 +115,7 @@ if (rex::isBackend()) {
 				$card4 = naju_rex_var::toArray('REX_VALUE[4]');
 				$img4 = new naju_image('REX_MEDIA[id=4 ifempty=default-card-image.jpg]');
 				?>
-				<div class="card-body-wrapper webp-fallback" style="background-image: url('<?= $img4->optimizedUrl(false); ?>');" aria-label="<?= rex_escape($img4->altText()); ?>" data-webp-fallback="<?= $img4->url(); ?>">
+				<div class="card-body-wrapper webp-fallback" style="background-image: url('<?= $img4->optimizedUrl(false, 800); ?>');" aria-label="<?= rex_escape($img4->altText()); ?>" data-webp-fallback="<?= $img4->url(); ?>">
 					<div class="card-body">
 						<h2 class="display-8"><?= rex_escape($card4['title']); ?></h2>
 						<hr class="my-4">
