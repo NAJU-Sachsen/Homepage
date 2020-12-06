@@ -40,14 +40,21 @@ switch($img_integrate) {
 }
 
 $img_dimens = array();
+$src_attrs = array();
 if ($img_width > 0) {
     $img_dimens['width'] = $img_width;
+    if ($img_width > 800) {
+        $src_attrs['sizes'] = '75vw';
+    }
 }
 
 if ($img_height > 0) {
     $img_dimens['height'] = $img_height;
 } else {
     $img_class .= 'img-fluid ';
+    if (!$img_width) {
+        $src_attrs['sizes'] = '75vw';
+    }
 }
 
 $img_link = 'REX_LINK[id=1]';
@@ -57,7 +64,7 @@ if ($img_link) {
 }
 
 if ($img_src) {
-    echo $img->generatePictureTag([$img_class], '', $img_dimens);
+    echo $img->generatePictureTag([$img_class], '', $img_dimens, $src_attrs);
 }
 
 if ($img_link) {
