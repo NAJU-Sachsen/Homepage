@@ -37,7 +37,8 @@ if ('events' === rex_get('filter')) {
             $end_date = $event_year . '-' . $req_month . '-31';
         }
     }
-} else if ($include_all_future_events) {
+}
+if ($include_all_future_events && rex_get('month', 'int', -1) === -1) {
     $end_date = '9999-12-31';
 }
 
