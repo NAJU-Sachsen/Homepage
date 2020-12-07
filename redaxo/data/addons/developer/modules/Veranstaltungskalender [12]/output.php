@@ -10,13 +10,18 @@ $include_all_future_events = 'REX_VALUE[id=3 ifempty="false"]' === 'true';
 $ignore_past_events = 'REX_VALUE[id=7 ifempty="false"]' === 'true';
 $month_filter = 'REX_VALUE[id=2 ifempty="false"]' === 'true';
 $any_user_filter = $local_group_filter || $month_filter;
+$event_year = 'REX_VALUE[id=8]';
+
+if (!$event_year) {
+    $event_year = date('Y');
+}
 
 if ($ignore_past_events) {
-    $start_date = date('Y-m-d');
+    $start_date = $event_year . '-' . date('m-d');
 } else {
-    $start_date = date('Y') . '-01-01';
+    $start_date = $event_year . '-01-01';
 }
-$end_date = date('Y') . '-12-31';
+$end_date = $event_year . '-12-31';
 $months = array('Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
     'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember');
 
@@ -28,8 +33,8 @@ if ('events' === rex_get('filter')) {
         $req_month = rex_get('month', 'int');
 
         if ($req_month != -1) {
-            $start_date = date('Y') . '-' . $req_month . '-01';
-            $end_date = date('Y') . '-' . $req_month . '-31';
+            $start_date = $event_year . '-' . $req_month . '-01';
+            $end_date = $event_year . '-' . $req_month . '-31';
         }
     }
 } else if ($include_all_future_events) {
@@ -76,6 +81,8 @@ if ($local_group == -1) {
             group_name,
             event_start,
             event_end,
+            event_start_time,
+            event_end_time,
             event_description,
             event_location,
             event_target_group,
@@ -103,6 +110,8 @@ EOSQL;
             group_name,
             event_start,
             event_end,
+            event_start_time,
+            event_end_time,
             event_description,
             event_location,
             event_target_group,
@@ -199,21 +208,32 @@ $event_counter = 0;
                             <?php
                             $start_date = $event['event_start'];
                             $end_date = $event['event_end'];
+                            $start_time = $event['event_start_time'];
+                            $end_time = $event['event_end_time'];
 
                             if (!$end_date) {
-                                echo rex_escape(DateTime::createFromFormat(naju_event_calendar::$DB_DATE_FMT, $start_date)->format('d.m.y'));
+                                echo DateTime::createFromFormat(naju_event_calendar::$DB_DATE_FMT, $start_date)->format('d.m.y');
+
+                                if ($start_time) {
+                                    echo ' ' . DateTime::createFromFormat('H:i:s', $start_time)->format('H:i');
+                                    if ($end_time) {
+                                        echo ' &dash; ' . DateTime::createFromFormat('H:i:s', $end_time)->format('H:i');
+                                    }
+                                    echo ' Uhr';
+                                }
+
                             } else {
                                 $start_date = DateTime::createFromFormat(naju_event_calendar::$DB_DATE_FMT, $start_date);
                                 $end_date = DateTime::createFromFormat(naju_event_calendar::$DB_DATE_FMT, $end_date);
 
                                 if ($start_date->format('Y') == $end_date->format('Y')) {
                                     if ($start_date->format('m') == $end_date->format('m')) {
-                                        echo rex_escape($start_date->format('d.')) . '&dash;' . rex_escape($end_date->format('d.m.y'));
+                                        echo $start_date->format('d.') . '&dash;' . $end_date->format('d.m.y');
                                     } else {
-                                        echo rex_escape($start_date->format('d.m.')) . '&dash;' . rex_escape($end_date->format('d.m.y'));
+                                        echo $start_date->format('d.m.') . '&dash;' . $end_date->format('d.m.y');
                                     }
                                 } else {
-                                    echo rex_escape($start_date->format('d.m.y')) . '&dash;' . rex_escape($end_date->format('d.m.y'));
+                                    echo $start_date->format('d.m.y') . '&dash;' . $end_date->format('d.m.y');
                                 }
 
                             }
@@ -223,7 +243,7 @@ $event_counter = 0;
 					<!-- TODO: insert group link -->
                     <small class="text-muted"><?= rex_escape($event['group_name']); ?></small>
                 </header>
-                
+
                 <?php if ($event['event_description']) : ?>
                 <?php $event_description_id = 'event-description-' . $slice_id . '-' . $event_counter; ?>
                 <div class="event-description-wrapper">

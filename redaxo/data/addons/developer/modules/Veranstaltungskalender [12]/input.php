@@ -19,14 +19,20 @@ $id_group = 4;
 $id_target_group = 5;
 $id_event_type = 6;
 $id_exlude_past = 7;
+$id_event_year = 8;
 
 $mform->addTab('Basiseinstellungen');
 $mform->addSelectField($id_group);
 $mform->addOption('alle', '-1');
 $mform->setSqlOptions('SELECT group_id AS id, group_name AS name FROM naju_local_group ORDER BY group_name');
 $mform->setAttributes(['label' => 'Ortsgruppe auswählen']);
+$mform->closeTab();
+
+$mform->addTab('Zeitraum');
+$mform->addInputField('number', $id_event_year, ['label' => 'Jahr auswählen']);
 $mform->addHiddenField($id_include_future_years, 'false');
 $mform->addCheckboxField($id_include_future_years, ['true' => 'Veranstaltungen der nächsten Jahre auch anzeigen'], ['label' => '']);
+$mform->addDescription('Falls oben ein Jahr ebenfalls ausgewählt wurde, wird dieses als "Startjahr" verwendet.');
 $mform->addHiddenField($id_exlude_past, 'false');
 $mform->addCheckboxField($id_exlude_past, ['true' => 'vergangene Veranstaltungen ausblenden'], ['label' => '']);
 $mform->closeTab();
