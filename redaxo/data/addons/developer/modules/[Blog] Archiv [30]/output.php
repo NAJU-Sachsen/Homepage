@@ -62,7 +62,7 @@ if ($articles) {
 
         if ($article['article_image']) {
             $img = new naju_image($article['article_image']);
-            $content .= $img->generatePictureTag(['d-block', 'mx-auto', 'w-75', 'mb-3']);
+            $content .= $img->generatePictureTag(['d-block', 'mx-auto', 'w-75', 'mb-3'], ['sizes' => '70vw']);
         }
 
         $content .=         $article['article_content'];
