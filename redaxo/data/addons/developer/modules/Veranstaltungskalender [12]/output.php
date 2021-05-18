@@ -249,7 +249,7 @@ $event_counter = 0;
                 <?php $event_description_id = 'event-description-' . $slice_id . '-' . $event_counter; ?>
                 <div class="event-description-wrapper">
                     <p class="event-description collapse mb-1" id="<?= $event_description_id ?>" aria-expanded="false">
-                        <?= rex_escape($event['event_description']); ?>
+                        <?= naju_article::richFormatText(rex_escape($event['event_description'])); ?>
                     </p>
                     <a href="#<?= $event_description_id; ?>" class="float-right further-reading mr-3 mb-3"
                         data-toggle="collapse" role="button" aria-expanded="false" aria-controls="<?= $event_description_id; ?>">
@@ -304,7 +304,7 @@ $event_counter = 0;
                     <?php if ($event['event_registration']) : ?>
                     <tr class="row">
                         <th class="col-lg-2">Anmeldung?</th>
-                        <td class="col-lg-10"><?= naju_article::make_emails_anchors(rex_escape($event['event_registration'])); ?></td>
+                        <td class="col-lg-10"><?= naju_article::richFormatText(rex_escape($event['event_registration'])); ?></td>
                     </tr>
                     <?php endif; ?>
 
