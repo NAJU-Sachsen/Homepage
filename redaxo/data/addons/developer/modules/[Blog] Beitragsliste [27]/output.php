@@ -1,4 +1,3 @@
-
 <!-- mod_blog_articles -->
 
 <?php
@@ -30,8 +29,10 @@ if ($single_article_id) {
     $limit = 3;
  
     if ($blog_id === 'all') {
-        $query = "SELECT $projection
+        $query = "SELECT $projection, blog_title, group_name
                 FROM naju_blog_article
+                    JOIN naju_blog ON article_blog = blog_id
+                    JOIN naju_local_group ON blog_group = group_id
                 WHERE article_status = 'published'
                 ORDER BY article_published DESC, article_title ASC
                 LIMIT $limit OFFSET $offset";
@@ -81,6 +82,10 @@ foreach ($articles as $article) {
     $content .= '</h3>';
 
     $content .= '<small class="text-muted news-item-meta">';
+    if ($blog_id == 'all') {
+        $content .= rex_escape($article['group_name']) . ': ';
+        $content .= rex_escape($article['blog_title']) . ', ';
+    }
     $published = $article['article_published'];
     $updated = $article['article_updated'];
     if ($updated) {
