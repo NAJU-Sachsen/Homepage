@@ -1,4 +1,3 @@
-
 <!-- mod_upcoming_events -->
 
 <?php
@@ -100,10 +99,13 @@ $plain_list = 'REX_VALUE[id=5 ifempty=false]' == 'false'; // REX_VAL 5 is 'forma
     <dd class="event-announcement">
         <?php
         if ($event['event_link']) {
-            echo '<a href="' . rex_getUrl($event['event_link']) . '" class="event-link">' . rex_escape($event['event_name']) . '</a> (' . rex_escape($event['group_name']) . ')';
+            echo '<a href="' . rex_getUrl($event['event_link']) . '" class="event-link">' . rex_escape($event['event_name']) . '</a> ';
         } else {
-            echo rex_escape($event['event_name']) . ' (' . rex_escape($event['group_name']) . ')';
+            echo rex_escape($event['event_name']);  
         }
+        if ($local_group == -1) {
+                echo ' (' . rex_escape($event['group_name']) . ')';
+            }
         ?>
     </dd>
     <?php endforeach; ?>
