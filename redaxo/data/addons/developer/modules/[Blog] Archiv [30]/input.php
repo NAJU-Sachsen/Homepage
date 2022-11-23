@@ -2,7 +2,7 @@
 
 $id_blog = 1;
 
-$mform = new MForm();
+$mform = MForm::factory();
 
 $mform->addSelectField($id_blog);
 $mform->setLabel('Blog auswählen');

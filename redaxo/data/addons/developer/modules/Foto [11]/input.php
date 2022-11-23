@@ -1,4 +1,3 @@
-
 <?php
 $img_id = 1;
 $link_id = 1;
@@ -17,25 +16,25 @@ $integrate_select = ['no-integrate' => 'nicht integrieren',
     'integrate-left' => 'links abbilden',
     'integrate-right' => 'rechts abbilden'];
 
-$mform = new MForm();
+$mform = MForm::factory();
 
-$mform->addTab('Bild');
-$mform->addMediaField($img_id, ['preview' => '1', 'types' => naju_image::ALLOWED_TYPES, 'label' => 'Bild auswählen']);
-$mform->addLinkField($link_id, ['label' => 'Verlinkung hinzufügen?']);
-$mform->closeTab();
+$mform_tab = MForm::factory();
+$mform_tab->addMediaField($img_id, ['preview' => '1', 'types' => naju_image::ALLOWED_TYPES, 'label' => 'Bild auswählen']);
+$mform_tab->addLinkField($link_id, ['label' => 'Verlinkung hinzufügen?']);
+$mform->addTabElement('Bild', $mform_tab, true);
 
-$mform->addTab('Bildeffekte');
-$mform->addHiddenField($activate_effects_id, 'false');
-$mform->addCheckboxField($activate_effects_id, ['true' => 'tolle Bildeffekte aktivieren'],  ['label' => 'Aktivieren?']);
-$mform->addSelectField($effects_kind_id, $effects_kind_select, ['label' => 'Effektfarbe:']);
-$mform->addHiddenField($effects_rotate_id, 'true');
-$mform->addCheckboxField($effects_rotate_id, ['false' => 'Rotation ausschalten'], ['label' => 'Weiteres']);
-$mform->closeTab();
+$mform_tab = MForm::factory();
+$mform_tab->addHiddenField($activate_effects_id, 'false');
+$mform_tab->addCheckboxField($activate_effects_id, ['true' => 'tolle Bildeffekte aktivieren'],  ['label' => 'Aktivieren?']);
+$mform_tab->addSelectField($effects_kind_id, $effects_kind_select, ['label' => 'Effektfarbe:']);
+$mform_tab->addHiddenField($effects_rotate_id, 'true');
+$mform_tab->addCheckboxField($effects_rotate_id, ['false' => 'Rotation ausschalten'], ['label' => 'Weiteres']);
+$mform->addTabElement('Bildeffekte', $mform_tab);
 
-$mform->addTab('Optionen');
-$mform->addInputField('number', $width_id, ['label' => 'Breite', 'min' => -1]);
-$mform->addInputField('number', $height_id, ['label' => 'Höhe', 'min' => -1]);
-$mform->addSelectField(3, $integrate_select, ['label' => 'Bild in den Textfluss integrieren?']);
-$mform->closeTab();
+$mform_tab = MForm::factory();
+$mform_tab->addInputField('number', $width_id, ['label' => 'Breite', 'min' => -1]);
+$mform_tab->addInputField('number', $height_id, ['label' => 'Höhe', 'min' => -1]);
+$mform_tab->addSelectField(3, $integrate_select, ['label' => 'Bild in den Textfluss integrieren?']);
+$mform->addTabElement('Optionen', $mform_tab);
 
 echo $mform->show();

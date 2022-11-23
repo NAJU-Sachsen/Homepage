@@ -1,4 +1,3 @@
-
 <?php
 
 $id_newest_count = 1;
@@ -6,14 +5,15 @@ $id_manual_select = 2;
 $id_show_newest = 3;
 $id_blog_select = 4;
 
-$mform = new MForm();
+$mform = MForm::factory();
 
 // newest selection
-$mform->addTab('Neueste Artikel anzeigen');
-$mform->addHiddenField($id_show_newest, 'false');
-$mform->addCheckboxField($id_show_newest, ['true' => 'Automatisch die neuesten Artikel anzeigen'], ['label' => '']);
-$mform->addSelectField($id_blog_select);
-$mform->setLabel('Blog auswählen');
+$mform_tab = MForm::factory();
+$mform_tab->addHiddenField($id_show_newest, 'false');
+$mform_tab->addCheckboxField($id_show_newest, ['true' => 'Automatisch die neuesten Artikel anzeigen'], ['label' => '']);
+$mform_tab->addSelectField($id_blog_select);
+$mform_tab->setLabel('Blog auswählen');
+
 if (rex::getUser()->isAdmin()) {
     $query = 'SELECT CONCAT(blog_title, " (", group_name, ")") as name, blog_id as id
         FROM naju_blog JOIN naju_local_group ON blog_group = group_id ORDER BY blog_title';
@@ -22,17 +22,17 @@ if (rex::getUser()->isAdmin()) {
     $query = 'SELECT blog_title as name, blog_id as id FROM naju_blog JOIN naju_group_account ON blog_group = group_id
         WHERE account_id = ' . $user_id . ' ORDER BY blog_title';
 }
-$mform->addOption('alle', 'all');
-$mform->setSqlOptions($query);
-$mform->addInputField('number', $id_newest_count, ['label' => 'Anzahl', 'min' => '2']);
-$mform->closeTab();
+$mform_tab->setOption('all', 'alle');
+$mform_tab->setSqlOptions($query);
+$mform_tab->addInputField('number', $id_newest_count, ['label' => 'Anzahl', 'min' => '2']);
+$mform->addTabElement('Neueste Artikel anzeigen', $mform_tab, true);
 
 // manual selection
-$mform->addTab('Manuell auswählen');
-$mblock = new MForm();
-$mblock->addFieldset('Artikel');
-$mblock->addSelectField("$id_manual_select.0,article_id");
-$mblock->setLabel('Auswählen:');
+$mform_tab = MForm::factory();
+$mblock = MForm::factory();
+$mblock_fieldset = MForm::factory();
+$mblock_fieldset->addSelectField("$id_manual_select.0,article_id");
+$mblock_fieldset->setLabel('Auswählen:');
 
 if (rex::getUser()->isAdmin()) {
     $query = 'SELECT
@@ -50,10 +50,11 @@ if (rex::getUser()->isAdmin()) {
         WHERE article_status = "published" AND account_id = ' . $user_id . '
         ORDER BY blog_title, article_published, article_updated, article_title';
 }
-$mblock->setSqlOptions($query);
-$mblock->setAttributes(['class' => 'selectpicker', 'data-live-search' => 'true']);
+$mblock_fieldset->setSqlOptions($query);
+$mblock_fieldset->setAttributes(['class' => 'selectpicker', 'data-live-search' => 'true']);
 
-$mform->addHtml(MBlock::show($id_manual_select, $mblock->show(), ['min' => '2']));
-$mform->closeTab();
+$mblock->addFieldsetArea('Artikel', $mblock_fieldset);
+$mform_tab->addHtml(MBlock::show($id_manual_select, $mblock->show(), ['min' => '2']));
+$mform->addTabElement('Manuell auswählen', $mform_tab);
 
 echo $mform->show();
