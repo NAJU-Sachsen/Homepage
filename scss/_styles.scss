@@ -31,10 +31,14 @@
   transform: rotate(-1deg);
 }
 
+figure figcaption {
+  font-size: 0.9em;
+}
+
 .diashow {
   padding: 10px;
   border-radius: 10px;
-  transition: all .4s ease; 
+  transition: all .4s ease;
 }
 
 .diashow:hover {
@@ -103,11 +107,15 @@
   margin-bottom: 1rem;
 }
 
+.event-calendar .event .event-header .event-title {
+  color: $light-green;
+}
+
 .event-calendar .event .event-description.collapse:not(.show) {
   display: block;
 }
 
-@media screen and (max-width: map-get($grid-breakpoints, 'md') - 1) {
+@media screen and (max-width: (map-get($grid-breakpoints, 'md') - 1)) {
 
   $n-lines: 2;
   $event-description-collapsed-height: $default-line-height-factor * $font-size-base * $n-lines - 0.4 * $default-line-height-factor;
@@ -175,7 +183,7 @@
   max-width: 75%;
 }
 
-@media screen and (max-width: map-get($grid-breakpoints, 'md') - 1) {
+@media screen and (max-width: (map-get($grid-breakpoints, 'md') - 1)) {
   .news-blog .news-item .news-image,
   .news-blog .news-item .news-content {
     padding-left: 0;

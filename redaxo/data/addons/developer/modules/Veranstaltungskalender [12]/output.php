@@ -194,7 +194,7 @@ $event_counter = 0;
             ?>
             <article class="list-group-item event">
                 <header class="d-flex w-100 justify-content-between event-header">
-                    <h3 class="mb-1 text-left">
+                    <h3 class="mb-1 text-left event-title">
                         <?php
                         if ($event['event_type'] == 'work_assignment') {
                             echo 'Arbeitseinsatz: ';
