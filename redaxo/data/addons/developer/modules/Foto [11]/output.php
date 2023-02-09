@@ -27,17 +27,22 @@ if ($fancy_effects) {
     }
 }
 
+$img_float = "";
+$floating_img = false;
 switch($img_integrate) {
     case 'integrate-left':
-        $img_class .= ' float-left mr-4 ';
+        $img_float = ' float-left mr-4 ';
+        $floating_img = true;
         break;
     case 'integrate-right':
-        $img_class .= ' float-right ml-4 ';
+        $img_float = ' float-right ml-4 ';
+        $floating_img = true;
         break;
     case 'no-integrate':
         // fall through
     default:
-        $img_class .= ' d-block mx-auto ';
+        $img_float = ' d-block mx-auto ';
+        $floating_img = false;
         break;
 }
 
@@ -66,17 +71,23 @@ if ($img_link) {
     echo '<a href="' . rex_getUrl($img_link) . '" class="img-link">';
 }
 if ($show_author) {
-    echo '<figure class="clearfix ' . $img_class_base .'">';
+    $float_option = $floating_img ? $img_float : 'clearfix';
+    echo '<figure class="' . $float_option . ' ' . $img_class_base .'">';
+    if (!$floating_img) {
+        $img_class .= $img_class_base . $img_float;
+    }
+} else {
+    $img_class .= $img_class_base . $img_float;
 }
 
 if ($img_src) {
-    $effective_classes = $show_author ? [$img_class] : [$img_class_base, $img_class];
-    echo $img->generatePictureTag($effective_classes, '', $img_dimens, $src_attrs, false);
+    echo $img->generatePictureTag([$img_class], '', $img_dimens, $src_attrs, false);
 }
 
 // close preambles
 if ($show_author) {
-    echo '<figcaption class="float-right mr-2">Foto: ' . rex_escape($img->author()) . '</figcaption>';
+    $float_option = $floating_img ? '' : 'float-right';
+    echo '<figcaption class="' . $float_option . ' mr-2">Foto: ' . rex_escape($img->author()) . '</figcaption>';
     echo '</figure>';
 }
 if ($img_link) {
