@@ -8,8 +8,10 @@ $img_width = 'REX_VALUE[id=1 ifempty=-1]';
 $img_height = 'REX_VALUE[id=2 ifempty=-1]';
 $img_integrate = 'REX_VALUE[id=3 ifempty=no-integrate]';
 $fancy_effects = 'REX_VALUE[id=4 ifempty="false"]' === 'true';
+$show_author = 'REX_VALUE[id=7 ifempty="true"]' === 'true';
 
-$img_class = 'mt-4 mb-4 ';
+$img_class_base = 'mt-4 mb-4 ';
+$img_class = '';
 
 if ($fancy_effects) {
     $chosen_class = 'REX_VALUE[id=5 ifempty="random"]';
@@ -59,14 +61,24 @@ if ($img_height > 0) {
 
 $img_link = 'REX_LINK[id=1]';
 
+// preambles
 if ($img_link) {
     echo '<a href="' . rex_getUrl($img_link) . '" class="img-link">';
 }
-
-if ($img_src) {
-    echo $img->generatePictureTag([$img_class], '', $img_dimens, $src_attrs);
+if ($show_author) {
+    echo '<figure class="clearfix ' . $img_class_base .'">';
 }
 
+if ($img_src) {
+    $effective_classes = $show_author ? [$img_class] : [$img_class_base, $img_class];
+    echo $img->generatePictureTag($effective_classes, '', $img_dimens, $src_attrs, false);
+}
+
+// close preambles
+if ($show_author) {
+    echo '<figcaption class="float-right mr-2">Foto: ' . rex_escape($img->author()) . '</figcaption>';
+    echo '</figure>';
+}
 if ($img_link) {
     echo '</a>';
 }

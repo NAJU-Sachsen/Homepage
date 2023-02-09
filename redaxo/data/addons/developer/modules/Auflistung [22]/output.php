@@ -100,7 +100,7 @@ if ($display_style === 'media-list') {
     $image_template = $card_image_template;
     $image_classes = ['card-img-top', 'mx-auto'];
     $link_template = $card_link_template;
-} 
+}
 
 $item_counter = 0;
 $items = naju_rex_var::toArray('REX_VALUE[id=2]');
@@ -154,7 +154,7 @@ foreach ($items as $item) {
             } else {
                 $src_sizes = ['sizes' => '25vw'];
             }
-            $picture_tag = $img->generatePictureTag($item_img_effects, '', ['style' => $img_styles], $src_sizes);
+            $picture_tag = $img->generatePictureTag($item_img_effects, '', ['style' => $img_styles], $src_sizes, false);
             $formatted_image = str_replace($img_tag_token, $picture_tag, $image_template);
 
             $formatted_item = str_replace($img_token, $formatted_image, $formatted_item);
@@ -167,7 +167,7 @@ foreach ($items as $item) {
         $formatted_item = str_replace($img_token, '', $formatted_item);
         $formatted_item = str_replace($content_width_token, $full_width, $formatted_item);
     }
-    
+
     // if the current item contains a 'further reading' link, generate the correspoding anchor
     // otherwise just drop the link from the rendered item
     if ($link) {
