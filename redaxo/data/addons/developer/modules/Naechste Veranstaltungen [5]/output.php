@@ -101,7 +101,8 @@ $plain_list = 'REX_VALUE[id=5 ifempty=false]' == 'false'; // REX_VAL 5 is 'forma
         if ($event['event_link']) {
             echo '<a href="' . rex_getUrl($event['event_link']) . '" class="event-link">' . rex_escape($event['event_name']) . '</a> ';
         } else {
-            echo rex_escape($event['event_name']);  
+            echo rex_escape($event['event_name']);
+
         }
         if ($local_group == -1) {
                 echo ' (' . rex_escape($event['group_name']) . ')';
@@ -116,18 +117,16 @@ $plain_list = 'REX_VALUE[id=5 ifempty=false]' == 'false'; // REX_VAL 5 is 'forma
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">
-                <?php
-                echo rex_escape($event['event_name']);
-
-                if ($event['event_type'] == 'work_assignment') {
-                    echo ' <span class="badge badge-pill badge-secondary">Arbeitseinsatz</span>';
-                } elseif ($event['event_type'] == 'group_meeting') {
-                    echo ' <span class="badge badge-pill badge-secondary">Aktiventreffen</span>';
-                }
-                ?>
+                <?php echo rex_escape($event['event_name']); ?>
                 </h4>
                 <p class="card-text">
                     <?php
+                    if ($event['event_type'] == 'work_assignment') {
+                        echo ' <span class="badge badge-pill badge-secondary mr-1">Arbeitseinsatz</span>';
+                    } elseif ($event['event_type'] == 'group_meeting') {
+                        echo ' <span class="badge badge-pill badge-secondary mr-1">Aktiventreffen</span>';
+                    }
+
                     $start_date = DateTime::createFromFormat(naju_event_calendar::$DB_DATE_FMT, $event['event_start']);
                     $event_end = $event['event_end'];
 
