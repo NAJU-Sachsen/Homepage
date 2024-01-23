@@ -44,7 +44,21 @@ $description = $seo->getDescription();
 if ($description) {
     echo $seo->getDescriptionTag();
 } else {
-    $description = naju_kvs::getOrInflate('naju.seo.description',
+    $local_group = naju_article::determineCurrentLocalGroup();
+    $group_specific_description = null;
+    if ($local_group !== naju_article::DEFAULT_GROUP) {
+        $sql = rex_sql::factory();
+        $seo_description_query = "SELECT ci.seo_description
+            FROM naju_contact_info ci JOIN naju_local_group g ON ci.group_id = g.group_id
+            WHERE g.group_name LIKE CONCAT('%', :group_name)
+            LIMIT 1;";
+        $sql->setQuery($seo_description_query, ['group_name' => $local_group]);
+        foreach ($sql->getArray() as $description) {
+            $group_specific_description = $description["seo_description"];
+        }
+    }
+
+    $description = $group_specific_description ?: naju_kvs::getOrInflate('naju.seo.description',
         'select meta_value from naju_seo where meta_key = :key', ['key' => 'description']);
     echo '<meta name="description" content="' . rex_escape($description) . '">';
 }

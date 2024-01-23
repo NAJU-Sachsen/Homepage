@@ -9,7 +9,7 @@ $is_ios = str_contains($ua, 'iphone') || str_contains($ua, 'ipad');
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title><?= rex_escape($this->getValue('name')); ?> | NAJU Sachsen</title>
+  <title><?= rex_escape($this->getValue('name')); ?> | NAJU <?= rex_escape(naju_article::determineCurrentLocalGroup()); ?></title>
   <link rel="preload" href="/fonts/SourceSansPro-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/fonts/Amaranth-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="icon" href="/assets/favicon.ico">
