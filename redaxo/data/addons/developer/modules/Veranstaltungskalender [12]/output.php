@@ -91,7 +91,8 @@ if ($local_group == -1) {
             event_price_reduced,
             event_registration,
             event_type,
-            event_link
+            event_link,
+            event_booked_out
         from
             naju_event
             join naju_local_group
@@ -120,7 +121,8 @@ EOSQL;
             event_price_reduced,
             event_registration,
             event_type,
-            event_link
+            event_link,
+            event_booked_out
         from
             naju_event
             join naju_local_group
@@ -204,6 +206,11 @@ $event_counter = 0;
 
 
                         echo rex_escape($event['event_name']);
+
+                        if ($event['event_booked_out']) {
+                            echo '<span class="badge badge-pill badge-warning mx-2">Ausgebucht!</span>';
+                        }
+
                         ?>
                         <small class="text-muted">
                             <?php

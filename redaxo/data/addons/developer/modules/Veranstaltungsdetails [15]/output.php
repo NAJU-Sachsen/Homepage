@@ -10,7 +10,8 @@
 			event_group, group_name,
 			event_target_group,
 			event_price, event_price_reduced,
-			event_registration
+			event_registration,
+			event_booked_out
 		from naju_event
 		left join naju_local_group
 		on event_group = group_id
@@ -104,10 +105,17 @@ EOSQL;
 				</td>
 			</tr>
 			<?php endif; ?>
-			<?php if ($event['event_registration']) : ?>
+			<?php if ($event['event_registration'] || $event['event_booked_out']) : ?>
 			<tr class="row">
 				<th class="col-lg-2">Anmeldung?</th>
-				<td class="col-lg-10"><?= naju_article::make_emails_anchors(htmlspecialchars($event['event_registration'])); ?></td>
+				<td class="col-lg-10">
+					<?php
+						echo naju_article::makeEmailsAnchors(htmlspecialchars($event['event_registration']));
+						if ($event['event_booked_out']) {
+							echo '<span class="badge badge-pill badge-warning mx-2">Ausgebucht!</span>';
+						}
+					?>
+				</td>
 			</tr>
 			<?php endif; ?>
 		</tbody>
