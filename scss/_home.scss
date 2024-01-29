@@ -3,6 +3,88 @@
 //
 // Authors: Rico Bergmann <rico.bergmann@naju-sachsen.de>
 
+//
+// Navigation
+//
+
+nav#quick-nav {
+	border: 1px solid $border-color;
+	border-radius: 0.25rem;
+	background-color: rgba($default-beige, 0.7);
+}
+
+nav#quick-nav a {
+	color: $dark-red;
+	border: none;
+	transition: none;
+}
+
+nav#quick-nav a:hover {
+	border: none;
+	text-decoration: underline;
+}
+
+nav#quick-nav .nav-item {
+	list-style: none;
+}
+
+// Mobile
+@media screen and (max-width: (map-get($grid-breakpoints, 'lg') - 1)) {
+
+	nav#quick-nav {
+		margin-left: 15px;
+		margin-right: 15px;
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+		border-left: 1px solid $border-color;
+		border-top-left-radius: 0.25rem;
+		border-bottom-left-radius: 0.25rem;
+	}
+
+	nav#quick-nav::before {
+		display: block;
+		content: "Navigation";
+		text-align: center;
+		font-size: 2rem;
+		color: $dark-red;
+	}
+
+	nav#quick-nav .nav-primary {
+		display: none;
+		padding-bottom: 5px;
+	}
+
+	nav#quick-nav:hover .nav-primary,
+	nav#quick-nav:focus .nav-primary {
+		display: block;
+	}
+
+}
+
+// Desktop
+@media screen and (min-width: map-get($grid-breakpoints, 'lg')) {
+
+	nav#quick-nav .nav-primary {
+		display: flex;
+		flex-direction: row;
+		overflow: auto;
+		align-items: center;
+		justify-content: space-evenly;
+		padding: 0;
+		margin: 0;
+	}
+
+	nav#quick-nav:hover {
+		background-color: rgba(240, 247, 224, .8);
+		border-color: $dark-red !important;
+	}
+
+}
+
+//
+// Intro cards
+//
+
 .card.intro-card {
 	margin-bottom: 10px;
 	transition: transform .2s;
@@ -33,6 +115,7 @@
 }
 
 
+// Mobile
 @media screen and (min-width: map-get($grid-breakpoints, 'lg')) {
 
 		.card.intro-card .card-body-wrapper {

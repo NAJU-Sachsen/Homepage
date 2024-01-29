@@ -8,7 +8,7 @@ $is_ios = str_contains($ua, 'iphone') || str_contains($ua, 'ipad');
 <html lang="de" <?= $is_ios ? 'ontouchmove' : ''; ?>>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><?= rex_escape($this->getValue('name')); ?> | NAJU Sachsen</title>
     <link rel="preload" href="/fonts/SourceSansPro-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
     <link rel="preload" href="/fonts/Amaranth-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
@@ -25,7 +25,7 @@ $is_ios = str_contains($ua, 'iphone') || str_contains($ua, 'ipad');
     REX_TEMPLATE[key=template-head-meta]
 
 </head>
-<body class="container-fluid">
+<body class="container-fluid" tabindex="0">
 <div id="complete-wrapper">
   <div id="top-bar-wrapper" class="row">
 

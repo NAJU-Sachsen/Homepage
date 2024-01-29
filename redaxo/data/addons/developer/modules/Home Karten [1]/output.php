@@ -53,7 +53,7 @@ if (rex::isBackend()) {
 
 ?>
 
-<div id="home-cards" class="container-fluid mb-4">
+<div id="home-cards" class="container-fluid mb-1">
 	<div class="row card-grid">
 		<div class="card-grid-item col-lg-<?= $col_lg_width; ?> col-md-6 col-sm-12">
 			<article class="card intro-card">
