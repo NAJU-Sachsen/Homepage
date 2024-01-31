@@ -21,7 +21,16 @@ nav#quick-nav a {
 
 nav#quick-nav a:hover {
 	border: none;
-	text-decoration: underline;
+	font-weight: bold;
+}
+
+nav#quick-nav a::before {
+	display: block;
+    content: attr(title);
+    font-weight: bold;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
 }
 
 nav#quick-nav .nav-item {
