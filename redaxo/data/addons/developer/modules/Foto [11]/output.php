@@ -3,7 +3,11 @@
 
 <?php
 $img_src = 'REX_MEDIA[id=1]';
-$img = $img_src ? new naju_image($img_src) : '';
+if (!$img_src) {
+    return;
+}
+
+$img = new naju_image($img_src);
 $img_width = 'REX_VALUE[id=1 ifempty=-1]';
 $img_height = 'REX_VALUE[id=2 ifempty=-1]';
 $img_integrate = 'REX_VALUE[id=3 ifempty=no-integrate]';
