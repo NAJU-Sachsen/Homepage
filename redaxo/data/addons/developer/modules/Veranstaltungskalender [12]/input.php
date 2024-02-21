@@ -40,7 +40,7 @@ $mform_tab = MForm::factory();
 $target_groups = ['children' => 'Kinder', 'teens' => 'Jugendliche', 'families' => 'Familien', 'young_adults' => 'junge Erwachsene'];
 $mform_tab->addSelectField($id_target_group, $target_groups, ['label' => 'Zielgruppe', 'multiple' => 'multiple', 'class' => 'selectpicker']);
 $event_types = ['camp' => 'Camp', 'workshop' => 'Workshop', 'work_assignment' => 'Arbeitseinsatz',
-    'group_meeting' => 'Aktiventreffen', 'excursion' => 'Exkursion', 'other' => 'sonstige Veranstaltungen'];
+    'group_meeting' => 'Aktiventreffen', 'excursion' => 'Exkursion', 'holiday_event' => 'Feriencamp', 'other' => 'sonstige Veranstaltungen'];
 $mform_tab->addSelectField($id_event_type, $event_types, ['label' => 'Veranstaltungsart', 'multiple' => 'multiple', 'class' => 'selectpicker']);
 $mform->addTabElement('Kalender anpassen', $mform_tab);
 
