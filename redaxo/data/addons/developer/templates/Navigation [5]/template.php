@@ -13,7 +13,7 @@ $content .= '	<ul class="nav nav-primary flex-column">';
 if ($group_id == '-1') {
 	// no local group set -- use the default navigation
 	foreach (rex_category::getRootCategories(true) as $cat) {
-		$is_active = in_array($cat->getId(), $active_groups) ? 'active' : '';
+		$is_active = in_array($cat->getId(), $active_groups) ? ' active' : '';
 
 		$content .= '<li class="nav-item">';
 		$content .= '	<a href="' . $cat->getUrl() . '" class="nav-link' . $is_active . '">';
@@ -45,14 +45,13 @@ if ($group_id == '-1') {
 	$overview_group = rex_article::get($groups_overview_id);
 
 	$content .= '<li class="nav-item">';
-	$content .= '	<a href="' . $overview_group->getUrl() . '" class="nav-link">';
+	$content .= '	<a href="' . $overview_group->getUrl() . '" class="nav-link active">';
 	$content .= '		← ' . rex_escape($local_group['naju_local_group.group_name']);
 	$content .= '	</a>';
 	$content .= '</li>';
-	$content .= '<hr>';
 
 	$group_cat = rex_category::get($local_group['naju_local_group.group_link']);
-	$content .= naju_navigation::inflate_subnav($group_cat, $active_groups, depth: 0);
+	$content .= naju_navigation::inflate_subnav($group_cat, $active_groups, 0);
 }
 
 $content .= '	</ul>';
