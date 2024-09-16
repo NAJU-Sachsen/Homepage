@@ -19,6 +19,7 @@ $id_target_group = 5;
 $id_event_type = 6;
 $id_exlude_past = 7;
 $id_event_year = 8;
+$id_tags = 9;
 
 $mform_tab = MForm::factory();
 $mform_tab->addSelectField($id_group);
@@ -44,6 +45,7 @@ $target_groups = [
     'young_adults' => 'junge Erwachsene'
 ];
 $mform_tab->addSelectField($id_target_group, $target_groups, ['label' => 'Zielgruppe', 'multiple' => 'multiple', 'class' => 'selectpicker']);
+
 $event_types = [
     'camp' => 'Camp',
     'workshop' => 'Workshop',
@@ -54,6 +56,16 @@ $event_types = [
     'other' => 'sonstige Veranstaltungen'
 ];
 $mform_tab->addSelectField($id_event_type, $event_types, ['label' => 'Veranstaltungsart', 'multiple' => 'multiple', 'class' => 'selectpicker']);
+
+$tags_sql = rex_sql::factory()->getArray('SELECT tag_name FROM naju_event_tags ORDER BY tag_name');
+$tags = array();
+foreach ($tags_sql as $tag) {
+    $tag_name = $tag['tag_name'];
+    $tags[$tag_name] = $tag_name;
+}
+$mform_tab->addSelectField($id_tags, $tags, ['label' => 'Tags', 'multiple' => 'multiple', 'class' => 'selectpicker', 'data-live-search' => 'true']);
+$mform_tab->addHtml('<hr>');
+$mform_tab->addDescription('Wenn Tags ausgewählt werden, müssen Veranstaltungen alle Tags besitzen.');
 $mform->addTabElement('Kalender anpassen', $mform_tab);
 
 $mform_tab = MForm::factory();

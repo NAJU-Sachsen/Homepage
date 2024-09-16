@@ -49,7 +49,7 @@ if (!$filter_target_group) {
 }
 
 if ($filter_target_group) {
-    $target_group_criteria = 'and (';
+    $target_group_criteria = ' and (';
     $target_groups = array();
     foreach ($filter_target_group as $target_group) {
         $target_groups[] = 'find_in_set(' . $sql->escape($target_group) . ', event_target_group_type)';
@@ -65,7 +65,7 @@ if (!$filter_event_type) {
 }
 
 if ($filter_event_type) {
-    $event_type_criteria = 'and (';
+    $event_type_criteria = ' and (';
     $event_types = array();
     foreach ($filter_event_type as $event_type) {
         $event_types[] = 'event_type = ' . $sql->escape($event_type);
@@ -73,6 +73,16 @@ if ($filter_event_type) {
     $event_type_criteria .= implode(' OR ', $event_types) . ')';
 
     $additional_filters .= $event_type_criteria;
+}
+
+$filter_event_tags = rex_var::toArray('REX_VALUE[id=9]');
+if ($filter_event_tags) {
+    $event_tag_criteria = '';
+    foreach ($filter_event_tags as $event_tag) {
+        $tag_value = "'%," . trim($sql->escape($event_tag), "'") . ",%'";
+        $event_tag_criteria .= ' and event_tags like ' . $tag_value;
+    }
+    $additional_filters .= $event_tag_criteria;
 }
 
 if ($local_group == -1) {

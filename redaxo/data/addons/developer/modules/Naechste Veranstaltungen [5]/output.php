@@ -3,6 +3,7 @@
 <?php
 
 define('DATE_FMT', 'd.m.');
+$sql = rex_sql::factory();
 
 $limit = 3;
 $local_group = 'REX_VALUE[1]';
@@ -20,6 +21,16 @@ $filter_event_type = 'REX_VALUE[id=3]';
 if ($filter_event_type) {
     $event_type = rex_sql::factory()->escape($filter_event_type);
     $additional_filters .= " and event_type = $event_type ";
+}
+
+$filter_event_tags = rex_var::toArray('REX_VALUE[id=7]');
+if ($filter_event_tags && !in_array('##inactive##', $filter_event_tags)) {
+    $event_tag_criteria = '';
+    foreach ($filter_event_tags as $event_tag) {
+        $tag_value = "'%," . trim($sql->escape($event_tag), "'") . ",%'";
+        $event_tag_criteria .= ' and event_tags like ' . $tag_value;
+    }
+    $additional_filters .= $event_tag_criteria;
 }
 
 // local group == -1 means no group selected => show all instead
@@ -70,7 +81,7 @@ EOSQL;
     $events = rex_sql::factory()->setQuery($event_query, ['group' => $local_group, 'date' => $today])->getArray();
 }
 
-echo 'REX_VALUE[id=6 ifempty=true]' == 'true' ? 'REX_VALUE[4]' : ''; // intro text
+echo 'REX_VALUE[id=6 ifempty=false]' == 'true' ? 'REX_VALUE[4]' : ''; // intro text
 
 $plain_list = 'REX_VALUE[id=5 ifempty=false]' == 'false'; // REX_VAL 5 is 'format as cards'
 ?>
