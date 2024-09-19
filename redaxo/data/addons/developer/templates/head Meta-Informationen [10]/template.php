@@ -8,11 +8,6 @@
 $article = rex_article::getCurrent();
 $title = htmlspecialchars($article->getName());
 
-$image = $article->getValue('art_image');
-$hasCustomImage = $image || false;
-
-$image = $hasCustomImage ? new naju_image($image) : new naju_image('default-social-image.jpg');
-
 $params = '?'; // all GET parameters in one string
 
 // if there are any params, we need to add them after a '?' sign
@@ -38,6 +33,14 @@ $params = substr($params, 0, -1);
 // SEO info
 
 $seo = new rex_yrewrite_seo();
+
+$image = $article->getValue('art_image');
+if (!$image) {
+    $image = $seo->getImage();
+}
+$hasCustomImage = $image || false;
+
+$image = $hasCustomImage ? new naju_image($image) : new naju_image('default-social-image.jpg');
 
 $description = $seo->getDescription();
 
