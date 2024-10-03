@@ -11,7 +11,7 @@ $id_filter_tags = 7;
 
 $mform = MForm::factory();
 
-$local_groups = rex_sql::factory()->getArray('SELECT group_id, group_name FROM naju_local_group');
+$local_groups = rex_sql::factory()->getArray('SELECT group_id, group_name FROM naju_local_group WHERE not group_internal ORDER BY group_name');
 $local_group_options = ['-1' => 'alle'];
 foreach ($local_groups as $group) {
     $local_group_options[$group['group_id']] = $group['group_name'];

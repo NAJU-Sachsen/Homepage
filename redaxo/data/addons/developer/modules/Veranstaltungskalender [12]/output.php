@@ -165,7 +165,7 @@ $event_counter = 0;
             <select name="local_group" id="select-local-group" class="form-control my-2 mr-sm-5">
                 <option value="-1" <?= $local_group == -1 ? 'selected' : '' ?>>alle</option>
                 <?php
-                    $local_groups = $sql->getArray('SELECT group_id, group_name FROM naju_local_group');
+                    $local_groups = $sql->getArray('SELECT group_id, group_name FROM naju_local_group WHERE not group_internal ORDER BY group_name');
                     foreach ($local_groups as $group) {
                         $selected = $local_group == $group['group_id'] ? ' selected' : '';
                         echo '<option value="' . rex_escape($group['group_id']) . '"' . $selected . '>' .

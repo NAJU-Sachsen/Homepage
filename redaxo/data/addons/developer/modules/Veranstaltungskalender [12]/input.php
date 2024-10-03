@@ -24,7 +24,7 @@ $id_tags = 9;
 $mform_tab = MForm::factory();
 $mform_tab->addSelectField($id_group);
 $mform_tab->setOption('-1', 'alle');
-$mform_tab->setSqlOptions('SELECT group_id AS id, group_name AS name FROM naju_local_group ORDER BY group_name');
+$mform_tab->setSqlOptions('SELECT group_id AS id, group_name AS name FROM naju_local_group WHERE NOT group_internal ORDER BY group_name');
 $mform_tab->setAttributes(['label' => 'Ortsgruppe auswählen']);
 $mform->addTabElement('Basiseinstellungen', $mform_tab, true);
 
