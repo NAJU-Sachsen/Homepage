@@ -254,3 +254,17 @@ figure figcaption {
 .overview-cards .card-footer {
   @include card-link-align();
 }
+
+//
+// Breadcrumbs
+//
+
+.breadcrumb.naju-breadcrumb {
+  background-color: unset;
+  padding: 0;
+  line-height: 1em;
+}
+
+.breadcrumb.naju-breadcrumb .breadcrumb-item a {
+  border-bottom-color: transparent !important;
+}
