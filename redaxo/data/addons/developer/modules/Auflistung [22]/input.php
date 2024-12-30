@@ -5,6 +5,7 @@ $display_type_id = 1;
 $item_id = 2;
 $image_params_id = 3;
 $list_wide_img_cols = 4;
+$generate_authors_id = 5;
 
 // REX_MEDIA
 $item_media_id = 1;
@@ -17,6 +18,8 @@ $mform = MForm::factory();
 $mform_tab = MForm::factory();
 $mform_tab->addRadioField($display_type_id, ['media-list' => 'als Liste', 'grid' => 'als Gitter']);
 $mform_tab->setLabel('Wie sollen die Einträge angezeigt werden?');
+$mform_tab->addCheckboxField($generate_authors_id, ['label' => 'aktiviert']);
+$mform_tab->setLabel('Urheber-Infos anzeigen');
 $mform->addTabElement('Allgemeine Einstellung', $mform_tab, true);
 
 $mform_tab = MForm::factory();

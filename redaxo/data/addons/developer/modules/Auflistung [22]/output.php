@@ -114,13 +114,23 @@ foreach ($items as $item) {
     }
 }
 
+$render_copyright = 'REX_VALUE[id=5 ifempty=0]';
+
 foreach ($items as $item) {
     $item_counter++;
 
     $title = naju::escape($item['title']);
     $img_path = $item['REX_MEDIA_1'];
+    $img = $img_path ? new naju_image($img_path) : null;
     $content = $item['content'];    // content is rich HTML
     $link = $item['REX_LINK_1'];
+
+    if ($render_copyright && $img) {  // should
+        $content .= '<p class="font-italic">Foto: ';
+        $img = new naju_image($img_path);
+        $content .= rex_escape($img->author());
+        $content .= '</p>';
+    }
 
     $formatted_item = str_replace($title_token, $title, $item_template);
     $formatted_item = str_replace($card_id_token, sprintf($card_id_template, $slice_id, $item_counter), $formatted_item);
@@ -129,8 +139,7 @@ foreach ($items as $item) {
     // if the current item contains an image, generate the corresponding tag for it
     // otherwise just drop the tag altogether
     if ($list_contains_images) {
-        if ($img_path) {
-            $img = new naju_image($img_path);
+        if ($img) {
 
             $item_img_effects = array();
             if ($img_effects) {
