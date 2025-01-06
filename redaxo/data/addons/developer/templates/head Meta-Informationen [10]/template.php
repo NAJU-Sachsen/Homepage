@@ -43,11 +43,11 @@ $hasCustomImage = $image || false;
 $image = $hasCustomImage ? new naju_image($image) : new naju_image('default-social-image.jpg');
 
 $description = $seo->getDescription();
+$local_group = naju_article::determineCurrentLocalGroup();
 
 if ($description) {
     echo $seo->getDescriptionTag();
 } else {
-    $local_group = naju_article::determineCurrentLocalGroup();
     $group_specific_description = null;
     if ($local_group !== naju_article::DEFAULT_GROUP) {
         $sql = rex_sql::factory();
@@ -75,7 +75,7 @@ echo $seo->getCanonicalUrlTag();
 
 <!-- Open graph info (Facebook) -->
 <meta property="og:url" content="<?= rex_yrewrite::getFullUrlByArticleId($article->getId()) . $params; ?>">
-<meta property="og:site_name" content="NAJU Sachsen">
+<meta property="og:site_name" content="NAJU <?= $local_group ?? 'Sachsen' ?>">
 <meta property="og:locale" content="de_DE">
 <meta property="og:type" content="website">
 <meta property="og:title" content="<?= $title; ?>">
