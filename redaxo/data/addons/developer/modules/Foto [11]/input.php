@@ -35,7 +35,8 @@ $mform_tab->addCheckboxField($effects_rotate_id, ['false' => 'Rotation ausschalt
 $mform->addTabElement('Bildeffekte', $mform_tab);
 
 $mform_tab = MForm::factory();
-$mform_tab->addInputField('number', $width_id, ['label' => 'Breite', 'min' => -1]);
+$ctl_width = $mform_tab->addInputField('number', $width_id, ['label' => 'Breite', 'min' => -1]);
+$ctl_width->setDefaultValue(750);
 $mform_tab->addInputField('number', $height_id, ['label' => 'Höhe', 'min' => -1]);
 $mform_tab->addSelectField(3, $integrate_select, ['label' => 'Bild in den Textfluss integrieren?']);
 $mform->addTabElement('Optionen', $mform_tab);
