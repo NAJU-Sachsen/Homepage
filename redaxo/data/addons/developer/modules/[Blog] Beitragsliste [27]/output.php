@@ -113,7 +113,8 @@ foreach ($articles as $article) {
     
     $link = $article['article_link'];
     if ($link) {
-        $content .= '<a href="' . rex_getUrl($link) . '">' . rex_escape($article['article_link_text']) . '</a>';
+        $link_text = $article['article_link_text'] ? $article['article_link_text'] : 'Weitere Infos';
+        $content .= '<a href="' . rex_getUrl($link) . '">' . rex_escape($link_text) . '</a>';
     }
 
     $content .= '</div>';
