@@ -2,6 +2,9 @@
 <!-- mod_img -->
 
 <?php
+
+use FriendsOfRedaxo\MForm\Utils\MFormOutputHelper;
+
 $img_src = 'REX_MEDIA[id=1]';
 if (!$img_src) {
     return;
@@ -68,11 +71,12 @@ if ($img_height > 0) {
     }
 }
 
-$img_link = 'REX_LINK[id=1]';
+$img_link = 'REX_VALUE[id=8]';
 
 // preambles
 if ($img_link) {
-    echo '<a href="' . rex_getUrl($img_link) . '" class="img-link">';
+    $url = MFormOutputHelper::prepareCustomLink(['link' => $img_link], true)['customlink_url'];
+    echo '<a href="' . $url . '" class="img-link">';
 }
 if ($show_author) {
     $float_option = $floating_img ? $img_float : 'clearfix';

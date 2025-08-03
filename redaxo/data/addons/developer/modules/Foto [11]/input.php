@@ -3,7 +3,6 @@
 use FriendsOfRedaxo\MForm;
 
 $img_id = 1;    // MEDIA type --> separate media ID
-$link_id = 1;   // LINK type --> separate link ID
 $width_id = 1;  // normal type --> true IDs start here
 $height_id = 2;
 $integrate_id = 3;
@@ -11,6 +10,7 @@ $activate_effects_id = 4;
 $effects_kind_id = 5;
 $effects_rotate_id = 6;
 $hide_author_id = 7;
+$link_id = 8;
 
 $effects_kind_select = ['random' => 'zufällig',
     'img-fancy-default' => 'Standard (Dunkelrot)',
@@ -24,7 +24,8 @@ $mform = MForm::factory();
 
 $mform_tab = MForm::factory();
 $mform_tab->addMediaField($img_id, ['preview' => '1', 'types' => naju_image::ALLOWED_TYPES, 'label' => 'Bild auswählen']);
-$mform_tab->addLinkField($link_id, ['label' => 'Verlinkung hinzufügen?']);
+$mform_tab->addCustomLinkField($link_id, ['label' => 'Verlinkung hinzufügen?',
+                                          'data-intern' => 'enable', 'data-extern' => 'enable', 'data-media' => 'enable']);
 $mform_tab->addCheckboxField($hide_author_id, ['false' => 'Fotograf*in ausblenden'], ['label' => 'Fotograf*in']);
 $mform_tab->addDescription("Zu jedem Bild _muss_ der*die Fotograf*in angegeben werden! Wenn nicht direkt am Bild, dann im Begleittext!");
 $mform->addTabElement('Bild', $mform_tab, true);
