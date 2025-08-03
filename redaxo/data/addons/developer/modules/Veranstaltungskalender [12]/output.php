@@ -100,6 +100,7 @@ if ($local_group == -1) {
             event_price,
             event_price_reduced,
             event_registration,
+            event_registration_form,
             event_type,
             event_link,
             event_booked_out
@@ -130,6 +131,7 @@ EOSQL;
             event_price,
             event_price_reduced,
             event_registration,
+            event_registration_form,
             event_type,
             event_link,
             event_booked_out
@@ -282,7 +284,10 @@ $event_counter = 0;
                     <?php if ($event['event_location']) : ?>
                     <tr class="row">
                       <th class="col-lg-2">Wo?</th>
-                      <td class="col-lg-10"><?= rex_escape($event['event_location']); ?></td>
+                      <td class="col-lg-10">
+                        <?= rex_escape($event['event_location']); ?>
+                        <a href="https://openstreetmap.org/search?query=<?= urlencode($event['event_location']); ?>" target="_blank">&#128506; OpenStreetMap</a>
+                    </td>
                     </tr>
                     <?php endif; ?>
 
@@ -318,10 +323,21 @@ $event_counter = 0;
                     </tr>
                     <?php endif; ?>
 
-                    <?php if ($event['event_registration']) : ?>
+                    <?php if ($event['event_registration'] || $event['event_registration_form']) : ?>
                     <tr class="row">
                         <th class="col-lg-2">Anmeldung?</th>
-                        <td class="col-lg-10"><?= naju_article::richFormatText(rex_escape($event['event_registration'])); ?></td>
+                        <td class="col-lg-10">
+                            <?php
+                                if ($event['event_registration']) {
+                                    echo naju_article::richFormatText(rex_escape($event['event_registration']));
+                                }
+                                echo ' ';
+                                if ($event['event_registration_form']) {
+                                    $reg_form = rex_media::get($event['event_registration_form']);
+                                    echo '<a href="' . $reg_form->getUrl() . '">📄 Anmeldeformular</a>';
+                                }
+                             ?>
+                        </td>
                     </tr>
                     <?php endif; ?>
 

@@ -6,11 +6,14 @@
 		select
             event_start,
             event_end,
+			event_start_time,
+			event_end_time,
 			event_location,
 			event_group, group_name,
 			event_target_group,
 			event_price, event_price_reduced,
 			event_registration,
+			event_registration_form,
 			event_booked_out
 		from naju_event
 		left join naju_local_group
@@ -108,12 +111,19 @@ EOSQL;
 				</td>
 			</tr>
 			<?php endif; ?>
-			<?php if ($event['event_registration'] || $event['event_booked_out']) : ?>
+			<?php if ($event['event_registration'] || $event['event_registration_form']|| $event['event_booked_out']) : ?>
 			<tr class="row">
 				<th class="col-lg-2">Anmeldung?</th>
 				<td class="col-lg-10">
 					<?php
-						echo naju_article::makeEmailsAnchors(htmlspecialchars($event['event_registration']));
+						if ($event['event_registration']) {
+							echo naju_article::richFormatText(rex_escape($event['event_registration']));
+						}
+						echo ' ';
+						if ($event['event_registration_form']) {
+							$reg_form = rex_media::get($event['event_registration_form']);
+							echo '<a href="' . $reg_form->getUrl() . '">📄 Anmeldeformular</a>';
+						}
 						if ($event['event_booked_out']) {
 							echo '<span class="badge badge-pill badge-warning mx-2">Ausgebucht!</span>';
 						}
