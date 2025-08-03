@@ -1,5 +1,7 @@
 <?php
 
+use FriendsOfRedaxo\MForm;
+
 $id_blog = 1;
 
 $mform = MForm::factory();

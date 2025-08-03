@@ -1,5 +1,7 @@
 <?php
 
+use FriendsOfRedaxo\MForm;
+
 $id_newest_count = 1;
 $id_manual_select = 2;
 $id_show_newest = 3;

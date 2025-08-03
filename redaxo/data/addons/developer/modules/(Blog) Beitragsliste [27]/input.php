@@ -1,4 +1,7 @@
 <?php
+
+use FriendsOfRedaxo\MForm;
+
 $id_blog_select = 1;
 $id_image_display = 2;
 
