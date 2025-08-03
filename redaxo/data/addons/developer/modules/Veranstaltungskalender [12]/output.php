@@ -4,6 +4,8 @@
 <?php
 $sql = rex_sql::factory();
 
+$event_icons = ['⛺ ', '🥾 ', '🧭 ', '🌿 ', '🌳 ', '🐞 ', '🦗 ', '🪲 ', '🐛 ', '🦇 ', '🦡 ', '🦌 ', '🦔 ', '🦫 ', '🦉 ', '🐦‍⬛ ', '🚲 ', '🛶 '];
+
 $local_group = 'REX_VALUE[id=4 ifempty=-1]';
 $local_group_filter = 'REX_VALUE[id=1 ifempty="false"]' === 'true';
 $include_all_future_events = 'REX_VALUE[id=3 ifempty="false"]' === 'true';
@@ -210,12 +212,14 @@ $event_counter = 0;
                 <header class="d-flex w-100 justify-content-between event-header">
                     <h3 class="mb-1 text-left event-title">
                         <?php
+                        $emoji = $event_icons[array_rand($event_icons)];
+                        echo $emoji;
+
                         if ($event['event_type'] == 'work_assignment') {
                             echo 'Arbeitseinsatz: ';
                         } elseif ($event['event_type'] == 'group_meeting') {
                             echo 'Aktiventreffen: ';
                         }
-
 
                         echo rex_escape($event['event_name']);
 
