@@ -89,6 +89,8 @@ aside#at-a-glance {
   margin-bottom: 100px;
   padding: 1rem;
   background-color: rgba($extra-grey, 0.1);
+  border: 1px solid $border-color;
+  border-radius: 0.25rem;
 }
 
 aside#at-a-glance:hover {

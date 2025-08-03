@@ -76,9 +76,7 @@ header#top-bar .logo-local-group-name {
 
 nav#main-nav {
   border: 1px solid $border-color;
-  border-left: 0;
-  border-top-right-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem;
+  border-radius: 0.25rem;
   background-color: rgba($default-beige, 0.7);
 }
 

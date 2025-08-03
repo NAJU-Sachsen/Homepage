@@ -48,7 +48,7 @@ $is_ios = str_contains($ua, 'iphone') || str_contains($ua, 'ipad');
 
     <!-- Side bar -->
     <?php if($this->getValue('art_has_sidebar') === '|true|') : ?>
-    <aside id="at-a-glance" class="col-lg-2 border border-right-0 rounded-left">
+    <aside id="at-a-glance" class="col-lg-2">
       <h2>Auf einen Blick</h2>
       <?php
         foreach ($slices as $slice) {
