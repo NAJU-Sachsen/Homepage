@@ -4,7 +4,7 @@
 <?php
 $sql = rex_sql::factory();
 
-$event_icons = ['⛺ ', '🥾 ', '🧭 ', '🌿 ', '🌳 ', '🐞 ', '🦗 ', '🪲 ', '🐛 ', '🦇 ', '🦡 ', '🦌 ', '🦔 ', '🦫 ', '🦉 ', '🐦‍⬛ ', '🚲 ', '🛶 '];
+$event_icons = ['⛺ ', '🥾 ', '🎒 ', '🧭 ', '🌿 ', '🌳 ', '🐞 ', '🦗 ', '🪲 ', '🐛 ', '🦇 ', '🦡 ', '🦌 ', '🦔 ', '🦫 ', '🦉 ', '🐦‍⬛ ', '🚲 ', '🛶 '];
 
 $local_group = 'REX_VALUE[id=4 ifempty=-1]';
 $local_group_filter = 'REX_VALUE[id=1 ifempty="false"]' === 'true';
@@ -287,7 +287,7 @@ $event_counter = 0;
 
                     <?php if ($event['event_location']) : ?>
                     <tr class="row">
-                      <th class="col-lg-2">Wo?</th>
+                      <th class="col-lg-2">🏡 Wo?</th>
                       <td class="col-lg-10">
                         <?= rex_escape($event['event_location']); ?>
                         <a href="https://openstreetmap.org/search?query=<?= urlencode($event['event_location']); ?>" target="_blank">&#128506; OpenStreetMap</a>
@@ -297,14 +297,14 @@ $event_counter = 0;
 
                     <?php if ($event['event_target_group']) : ?>
                     <tr class="row">
-                      <th class="col-lg-2">Für wen?</th>
+                      <th class="col-lg-2">🙋 Für wen?</th>
                       <td class="col-lg-10"><?= rex_escape($event['event_target_group']) ?></td>
                     </tr>
                     <?php endif; ?>
 
                     <?php if ($event['event_price'] || $event['event_price_reduced']) : ?>
                     <tr class="row">
-                      <th class="col-lg-2">Was kostet es?</th>
+                      <th class="col-lg-2">💶 Was kostet es?</th>
                       <td class="col-lg-10">
                           <?php
                             $normal_price = $event['event_price'];
@@ -329,7 +329,7 @@ $event_counter = 0;
 
                     <?php if ($event['event_registration'] || $event['event_registration_form']) : ?>
                     <tr class="row">
-                        <th class="col-lg-2">Anmeldung?</th>
+                        <th class="col-lg-2">📝 Anmeldung?</th>
                         <td class="col-lg-10">
                             <?php
                                 if ($event['event_registration']) {

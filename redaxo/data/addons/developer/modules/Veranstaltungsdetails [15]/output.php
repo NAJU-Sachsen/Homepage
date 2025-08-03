@@ -27,7 +27,7 @@ EOSQL;
 	<table class="table table-sm">
 		<tbody>
             <tr class="row">
-                <th class="col-lg-2">Wann?</th>
+                <th class="col-lg-2">🗓 Wann?</th>
                 <td class="col-lg-10">
                 <?php
 					$start_date = $event['event_start'];
@@ -66,7 +66,7 @@ EOSQL;
             </tr>
 			<?php if ($event['event_location']) : ?>
 			<tr class="row">
-				<th class="col-lg-2">Wo?</th>
+				<th class="col-lg-2">🏡 Wo?</th>
 				<td class="col-lg-10">
 					<?= rex_escape($event['event_location']); ?>
 					<a href="https://openstreetmap.org/search?query=<?= urlencode($event['event_location']); ?>" target="_blank">&#128506; OpenStreetMap</a>
@@ -75,7 +75,7 @@ EOSQL;
 			<?php endif; ?>
 			<?php if ($event['event_group']) : ?>
 			<tr class="row">
-				<th class="col-lg-2">Wer?</th>
+				<th class="col-lg-2">🎩 Wer?</th>
 				<td class="col-lg-10">
 					<!-- TODO link to local group -->
 					<?= rex_escape($event['group_name']); ?>
@@ -84,13 +84,13 @@ EOSQL;
 			<?php endif; ?>
 			<?php if ($event['event_target_group']) : ?>
 			<tr class="row">
-				<th class="col-lg-2">Für wen?</th>
+				<th class="col-lg-2">🙋 Für wen?</th>
 				<td class="col-lg-10"><?= rex_escape($event['event_target_group']); ?></td>
 			</tr>
 			<?php endif; ?>
 			<?php if ($event['event_price'] || $event['event_price_reduced']) : ?>
 			<tr class="row">
-				<th class="col-lg-2">Kosten?</th>
+				<th class="col-lg-2">💶 Kosten?</th>
 				<td class="col-lg-10">
 					<?php
 						$normal_price = $event['event_price'];
@@ -113,7 +113,7 @@ EOSQL;
 			<?php endif; ?>
 			<?php if ($event['event_registration'] || $event['event_registration_form']|| $event['event_booked_out']) : ?>
 			<tr class="row">
-				<th class="col-lg-2">Anmeldung?</th>
+				<th class="col-lg-2">📝 Anmeldung?</th>
 				<td class="col-lg-10">
 					<?php
 						if ($event['event_registration']) {
