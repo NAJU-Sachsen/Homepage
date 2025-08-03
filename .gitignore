@@ -134,4 +134,9 @@ index.php
 /redaxo/data/addons/developer/modules/*.zip
 /redaxo/data/addons/developer/templates/*.zip
 /redaxo/src/addons/naju_*.zip
+/redaxo/data/addons/*
+!/redaxo/data/addons/developer
 
+
+# MacOS specific files
+.DS_Store
