@@ -26,7 +26,7 @@ $is_ios = str_contains($ua, 'iphone') || str_contains($ua, 'ipad');
     <?= 'REX_TEMPLATE[key=template-header]'; ?>
 
   </div>
-  <div id="nav-content-wrapper" class="row">
+  <div id="nav-content-wrapper" class="row justify-content-center">
 
     <?php
     define('ARTICLE_CTYPE', 1);
@@ -39,7 +39,7 @@ $is_ios = str_contains($ua, 'iphone') || str_contains($ua, 'ipad');
     ?>
 
 
-    <div id="content-wrapper" class="col-lg-8 offset-lg-2 col-md-12">
+    <div id="content-wrapper" class="col-lg-8 col-md-12">
       <!-- Main content -->
       <main id="content" class="clearfix">
         REX_ARTICLE[ctype=1]
@@ -48,7 +48,7 @@ $is_ios = str_contains($ua, 'iphone') || str_contains($ua, 'ipad');
 
     <!-- Side bar -->
     <?php if($this->getValue('art_has_sidebar') === '|true|') : ?>
-    <aside id="at-a-glance" class="col-lg-2 border border-right-0 rounded-left offset-lg-10">
+    <aside id="at-a-glance" class="col-lg-2 border border-right-0 rounded-left">
       <h2>Auf einen Blick</h2>
       <?php
         foreach ($slices as $slice) {

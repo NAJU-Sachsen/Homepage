@@ -10,6 +10,7 @@ $sidebars-offset: -30px;
 //
 
 body {
+  max-width: 2048px;
   background-image: url('/assets/grass-pattern.png');
   background-repeat: repeat-x;
   background-attachment: fixed;
@@ -36,8 +37,7 @@ header#top-bar .naju-logo {
 }
 
 nav#main-nav {
-  position: fixed;
-  max-height: calc(100% - #{$header-height} - #{$footer-height} - #{$layout-padding});
+  height: fit-content;
   overflow: auto;
   margin-top: $sidebars-offset;
   margin-bottom: 100px;
@@ -83,8 +83,7 @@ nav#main-nav:hover {
 //
 
 aside#at-a-glance {
-  position: fixed;
-  max-height: calc(100% - #{$header-height} - #{$footer-height} - #{$layout-padding});
+  height: fit-content;
   overflow: auto;
   margin-top: $sidebars-offset;
   margin-bottom: 100px;
