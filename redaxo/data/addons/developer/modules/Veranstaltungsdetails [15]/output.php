@@ -64,7 +64,10 @@ EOSQL;
 			<?php if ($event['event_location']) : ?>
 			<tr class="row">
 				<th class="col-lg-2">Wo?</th>
-				<td class="col-lg-10"><?= rex_escape($event['event_location']); ?></td>
+				<td class="col-lg-10">
+					<?= rex_escape($event['event_location']); ?>
+					<a href="https://openstreetmap.org/search?query=<?= urlencode($event['event_location']); ?>" target="_blank">&#128506; OpenStreetMap</a>
+				</td>
 			</tr>
 			<?php endif; ?>
 			<?php if ($event['event_group']) : ?>
