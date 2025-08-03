@@ -1,5 +1,7 @@
 <?php
 
+use FriendsOfRedaxo\MForm;
+
 $mform = MForm::factory();
 
 $mform->addAlertInfo(<<<EOTXT

@@ -1,4 +1,7 @@
 <?php
+
+use FriendsOfRedaxo\MForm;
+
 $img_id = 1;    // MEDIA type --> separate media ID
 $link_id = 1;   // LINK type --> separate link ID
 $width_id = 1;  // normal type --> true IDs start here

@@ -1,5 +1,7 @@
 <?php
 
+use FriendsOfRedaxo\MForm;
+
 // REX_VALUE
 $display_type_id = 1;
 $item_id = 2;

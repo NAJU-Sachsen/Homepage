@@ -1,6 +1,8 @@
 
 <?php
 
+use FriendsOfRedaxo\MForm;
+
 $id_local_group = 1;
 $id_target_group = 2;
 $id_event_type = 3;
