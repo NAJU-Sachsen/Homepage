@@ -209,6 +209,7 @@ $event_counter = 0;
                 $event_counter++;
             ?>
             <article class="list-group-item event">
+                <div class="event-container">
                 <header class="d-flex w-100 justify-content-between event-header">
                     <h3 class="mb-1 text-left event-title">
                         <?php
@@ -304,7 +305,7 @@ $event_counter = 0;
 
                     <?php if ($event['event_price'] || $event['event_price_reduced']) : ?>
                     <tr class="row">
-                      <th class="col-lg-2">💶 Was kostet es?</th>
+                      <th class="col-lg-2">💶 Kosten?</th>
                       <td class="col-lg-10">
                           <?php
                             $normal_price = $event['event_price'];
@@ -352,6 +353,7 @@ $event_counter = 0;
                 <?php if ($event['event_link']) : ?>
                 <a href="<?= rex_getUrl($event['event_link']); ?>" class="mb-1 link">Mehr Infos</a>
                 <?php endif; ?>
+            </div>
             </article>
             <?php endforeach; ?>
         </div>

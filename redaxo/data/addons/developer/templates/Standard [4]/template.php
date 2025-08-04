@@ -13,7 +13,8 @@ $is_ios = str_contains($ua, 'iphone') || str_contains($ua, 'ipad');
   <link rel="preload" href="/fonts/SourceSansPro-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/fonts/Amaranth-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="icon" href="/assets/favicon.ico">
-  <link rel="stylesheet" href="/css/kernel.css">
+  <link rel="preload" as="style" href="/css/kernel.css?v=1.0">  <!-- increase the version number each time the CSS changes -->
+  <link rel="stylesheet" href="/css/kernel.css?v=1.0">
 
   <?= 'REX_TEMPLATE[key=template-head-meta]' ?>
 
