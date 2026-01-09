@@ -35,8 +35,10 @@ if ('events' === rex_get('filter')) {
         $req_month = rex_get('month', 'int');
 
         if ($req_month != -1) {
+            $next_month = ($req_month % 12) + 1;
+            $end_year = $next_month == 1 ? $event_year + 1 : $event_year;
             $start_date = $event_year . '-' . $req_month . '-01';
-            $end_date = $event_year . '-' . $req_month . '-31';
+            $end_date = $end_year . '-' . $next_month . '-01';
         }
     }
 }
